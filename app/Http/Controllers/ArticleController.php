@@ -30,7 +30,6 @@ class ArticleController extends Controller
         $article->content = $request->get('content');
         $article->thumbnail = $request->get('thumbnail');
         $article->date = $request->get('created');
-        dd($article);
-        //$article->save();
+        $article->save();
     }
 }

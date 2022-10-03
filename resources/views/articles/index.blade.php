@@ -1,12 +1,12 @@
 <h1>DANH SÁCH BÀI VIẾT TRÊN TRANG</h1>
-<a href="{{route('article-create')}}">Thêm</a>
+<a href="{{route('article.create')}}">Thêm</a>
 <table border="1" width="100%">
     <tr>
         <th>#</th>
         <th>title</th>
         <th>slug</th>
-        <th>content</th>
         <th>image</th>
+        <th>content</th>
         <th>created</th>
     </tr>
     @foreach($articles as $article)
