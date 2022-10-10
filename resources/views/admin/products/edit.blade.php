@@ -7,7 +7,7 @@
         </ul>
     </div>
 @endif
-<form action="{{route('products.update',$product)}}" method="post" >
+<form action="{{route('admin.products.update',$product)}}" method="post" >
     @csrf
     @method('put')
     Tên truyện

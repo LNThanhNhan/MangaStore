@@ -7,7 +7,7 @@
         </ul>
     </div>
 @endif
-<form action="{{route('products.store')}}" method="post" >
+<form action="{{route('admin.products.store')}}" method="post" >
     @csrf
     Tên truyện
     <input type="text" name="name" id="" value="{{ old('name') }}">

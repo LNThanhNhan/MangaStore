@@ -1,15 +1,14 @@
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<h1>Tất cả đầu truyện</h1>
-<a href="{{route('products.create')}}">Thêm</a>
-<table border="1" width="100%">
-    <caption>
-        <form action="">
-            <lable>
-                Tìm kiếm:
-            </lable>
-            <input type="search" name="q" id="" value="{{ $search }}">
-        </form>
-    </caption>
+@extends('layout.master')
+@section('content')
+<h1>Quản lý danh sách truyện tranh</h1>
+<a class="btn btn-success" href="{{route('admin.products.create')}}">Thêm</a>
+<form class="float-end" action="">
+    <lable>
+        Tìm kiếm:
+    </lable>
+    <input type="search" name="q" id="" value="{{ $search }}">
+</form>
+<table class="table table-striped">
     <tr>
         <th>#</th>
         <th >Tên truyện</th>
@@ -35,15 +34,15 @@
         <td>{{ $product->category }}</td>
         <td>{{ $product->collection }}</td>
         <td>
-            <a href="{{route('products.edit',$product)}}">
+            <a href="{{route('admin.products.edit',$product)}}">
                 Sửa
             </a>
         </td>
         <td>
-            <form action="{{route('products.destroy',$product)}}" method="post">
+            <form action="{{route('admin.products.destroy',$product)}}" method="post">
                 @csrf
                 @method('DELETE')
-                <button>Xóa</button>
+                <button class="btn btn-danger">Xóa</button>
             </form>
         </td>
     </tr>
@@ -56,4 +55,4 @@
         </li>
     </ul>
 </nav>
-
+@endsection('content')
