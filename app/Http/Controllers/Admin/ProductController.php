@@ -19,7 +19,7 @@ class ProductController extends Controller
         $products =Product::query()
             ->where('name','like','%'.$search.'%')
             ->orWhere('author','like','%'.$search.'%')
-            ->paginate(1);
+            ->paginate(10);
 
         //Append dùng để thêm vào phần tìm kiếm
         //nếu không thì khi sang trang sẽ bị mất
@@ -32,7 +32,7 @@ class ProductController extends Controller
 
     public function create()
     {
-        return view('products.create');
+        return view('admin.products.create');
     }
 
     public function store(StoreRequest $request)
@@ -44,7 +44,7 @@ class ProductController extends Controller
         $product->collection_slug=create_slug($request->get('collection'));
         $product->category_slug=create_slug($request->get('category'));
         $product->save();
-        return redirect(route('products.index'));
+        return redirect(route('admin.products.index'));
     }
 
     public function show(Product $product)
@@ -55,7 +55,7 @@ class ProductController extends Controller
      // Laravel tự động hỗ trợ việc tìm product trong route
     public function edit(Product $product)
     {
-        return view('products.edit', [
+        return view('admin.products.edit', [
             'product' => $product,
         ]);
     }
@@ -68,7 +68,7 @@ class ProductController extends Controller
         $product->collection_slug=create_slug($request->get('collection'));
         $product->category_slug=create_slug($request->get('category'));
         $product->save();
-        return redirect()->route('products.index');
+        return redirect()->route('admin.products.index');
     }
 
     /**
@@ -81,6 +81,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('products.index');
+        return redirect()->route('admin.products.index');
     }
 }

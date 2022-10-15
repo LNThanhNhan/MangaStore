@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\store;
+namespace App\Services\home;
 use App\Models\Product;
 class SearchProductService
 {
@@ -13,8 +13,12 @@ class SearchProductService
             ->get();
     }
 
-    public static function getSearchProducts($name)
+    public static function getSearchProducts($search)
     {
-
+        return Product::query()
+            ->where('name','like','%'.$search.'%')
+            ->orWhere('author','like','%'.$search.'%')
+            ->orWhere('collection','like','%'.$search.'%')
+            ->paginate(16);
     }
 }

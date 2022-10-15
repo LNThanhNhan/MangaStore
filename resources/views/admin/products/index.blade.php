@@ -3,9 +3,9 @@
 <h1>Quản lý danh sách truyện tranh</h1>
 <a class="btn btn-success" href="{{route('admin.products.create')}}">Thêm</a>
 <form class="float-end" action="">
-    <lable>
+    <label>
         Tìm kiếm:
-    </lable>
+    </label>
     <input type="search" name="q" id="" value="{{ $search }}">
 </form>
 <table class="table table-striped">
@@ -32,7 +32,7 @@
         <td>{{ $product->publish_year }}</td>
         <td>{{ $product->size }}</td>
         <td>{{ $product->category }}</td>
-        <td>{{ $product->collection }}</td>
+        <td >{{ $product->collection }}</td>
         <td>
             <a href="{{route('admin.products.edit',$product)}}">
                 Sửa
@@ -42,7 +42,7 @@
             <form action="{{route('admin.products.destroy',$product)}}" method="post">
                 @csrf
                 @method('DELETE')
-                <button class="btn btn-danger">Xóa</button>
+                <button class="btn btn-danger" onclick="return confirm('Are you sure?')">Xóa</button>
             </form>
         </td>
     </tr>

@@ -35,7 +35,7 @@ class StoreRequest extends FormRequest
                 'unique:App\Models\Product,name',
                 //Hàm kiểm tra slug có trùng hay không
                 function($attribute, $value,$fail){
-                    if(null !== Product::query()->where('slug',create_slug($value))) {
+                    if(true === Product::query()->where('slug',create_slug($value))->exists()) {
                         $fail("Tên truyện đã được sử dụng");
                     }
                 },

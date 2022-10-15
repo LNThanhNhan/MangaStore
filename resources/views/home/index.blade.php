@@ -1,4 +1,4 @@
-<form action="{{route('search.products')}}">
+<form action="{{route('home.search')}}">
 <label for="">Tìm kiếm</label>
 <input type="search" name="q" id="">
 </form>
