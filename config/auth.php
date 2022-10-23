@@ -15,7 +15,9 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'users',
+        //'passwords' => 'users',
+        //Sử dụng table Account để đăng ký, đăng nhập
+        'passwords' => 'accounts',
     ],
 
     /*
@@ -38,7 +40,9 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            //'provider' => 'users',
+            //Sử dụng table Account để đăng ký, đăng nhập
+            'provider' => 'accounts',
         ],
     ],
 
@@ -63,6 +67,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        //Sử dụng table Account để đăng ký, đăng nhập
+        'accounts' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Account::class,
         ],
 
         // 'users' => [
@@ -89,6 +98,13 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        //Sử dụng table Account để đăng ký, đăng nhập
+        'accounts' => [
+            'provider' => 'accounts',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
