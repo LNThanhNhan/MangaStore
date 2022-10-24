@@ -14,13 +14,12 @@ use Illuminate\Http\Request;
 |
 */
 
-//Route::get('/', [HomeController::class,'index'])->name('home.index');
-//Route::get('/products/search}',[HomeController::class,'searchProducts'])->name('home.search');
-//Route::get('/products/{slug?}',[HomeController::class,'searchProducts'])->name('home.search');
-Route::get('/', function () {
-    return view('welcome');
-});
-//Route::get('/', [HomeController::class,'index'])->name('home.index');
+Route::get('/', [HomeController::class,'index'])->name('home.index');
+Route::get('/products/search}',[HomeController::class,'searchProducts'])->name('home.search');
+Route::get('/products/{slug}',[HomeController::class,'productDetail'])->name('home.detail');
+Route::get('/author/{author}',[HomeController::class,'searchByAuthor'])->name('home.author');
+Route::get('/category/{category}',[HomeController::class,'searchByCategory'])->name('home.category');
+
 Route::get('/user', function () {
     return view('user');
 })->middleware(['auth'])->name('dashboard');

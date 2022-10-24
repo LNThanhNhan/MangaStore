@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Product;
 
+use App\Enums\ProductCategory;
 use App\Models\Product;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -73,7 +74,10 @@ class UpdateRequest extends FormRequest
                 'min:1970',
                 'max:2155',
             ],
-            'category' => ['required'],
+            'category' => [
+                'required',
+                Rule::in(ProductCategory::asArray()),
+            ],
             'collection' => [
                 'bail',
                 'string',

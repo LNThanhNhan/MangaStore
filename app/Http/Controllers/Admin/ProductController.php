@@ -2,21 +2,30 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\ProductCategory;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\StoreRequest;
 use App\Http\Requests\Product\UpdateRequest;
 use App\Models\Product;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 include(app_path().'/Customs/create_slug.php');
 
 class ProductController extends Controller
 {
+    private Builder $model;
+    public function __construct()
+    {
+        $this->model = (new Product())->query();
+        View::share('arrProductCategory',ProductCategory::getArrayView());
+    }
 
     public function index(Request $request)
     {
         $search = $request->query->get('q');
-        $products =Product::query()
+        $products =$this->model
             ->where('name','like','%'.$search.'%')
             ->orWhere('author','like','%'.$search.'%')
             ->paginate(10);
@@ -42,14 +51,8 @@ class ProductController extends Controller
         $product->slug=create_slug($request->get('name'));
         $product->author_slug=create_slug($request->get('author'));
         $product->collection_slug=create_slug($request->get('collection'));
-        $product->category_slug=create_slug($request->get('category'));
         $product->save();
         return redirect(route('admin.products.index'));
-    }
-
-    public function show(Product $product)
-    {
-        //
     }
 
      // Laravel tự động hỗ trợ việc tìm product trong route
@@ -66,7 +69,6 @@ class ProductController extends Controller
         $product->slug=create_slug($request->get('name'));
         $product->author_slug=create_slug($request->get('author'));
         $product->collection_slug=create_slug($request->get('collection'));
-        $product->category_slug=create_slug($request->get('category'));
         $product->save();
         return redirect()->route('admin.products.index');
     }
@@ -78,9 +80,9 @@ class ProductController extends Controller
      *
      *  2) Nên có thêm validate cho product
      */
-    public function destroy(Product $product)
+    public function destroy($productId)
     {
-        $product->delete();
+        $this->model->find($productId)->delete();
         return redirect()->route('admin.products.index');
     }
 }

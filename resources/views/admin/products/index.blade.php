@@ -31,7 +31,7 @@
         <td>{{ $product->quantity }}</td>
         <td>{{ $product->publish_year }}</td>
         <td>{{ $product->size }}</td>
-        <td>{{ $product->category }}</td>
+        <td>{{ $product->category_name }}</td>
         <td >{{ $product->collection }}</td>
         <td>
             <a href="{{route('admin.products.edit',$product)}}">

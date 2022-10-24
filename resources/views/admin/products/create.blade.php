@@ -34,7 +34,11 @@
     <input type="number" name="publish_year" id="">
     <br>
     Thể loại
-    <input type="text" name="category" id="">
+    <select name="category">
+        @foreach($arrProductCategory as $key => $value)
+            <option value="{{$value}}">{{$key}}</option>
+            @endforeach
+    </select>
     <br>
     Bộ truyện
     <input type="text" name="collection" id="">

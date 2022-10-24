@@ -2,8 +2,11 @@
 
 namespace App\Http\Requests\Product;
 
+use App\Enums\ProductCategory;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Models\Product;
+use Illuminate\Validation\Rule;
+
 include(app_path().'/Customs/create_slug.php');
 
 class StoreRequest extends FormRequest
@@ -79,7 +82,10 @@ class StoreRequest extends FormRequest
                 'min:1970',
                 'max:2155',
             ],
-            'category' =>['required'],
+            'category' =>[
+                'required',
+                Rule::in(ProductCategory::asArray()),
+            ],
             'collection' =>[
                 'bail',
                 'string',
