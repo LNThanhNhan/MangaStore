@@ -58,11 +58,18 @@ class StoreRequest extends FormRequest
                 'required',
                 'string',
             ],
-            'price' =>[
+            'list_price' =>[
                 'bail',
                 'required',
                 'integer',
                 'min:0',
+            ],
+            'discount_rate' =>[
+                'bail',
+                'required',
+                'integer',
+                'min:0',
+                'max:100',
             ],
             'quantity' =>[
                 'bail',
@@ -122,7 +129,8 @@ class StoreRequest extends FormRequest
             'description'=>'Phần mô tả',
             'image' => 'Ảnh sản phẩm',
             'author' => 'Tên tác giả',
-            'price' => 'Giá',
+            'list_price' => 'Giá niêm yết',
+            'discount_rate' => 'Chiết khấu',
             'quantity' => 'Số lượng tồn',
             'size' => 'Kích thước',
             'publish_year' =>'Năm xuất bản',

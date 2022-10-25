@@ -18,7 +18,8 @@ class Product extends Model
         'image',
         'category',
         'author',
-        'price',
+        'list_price',
+        'discount_rate',
         'quantity',
         'publish_year',
         'size',
@@ -30,6 +31,13 @@ class Product extends Model
     {
         return Attribute::make(
             get: fn($value,$attribute)=>ProductCategory::getCategoryName($attribute['category']),
+        );
+    }
+
+    protected function listPriceVND(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value,$attribute)=>number_format($attribute['list_price']).'đ',
         );
     }
 

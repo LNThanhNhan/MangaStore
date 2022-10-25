@@ -23,8 +23,11 @@
     Tác giả
     <input type="text" name="author" id="" value="{{$product->author}}">
     <br>
-    Giá
-    <input type="number" name="price" id="" value="{{$product->price}}">
+    Giá niêm yết
+    <input type="number" name="list_price" value="{{$product->list_price}}" id="">
+    <br>
+    Chiết khấu
+    <input type="number" name="discount_rate" id="" value="{{$product->discount_rate}}">
     <br>
     Số lượng tồn
     <input type="number" name="quantity" id="" value="{{$product->quantity}}">

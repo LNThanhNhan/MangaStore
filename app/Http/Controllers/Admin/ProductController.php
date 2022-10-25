@@ -51,6 +51,8 @@ class ProductController extends Controller
         $product->slug=create_slug($request->get('name'));
         $product->author_slug=create_slug($request->get('author'));
         $product->collection_slug=create_slug($request->get('collection'));
+        //ceil dùng để làm tròn lên
+        $product->price=ceil($request->get('list_price') - ($request->get('list_price') * ($request->get('discount_rate')/100)));
         $product->save();
         return redirect(route('admin.products.index'));
     }
@@ -69,6 +71,7 @@ class ProductController extends Controller
         $product->slug=create_slug($request->get('name'));
         $product->author_slug=create_slug($request->get('author'));
         $product->collection_slug=create_slug($request->get('collection'));
+        $product->price=ceil($request->get('list_price') - ($request->get('list_price') * ($request->get('discount_rate')/100)));
         $product->save();
         return redirect()->route('admin.products.index');
     }

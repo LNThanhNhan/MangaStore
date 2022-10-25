@@ -21,8 +21,11 @@
     Tác giả
     <input type="text" name="author" id="">
     <br>
-    Giá
-    <input type="number" name="price" id="">
+    Giá niêm yết
+    <input type="number" name="list_price" id="">
+    <br>
+    Chiết khấu
+    <input type="number" name="discount_rate" id="" value="10">
     <br>
     Số lượng tồn
     <input type="number" name="quantity" id="">
