@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Home;
 use App\Enums\ProductCategory;
+use App\Http\Requests\Home\FilterRequest;
 use App\Services\home\SearchProductService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -57,16 +58,14 @@ class HomeController
         ]);
     }
 
-    //Tìm kiếm theo thể loại
-    public function searchByCategory($value)
+    //Tìm kiếm theo thể loại và giá
+    public function searchByFilter(FilterRequest $request)
     {
-        $products = (new SearchProductService())->getProductByCategory($value);
-        $search =ProductCategory::getCategoryName((int)$value);
-        $checkValue = $value;
+        $products = (new SearchProductService())->getProductByFilter($request->query->all())->withQueryString();
+        $search ='';
         return view('home.search',[
             'products' => $products,
             'search' => $search,
-            'checkValue' => $checkValue,
         ]);
     }
 }

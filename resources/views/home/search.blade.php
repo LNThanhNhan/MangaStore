@@ -18,19 +18,47 @@
         </tr>
     @endforeach
 </table>
-<ul>
-@foreach($arrProductCategory as $key => $value)
-    <li>
-        <label>
-            <a href="{{route('home.category',$value)}}">
-                <input type="checkbox" name="{{$key}}" value="{{$value}}"
-                    @if(isset($checkValue) && (int)$checkValue === $value)
-                    checked
-                       @endif
-                >
-            </a>
-            <span>{{$key}}</span>
-        </label>
-    </li>
-@endforeach
-</ul>
+<nav>
+    <ul class="pagination pagination-rounded mb-0">
+        <li>
+            {{$products->links()}}
+        </li>
+    </ul>
+</nav>
+@if ( $errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+<form action="{{route('home.filter')}}" method="GET">
+    @foreach($arrProductCategory as $key => $value)
+        <div>
+            <input type="checkbox" name="{{$key}}" value="{{$value}}"
+                   @if(isset($_GET[str_replace(' ','_',$key)]))
+                       checked
+                   @endif
+            >
+            <label>{{$key}}</label>
+        </div>
+    @endforeach
+    Khoảng giá
+    <br>
+    Tối thiểu
+    <input type="number" name="min_price" id=""
+           @if ( isset($_GET['min_price']))
+               value="{{$_GET['min_price']}}"
+        @endif
+    >
+    Tối đa
+    <input type="number" name="max_price" id=""
+           @if ( isset($_GET['max_price']) )
+               value="{{$_GET['max_price']}}"
+        @endif
+    >
+    <br>
+    <input type="submit" value="Lọc">
+</form>

@@ -2,8 +2,10 @@
 
 namespace App\Services\home;
 use App\Enums\ProductCategory;
+use App\Http\Requests\Home\FilterRequest;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 
 class SearchProductService
@@ -33,18 +35,43 @@ class SearchProductService
     public function getProductBySlug($slug)
     {
         return $this->products
-            ->where('slug',$slug)->first();
+            ->where('slug',$slug)
+            ->first();
     }
 
     public function getProductByAuthor($slug)
     {
         return $this->products
-            ->where('author_slug',$slug)->get();
+            ->where('author_slug',$slug)
+            ->paginate(16);
     }
 
-    public function getProductByCategory($value)
+    public function getProductByFilter($array)
     {
-        return $this->products
-            ->where('category',$value)->get();
+            $category=[];
+            $min=0;
+            $max=$this->products->max('price');
+            foreach ($array as $key => $value) {
+                //Do khi truyền vào thanh địa chỉ dấu cách sẽ tự động chuyể thành gạch chân
+                //nên ta thay lại bằng dấu cách và kiểm tra xem thể loại truyện có nằm trong mảng không
+                if(in_array(str_replace('_',' ',$key),ProductCategory::ARRAY_NAME,true)) {
+                    $category[]=$value;
+                }
+                if($key === 'min_price'&& $value !== null) {
+                    $min= $value;
+                }
+                if($key === 'max_price'&& $value !== null) {
+                    $max= $value;
+                }
+            }
+            if(!count($category)){
+                return $this->products
+                    ->WhereBetween('price',[$min,$max])
+                    ->paginate(16);
+            }
+            return $this->products
+                    ->whereIn('category', $category)
+                    ->WhereBetween('price',[$min,$max])
+                    ->paginate(16);
     }
 }

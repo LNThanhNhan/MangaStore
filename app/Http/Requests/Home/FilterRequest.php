@@ -38,10 +38,14 @@ class FilterRequest extends FormRequest
             'Người trưởng thành' => 'in:12',
             'Thanh thiếu niên' => 'in:13',
             'min_price'=>[
+                'bail',
+                'nullable',
                 'integer',
                 'min:0'
             ],
             'max_price'=>[
+                'bail',
+                'nullable',
                 'integer',
                 'min:0',
                 'gte:min_price'
