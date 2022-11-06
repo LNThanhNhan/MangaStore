@@ -4,8 +4,9 @@ namespace App\Enums;
 
 use BenSampo\Enum\Enum;
 
-final class UserHomeEnum extends Enum
+final class AccountHome extends Enum
 {
     public const USER_HOME='/user';
     public const ADMIN_HOME='/admin';
+    public const DELIVERY_HOME='/delivery';
 }

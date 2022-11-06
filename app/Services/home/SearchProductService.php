@@ -54,7 +54,7 @@ class SearchProductService
             foreach ($array as $key => $value) {
                 //Do khi truyền vào thanh địa chỉ dấu cách sẽ tự động chuyể thành gạch chân
                 //nên ta thay lại bằng dấu cách và kiểm tra xem thể loại truyện có nằm trong mảng không
-                if(in_array(str_replace('_',' ',$key),ProductCategory::ARRAY_NAME,true)) {
+                if(in_array(str_replace('_',' ',$key),ProductCategory::getArrayCategoryName(),true)) {
                     $category[]=$value;
                 }
                 if($key === 'min_price'&& $value !== null) {
@@ -73,5 +73,11 @@ class SearchProductService
                     ->whereIn('category', $category)
                     ->WhereBetween('price',[$min,$max])
                     ->paginate(16);
+    }
+    function getProductByCollection($slug)
+    {
+        return $this->products
+            ->where('collection_slug',$slug)
+            ->paginate(16);
     }
 }

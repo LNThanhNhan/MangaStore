@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Enums\UserHomeEnum;
+use App\Enums\AccountHome;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\StoreRequest;
 use App\Models\Account;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -12,6 +15,11 @@ use Illuminate\Validation\Rules;
 
 class RegisteredUserController extends Controller
 {
+    private Builder $userModel;
+    public function __construct()
+    {
+        $this->userModel = (new User())->query();
+    }
     /**
      * Display the registration view.
      *
@@ -30,25 +38,22 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        $request->validate([
-            'username' => ['required', 'string', 'max:100'],
-            'email' => ['required', 'string', 'email', 'max:100', 'unique:App\Models\Account,email'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
-
         $account = Account::create([
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-
-        //Vứt do sẽ gọi verify email
-        //event(new Registered($user));
-
+        $this->userModel->create([
+            'account_id' => $account->id,
+            'name' => $request->name,
+            'gender' => $request->gender,
+            'phone'=>null,
+            'address' => null,
+            'city'=>null,
+        ]);
         Auth::login($account);
-
-        return redirect(UserHomeEnum::USER_HOME);
+        return redirect(AccountHome::USER_HOME);
     }
 }

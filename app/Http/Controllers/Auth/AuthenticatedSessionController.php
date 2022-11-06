@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Enums\UserHomeEnum;
+use App\Enums\AccountHome;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
@@ -32,9 +32,8 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-
         //Xử lý sau khi người dùng đăne nhập
-        return redirect()->intended(UserHomeEnum::USER_HOME);
+        return redirect()->intended(AccountHome::USER_HOME);
     }
 
     /**

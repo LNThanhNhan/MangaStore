@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Enums\UserHomeEnum;
+use App\Enums\AccountHome;
 use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
@@ -26,7 +26,16 @@ class RedirectIfAuthenticated
             if (Auth::guard($guard)->check()) {
                 //Quy định khi người dùng đã đăng nhập thì
                 // sẽ điều hướng về trang của họ
-                return redirect(UserHomeEnum::USER_HOME);
+                // ví dụ: admin, user, ...
+                $role = Auth::user()->role;
+                switch ($role) {
+//                    case AccountHome::ADMIN_HOME:
+//                        return redirect()->route('admin.home');
+                    case AccountHome::USER_HOME:
+                        return redirect()->route('user.profile.info');
+                    default:
+                        return redirect()->route('login');
+                }
             }
         }
 

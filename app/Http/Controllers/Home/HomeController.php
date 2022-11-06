@@ -68,4 +68,15 @@ class HomeController
             'search' => $search,
         ]);
     }
+
+    //Tìm kiếm theo bộ truyện
+    public function searchByCollection($slug)
+    {
+        $products = (new SearchProductService())->getProductByCollection($slug);
+        $search =$products[0]->collection;
+        return view('home.search',[
+            'products' => $products,
+            'search' => $search,
+        ]);
+    }
 }

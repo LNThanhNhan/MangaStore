@@ -11,8 +11,6 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
-include(app_path().'/Customs/create_slug.php');
-
 class ProductController extends Controller
 {
     private Builder $model;

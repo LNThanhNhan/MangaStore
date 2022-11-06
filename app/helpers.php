@@ -6,7 +6,7 @@
  * @return    string
  */
 if (!function_exists('create_slug')) {
-    function create_slug($string)
+    function create_slug($string): string
     {
         $search = array(
             '#(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)#',
@@ -48,4 +48,4 @@ if (!function_exists('create_slug')) {
         return $string;
     }
 }
-?>
+

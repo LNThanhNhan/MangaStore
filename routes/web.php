@@ -3,6 +3,7 @@
 use App\Http\Controllers\Home\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,8 +20,10 @@ Route::get('/products/search',[HomeController::class,'searchProducts'])->name('h
 Route::get('/products/{slug}',[HomeController::class,'productDetail'])->name('home.detail');
 Route::get('/author/{author}',[HomeController::class,'searchByAuthor'])->name('home.author');
 Route::get('/filter',[HomeController::class,'searchByFilter'])->name('home.filter');
+Route::get('/collection/{collection}',[HomeController::class,'searchByCollection'])->name('home.collection');
 
 Route::get('/user', function () {
+    dd(Auth::user());
     return view('user');
 })->middleware(['auth'])->name('dashboard');
 

@@ -5,4 +5,5 @@
 <p>Tác giả</p>
 <a href="{{ route('home.author',$product->author_slug)}}">{{$product->author}}</a>
 <p>Thể loại</p>
-<a href="{{ route('home.category',$product->category)}}">{{$product->category_name}}</a>
+<p>{{$product->category_name}}</p>
+<a href="{{route('home.collection',$product->collection_slug)}}">{{$product->collection}}</a>

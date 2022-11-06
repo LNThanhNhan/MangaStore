@@ -18,4 +18,12 @@ class Account extends Authenticatable
         'email',
         'password',
     ];
+    protected $hidden = [
+        'password',
+    ];
+
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
 }

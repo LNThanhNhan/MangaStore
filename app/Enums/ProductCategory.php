@@ -49,20 +49,24 @@ final class ProductCategory extends Enum
     {
         return array_search($value, self::getArrayView(), true);
     }
-    public const ARRAY_NAME=[
-        'Hài hước',
-        'Kinh dị' ,
-        'Lãng mạn',
-        'Học đường',
-        'Giả tưởng',
-        'Siêu nhiên',
-        'Tâm lý' ,
-        'Thể thao',
-        'Đời thường',
-        'Hành động' ,
-        'Phiêu lưu',
-        'Người trưởng thành',
-        'Thanh thiếu niên',
-    ];
+    public static function getArrayCategoryName(): array
+    {
+        return [
+            'Hài hước',
+            'Kinh dị' ,
+            'Lãng mạn',
+            'Học đường',
+            'Giả tưởng',
+            'Siêu nhiên',
+            'Tâm lý' ,
+            'Thể thao',
+            'Đời thường',
+            'Hành động' ,
+            'Phiêu lưu',
+            'Người trưởng thành',
+            'Thanh thiếu niên',
+        ];
+    }
+
 }
 
