@@ -21,4 +21,9 @@ class User extends Model
     {
         return $this->belongsTo(Account::class);
     }
+
+    public function cart()
+    {
+        return $this->hasOne(Cart::class);
+    }
 }

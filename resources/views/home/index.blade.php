@@ -3,7 +3,7 @@
 <input type="search" name="q" id="">
 </form>
 @auth
-    <a href="{{ route('dashboard') }}" >Dashboard</a>
+    <a href="{{ route('user.profile.info') }}" >Thông tin cá nhân</a>
 @else
 <a href="{{ route('login') }}" >Log in</a>
 <a href="{{ route('register') }}" >Register</a>

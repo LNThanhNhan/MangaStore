@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Enums\AccountHome;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\User\StoreRequest;
+use App\Http\Requests\User\StoreUserRequest;
 use App\Models\Account;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
@@ -38,7 +38,7 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(StoreRequest $request)
+    public function store(StoreUserRequest $request)
     {
         $account = Account::create([
             'username' => $request->username,

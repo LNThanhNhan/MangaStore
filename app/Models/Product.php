@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Enums\ProductCategory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use League\CommonMark\Extension\Attributes\Node\Attributes;
 
 class Product extends Model
@@ -46,5 +47,11 @@ class Product extends Model
         return Attribute::make(
             get: fn($value,$attribute)=>number_format($attribute['price']).'đ',
         );
+    }
+
+    //set relationship with cart_product belongs to cart
+    public function carts(): BelongsToMany
+    {
+        return $this->belongsToMany(Cart::class)->withPivot('quantity');
     }
 }

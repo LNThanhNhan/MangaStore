@@ -6,7 +6,7 @@ use App\Enums\AccountRole;
 use Closure;
 use Illuminate\Http\Request;
 
-class AccountRoleIsUser
+class IsUser
 {
     /**
      * Handle an incoming request.

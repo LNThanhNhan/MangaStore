@@ -22,10 +22,6 @@ Route::get('/author/{author}',[HomeController::class,'searchByAuthor'])->name('h
 Route::get('/filter',[HomeController::class,'searchByFilter'])->name('home.filter');
 Route::get('/collection/{collection}',[HomeController::class,'searchByCollection'])->name('home.collection');
 
-Route::get('/user', function () {
-    dd(Auth::user());
-    return view('user');
-})->middleware(['auth'])->name('dashboard');
 
 //Route::get('/articles', [ArticleController::class, 'index']);
 //

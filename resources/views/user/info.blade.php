@@ -20,6 +20,7 @@
 <h1>Thông tin tài khoản</h1>
 <form action="{{route('user.profile.update',$user)}}" method="post">
     @csrf
+    @method('PUT')
     <label>Họ tên</label>
     <input type="text" name="name" value="{{$user->name}}"> <br>
     <label>Email</label>

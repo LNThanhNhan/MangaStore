@@ -48,4 +48,17 @@ if (!function_exists('create_slug')) {
         return $string;
     }
 }
+/**
+ * Chuyển đổi số tiền thành dạng tiền tệ Việt Nam.
+ * @access    public
+ * @param int
+ * @return    string
+ */
+if (!function_exists('format_priceVND')) {
+
+    function format_priceVND($price): string
+    {
+        return number_format($price) . ' đ';
+    }
+}
 

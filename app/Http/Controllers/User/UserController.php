@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Enums\Province;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\User\UpdateRequest;
+use App\Http\Requests\User\UpdateUserRequest;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
@@ -23,14 +23,14 @@ class UserController extends Controller
     {
         $user = Auth::user()->user;
         $provinces=Province::getArrayView();
-        return view('user.profile.info',[
+        return view('user.info',[
             'user' => $user,
             'provinces'=>$provinces,
         ]);
     }
 
     //Hàm cập nhật thông tin user và cập nhật mật khẩu nếu có
-    public function update(UpdateRequest $request,User $user)
+    public function update(UpdateUserRequest $request,User $user)
     {
         if($request->get('province')===0){
             $request['province']=null;

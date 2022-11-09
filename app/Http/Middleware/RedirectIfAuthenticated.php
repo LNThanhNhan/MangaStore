@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Enums\AccountHome;
+use App\Enums\AccountRole;
 use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
@@ -21,7 +22,6 @@ class RedirectIfAuthenticated
     public function handle(Request $request, Closure $next, ...$guards)
     {
         $guards = empty($guards) ? [null] : $guards;
-
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
                 //Quy định khi người dùng đã đăng nhập thì
@@ -31,8 +31,8 @@ class RedirectIfAuthenticated
                 switch ($role) {
 //                    case AccountHome::ADMIN_HOME:
 //                        return redirect()->route('admin.home');
-                    case AccountHome::USER_HOME:
-                        return redirect()->route('user.profile.info');
+                    case AccountRole::USER:
+                        return redirect(AccountHome::USER_HOME);
                     default:
                         return redirect()->route('login');
                 }

@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Enums\ProductCategory;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Product\StoreRequest;
-use App\Http\Requests\Product\UpdateRequest;
+use App\Http\Requests\Product\StoreProductRequest;
+use App\Http\Requests\Product\UpdateProductRequest;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
@@ -42,7 +42,7 @@ class ProductController extends Controller
         return view('admin.products.create');
     }
 
-    public function store(StoreRequest $request)
+    public function store(StoreProductRequest $request)
     {
         $product = new Product();
         $product->fill($request->validated());
@@ -63,7 +63,7 @@ class ProductController extends Controller
         ]);
     }
 
-    public function update(UpdateRequest $request, Product $product)
+    public function update(UpdateProductRequest $request, Product $product)
     {
         $product->fill($request->validated());
         $product->slug=create_slug($request->get('name'));

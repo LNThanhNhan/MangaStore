@@ -22,7 +22,7 @@ class Account extends Authenticatable
         'password',
     ];
 
-    public function user()
+    public function user(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->hasOne(User::class);
     }
