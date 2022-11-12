@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Home;
 use App\Enums\ProductCategory;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Home\FilterRequest;
 use App\Services\home\SearchProductService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
-class HomeController
+class HomeController extends Controller
 {
     public function __construct()
     {

@@ -4,11 +4,6 @@ namespace App\Enums;
 
 use BenSampo\Enum\Enum;
 
-/**
- * @method static static OptionOne()
- * @method static static OptionTwo()
- * @method static static OptionThree()
- */
 final class ProductCategory extends Enum
 {
     public const HAI_HUOC = 1;
@@ -49,6 +44,8 @@ final class ProductCategory extends Enum
     {
         return array_search($value, self::getArrayView(), true);
     }
+
+    //Trả về mảng các thể loại truyện
     public static function getArrayCategoryName(): array
     {
         return [

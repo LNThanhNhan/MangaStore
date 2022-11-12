@@ -1,36 +1,48 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+{{--<x-guest-layout>--}}
+{{--    <x-auth-card>--}}
+{{--        <x-slot name="logo">--}}
+{{--            <a href="/">--}}
+{{--                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />--}}
+{{--            </a>--}}
+{{--        </x-slot>--}}
 
         <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
-
+{{--        <x-auth-session-status class="mb-4" :status="session('status')" />--}}
+        @if ( $errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
             <!-- Email Address -->
             <div>
-                <x-input-label for="email" :value="__('Email')" />
+{{--                <x-input-label for="email" :value="__('Email')" />--}}
 
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+{{--                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />--}}
 
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
+{{--                <x-input-error :messages="$errors->get('email')" class="mt-2" />--}}
+                <label for="email">Email</label>
+                <input type="text" name="email" id="" value="{{old('email')}}" required autofocus>
             </div>
 
             <!-- Password -->
             <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')" />
+{{--                <x-input-label for="password" :value="__('Password')" />--}}
 
-                <x-text-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
+{{--                <x-text-input id="password" class="block mt-1 w-full"--}}
+{{--                                type="password"--}}
+{{--                                name="password"--}}
+{{--                                required autocomplete="current-password" />--}}
 
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+{{--                <x-input-error :messages="$errors->get('password')" class="mt-2" />--}}
+                <label for="password">Mật khẩu</label>
+                <input type="password" name="password" id="" required autocomplete="current-password">
             </div>
 
 
@@ -40,11 +52,13 @@
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
-
-                <x-primary-button class="ml-3">
+                <button>
                     {{ __('Log in') }}
-                </x-primary-button>
+                </button>
+{{--                <x-primary-button class="ml-3">--}}
+{{--                    {{ __('Log in') }}--}}
+{{--                </x-primary-button>--}}
             </div>
         </form>
-    </x-auth-card>
-</x-guest-layout>
+{{--    </x-auth-card>--}}
+{{--</x-guest-layout>--}}

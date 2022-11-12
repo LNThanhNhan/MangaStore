@@ -3,6 +3,7 @@
     @csrf
     <button type="submit">Đăng xuất</button>
 </form>
+<a href="{{route('user.cart.index')}}">Trang giỏ hàng</a>
 @if ( $errors->any())
     <div class="alert alert-danger">
         <ul>

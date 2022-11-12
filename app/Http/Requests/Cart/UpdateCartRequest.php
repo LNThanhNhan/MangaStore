@@ -34,6 +34,8 @@ class UpdateCartRequest extends FormRequest
                 'required',
                 'numeric',
                 'min:0',
+
+                //Hàm callback kiểm tra số lượng sản phẩm của từng sản phẩm có đủ để thêm vào giỏ hàng hay không
                 function($attribute, $value, $fail){
                     $cart = auth()->user()->user->cart;
                     //Đoạn bên dưới sẽ cắt chuỗi attribute để lấy ra index của sản phẩm

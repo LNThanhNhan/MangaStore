@@ -20,6 +20,7 @@ class ProductController extends Controller
         View::share('arrProductCategory',ProductCategory::getArrayView());
     }
 
+    // Hiển thị danh sách sản phẩm
     public function index(Request $request)
     {
         $search = $request->query->get('q');
@@ -37,11 +38,13 @@ class ProductController extends Controller
         ]);
     }
 
+    // Hiển thị form tạo sản phẩm
     public function create()
     {
         return view('admin.products.create');
     }
 
+    // Lưu sản phẩm vào database
     public function store(StoreProductRequest $request)
     {
         $product = new Product();
@@ -56,6 +59,7 @@ class ProductController extends Controller
     }
 
      // Laravel tự động hỗ trợ việc tìm product trong route
+    // Vì vậy ta không cần phải tìm product trong controller
     public function edit(Product $product)
     {
         return view('admin.products.edit', [
@@ -63,6 +67,7 @@ class ProductController extends Controller
         ]);
     }
 
+    // Cập nhật sản phẩm vào database
     public function update(UpdateProductRequest $request, Product $product)
     {
         $product->fill($request->validated());

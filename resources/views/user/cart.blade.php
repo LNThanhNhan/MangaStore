@@ -1,12 +1,12 @@
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+<div class="alert alert-danger">
+    <ul id="error">
+        @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+    @endif
+</div>
 <form action="{{route('user.cart.update')}}" method="post">
     @csrf
     @method('PUT')
@@ -42,6 +42,16 @@
                 @endforeach
             </tbody>
         </table>
+        @if($cart->discount)
+            <p>Đã áp dụng mã giảm giá: {{ $cart->discount->name }}</p>
+            <button name="remove-discount">Xóa mã giảm giá</button><br>
+            <p>Tổng số tiền giảm: {{$cart->total_discountVND }}</p> <br>
+        @else
+            <label for="">Nhập mã giảm giá </label> <br>
+            <input type="text" name="code" id="" value="{{old('$product')}}">
+            <button type="button" name="code">Áp dụng</button>
+            <br>
+        @endif
         <label for="">Tổng tiền: </label>
         <h3>
             {{ $cart->total_priceVND }}
@@ -66,6 +76,50 @@
             },
             success: function(response){
                 if(response.status === 200){
+                    location.reload();
+                }
+            },
+            error: function(response){
+                console.log(response);
+            }
+        });
+    });
+
+    {{-- Khi nhấn nút áp dụng giảm giá sẽ gửi ajax để áp dụng mã, gửi đi id cart, code mã giảm giá  --}}
+    $('button[name="code"]').click(function(e){
+        e.preventDefault();
+        var code = $('input[name="code"]').val();
+        $.ajax({
+            url: "{{ route('user.cart.discount') }}",
+            type: "PUT",
+            data: {
+                code: code,
+                _token: "{{ csrf_token() }}"
+            },
+            success: function(response){
+                console.log(response);
+                if(response.success === true){
+                    location.reload();
+                }
+            },
+            error: function(response){
+                //append lỗi vào thẻ li trong div id error
+                $('#error').empty().html('<li>'+response.responseJSON.message+'</li>');
+            }
+        });
+    });
+
+    {{-- Khi nhấn nút xóa mã giảm giá sẽ gửi ajax để xóa mã giảm giá, gửi đi id cart  --}}
+    $('button[name="remove-discount"]').click(function(e){
+        e.preventDefault();
+        $.ajax({
+            url: "{{ route('user.cart.remove-discount') }}",
+            type: "PUT",
+            data: {
+                _token: "{{ csrf_token() }}"
+            },
+            success: function(response){
+                if(response.success === true){
                     location.reload();
                 }
             },

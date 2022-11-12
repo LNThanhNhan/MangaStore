@@ -1,20 +1,25 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\ResponseTrait;
 use App\Http\Requests\Cart\AddCartRequest;
 use App\Http\Requests\Cart\DeleteProductInCartRequest;
 use App\Http\Requests\Cart\UpdateCartRequest;
+use App\Http\Requests\Discount\ApplyDiscountRequest;
 use App\Models\Cart;
+use App\Models\Discount;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
-
+    use ResponseTrait;
     private User $user;
     private Builder $model;
+    private Builder $discount;
     public function __construct()
     {
         //Phải khởi tạo trong này do nếu khởi tạo
@@ -24,6 +29,7 @@ class CartController extends Controller
             $this->model = (new Cart())->query();
             return $next($request);
         });
+        $this->discount = (new Discount())->query();
     }
 
     //Trả vể trang giỏ hàng cùng với thông tin sản phẩm
@@ -76,19 +82,61 @@ class CartController extends Controller
                 $cart->products()->updateExistingPivot($cart->products[$index]->id, ['quantity' => $quantity]);
             }
         }
+        //kiểm tra xem giỏ hàng có áp dụng mã giảm giá hay không
+        //nếu có thì kiểm tra xem tổng tiền giỏ hàng có đủ áp dụng mã giảm giá hay không
+        //nếu không đủ thì xóa mã giảm giá khỏi giỏ hàng
+        if ($cart->discount && $cart->total_price < $cart->discount->min_order) {
+            $cart->discount_id=null;
+            $cart->save();
+        }
         return redirect()->back()->with('success', 'Cart updated successfully!');
     }
 
     //Hàm xóa sản phẩm khỏi giỏ hàng theo api
-    public function deleteCart(DeleteProductInCartRequest $request)
+    public function deleteCart(Request $request)
     {
         $productID = $request->get('product_id');
         $cart = $this->model
             ->where('user_id',$this->user->id)
             ->first();
         $cart->products()->detach($productID);
+        //kiểm tra xem giỏ hàng có áp dụng mã giảm giá hay không
+        //nếu có thì kiểm tra xem tổng tiền giỏ hàng có đủ áp dụng mã giảm giá hay không
+        //nếu không đủ thì xóa mã giảm giá khỏi giỏ hàng
+        if ($cart->discount && $cart->total_price < $cart->discount->min_order) {
+            $cart->discount_id=null;
+            $cart->save();
+        }
         return response()->json([
             'status' => 200,
         ]);
+    }
+
+    //Hàm lấy ra mã giảm giá theo code
+    //nếu trong giỏ hàng đã có mã giảm giá thì cập nhật lại mã giảm giá
+    //thay discount_id trong giỏ hàng bằng discount_id mới
+    //còn không thì thêm discount_id vào giỏ hàng
+    public function applyDiscount(ApplyDiscountRequest $request)
+    {
+        $discountCode = $request->get('code');
+        $discount = $this->discount->where('code', $discountCode)->first();
+        $cart = $this->model
+            ->where('user_id',$this->user->id)
+            ->first();
+        $cart->discount_id = $discount->id;
+        $cart->save();
+        return $this->successResponse($discount->name, 'Áp dụng mã giảm giá thành công!',200);
+    }
+
+    //Hàm xóa mã giảm giá khỏi giỏ hàng
+    //Cập nhật lại discount_id trong giỏ hàng bằng null
+    public function removeDiscount()
+    {
+        $cart = $this->model
+            ->where('user_id',$this->user->id)
+            ->first();
+        $cart->discount_id = null;
+        $cart->save();
+        return $this->successResponse(null, 'Xóa mã giảm giá thành công!',200);
     }
 }
