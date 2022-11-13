@@ -141,11 +141,18 @@ final class Province extends Enum
         ];
     }
 
-    //get Province name by province id function
+    //trả về tên tỉnh khi truyền vào mã tỉnh
     public static function getProvinceNameById($provinceId): string
     {
         $provinces = self::getArrayView();
         return array_search($provinceId, $provinces,true);
+    }
+
+    //Trả về mã tỉnh khi truyền vào tên tỉnh
+    public static function getProvinceIdByName($provinceName): int
+    {
+        $provinces = self::getArrayView();
+        return $provinces[$provinceName];
     }
 
     public static function getProvincesArray(): array

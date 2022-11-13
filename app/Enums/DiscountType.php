@@ -4,7 +4,7 @@ namespace App\Enums;
 
 use BenSampo\Enum\Enum;
 
-final class DiscountTypeEnum extends Enum
+final class DiscountType extends Enum
 {
     public const PHAN_TRAM = 0;
     public const SO_TIEN = 1;

@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
-use App\Enums\DiscountTypeEnum;
+use App\Enums\DiscountType;
+use App\Enums\Province;
+use App\Enums\ShippingFee;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -35,13 +37,39 @@ class Cart extends Model
         return $this->belongsTo(Discount::class);
     }
 
+    //Làm thuộc tính tính số sản phẩm khác nhau trong giỏ hàng
+    protected function numberOfProducts(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value,$attribute)=>
+                $this->products->count(),
+        );
+    }
+
+    //Làm thuộc tính tổng tiền tạm tính của giỏ hàng
+    protected function cartTotal(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value,$attribute)=>
+                $this->products->sum(fn($product)=>$product->price*$product->pivot->quantity),
+        );
+    }
+
+    //Làm thuộc tính tổng tiền tạm tính của giỏ hàng VND
+    protected function cartTotalVND(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value,$attribute)=> number_format($this->cartTotal).' đ',
+        );
+    }
+
     //làm thuộc tính tổng giá của giỏ hàng
     //trừ đi tổng số tiền giảm giá
     protected function totalPrice(): Attribute
     {
         return Attribute::make(
             get: fn($value,$attribute)=>
-                $this->products->sum(fn($product)=>$product->price*$product->pivot->quantity)-$this->total_discount,
+                $this->cart_total-$this->total_discount,
         );
     }
 
@@ -65,7 +93,7 @@ class Cart extends Model
             get: function($value,$attribute) {
                 if($this->discount===null)
                     return 0;
-                if($this->discount->type === DiscountTypeEnum::SO_TIEN)
+                if($this->discount->type === DiscountType::SO_TIEN)
                     return $this->discount->value;
                 $totalDiscount=$this->totalPrice * $this->discount->value/100;
                 //Làm tròn số tiền giảm giá về chữ số nguyên
@@ -82,6 +110,23 @@ class Cart extends Model
     {
         return Attribute::make(
             get: fn($value,$attribute)=>number_format($this->totalDiscount).' đ',
+        );
+    }
+
+    //Làm thuộc tính phí vận chuyển dựa vào tỉnh thành phố của user
+    //nếu tỉnh thành phó của user là null thì trả về 0
+    //nếu là mã tỉnh thành phố là Hồ Chí Minh hay Hà Nội thì trả về phí cho Hồ Chí Minh hoặc Hà Nội
+    //còn lại thì trả về giá áp dụg cho các tỉnh thành phố khác
+    protected function shippingFee(): Attribute
+    {
+        return Attribute::make(
+            get: function($value,$attribute) {
+                if($this->user->province===null)
+                    return 0;
+                if($this->user->province===Province::HOCHIMINH || $this->user->province===Province::HANOI)
+                    return ShippingFee::HN_HCM;
+                return ShippingFee::OTHER;
+            },
         );
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Enums\DiscountTypeEnum;
+use App\Enums\DiscountType;
 use App\Http\Controllers\Controller;
 use App\Models\Discount;
 use App\Http\Requests\Discount\StoreDiscountRequest;
@@ -17,7 +17,7 @@ class DiscountController extends Controller
     public function __construct()
     {
         $this->model = (new Discount())->query();
-        View::share('arrDiscountType',DiscountTypeEnum::getArrayView());
+        View::share('arrDiscountType',DiscountType::getArrayView());
     }
 
     // Hiển thị danh sách mã giảm giá

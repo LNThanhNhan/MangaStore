@@ -49,9 +49,15 @@ class Product extends Model
         );
     }
 
-    //set relationship with cart_product belongs to cart
+    //thiết lập quan hệ 1-n với bảng pivot cart_product
     public function carts(): BelongsToMany
     {
         return $this->belongsToMany(Cart::class)->withPivot('quantity');
+    }
+
+    //thiết lập quan hệ 1-n với bảng pivot order_product
+    public function orders(): BelongsToMany
+    {
+        return $this->belongsToMany(Order::class)->withPivot('quantity', 'total_price');
     }
 }

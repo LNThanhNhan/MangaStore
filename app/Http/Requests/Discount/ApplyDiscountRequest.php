@@ -81,7 +81,7 @@ class ApplyDiscountRequest extends FormRequest
         ];
     }
 
-    public function attribute()
+    public function attributes()
     {
         return [
             'code' => 'mã giảm giá',

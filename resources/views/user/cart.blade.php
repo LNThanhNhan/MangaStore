@@ -42,6 +42,10 @@
                 @endforeach
             </tbody>
         </table>
+        <label for="">Tạm tính: </label>
+        <h3>
+            {{ $cart->cart_totalVND }}
+        </h3>
         @if($cart->discount)
             <p>Đã áp dụng mã giảm giá: {{ $cart->discount->name }}</p>
             <button name="remove-discount">Xóa mã giảm giá</button><br>
@@ -57,10 +61,12 @@
             {{ $cart->total_priceVND }}
         </h3>
         <button type="submit">Cập nhật giỏ hàng</button>
+</form>
+        <a href="{{ route('user.checkout.index') }}"> Thanh toán
+        </a>
     @else
         <p>Không có sản phẩm nào trong giỏ hàng</p>
     @endif
-</form>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script>
     {{-- Khi nhấn nút xóa sản phẩm sẽ gửi ajax  --}}

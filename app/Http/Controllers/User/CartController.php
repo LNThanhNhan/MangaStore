@@ -20,6 +20,7 @@ class CartController extends Controller
     private User $user;
     private Builder $model;
     private Builder $discount;
+
     public function __construct()
     {
         //Phải khởi tạo trong này do nếu khởi tạo
@@ -62,7 +63,7 @@ class CartController extends Controller
         } else {
             $cart->products()->attach($productID, ['quantity' => $quantity]);
         }
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
+        return redirect()->back()->with('success', 'Sản phẩm thêm vào giỏ hàng thành công!');
     }
 
     //Cập nhật số lượng sản phẩm trong giỏ hàng

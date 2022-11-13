@@ -5,6 +5,9 @@
  * @param string
  * @return    string
  */
+
+use App\Enums\Province;
+
 if (!function_exists('create_slug')) {
     function create_slug($string): string
     {
@@ -48,6 +51,7 @@ if (!function_exists('create_slug')) {
         return $string;
     }
 }
+
 /**
  * Chuyển đổi số tiền thành dạng tiền tệ Việt Nam.
  * @access    public
@@ -59,6 +63,22 @@ if (!function_exists('format_priceVND')) {
     function format_priceVND($price): string
     {
         return number_format($price) . ' đ';
+    }
+}
+
+// Chuyển đổi mã tỉnh trong enum Tinh thành sang tên tỉnh
+if (!function_exists('getProvinceName')) {
+    function getProvinceName($provinceID): bool
+    {
+        return Province::getProvinceNameById($provinceID);
+    }
+}
+
+//Trả về mã tỉnh khi truyền vào tên tỉnh
+if (!function_exists('getProvinceID')) {
+    function getProvinceID($provinceName): int
+    {
+        return Province::getProvinceIDByName($provinceName);
     }
 }
 

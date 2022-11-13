@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Enums\DiscountTypeEnum;
+use App\Enums\DiscountType;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -28,7 +28,7 @@ class Discount extends Model
     protected function typeName(): Attribute
     {
         return Attribute::make(
-            get: fn($value,$attribute)=>DiscountTypeEnum::getDiscountTypeName($attribute['type']),
+            get: fn($value,$attribute)=>DiscountType::getDiscountTypeName($attribute['type']),
         );
     }
 

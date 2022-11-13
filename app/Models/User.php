@@ -17,13 +17,21 @@ class User extends Model
         'province',
     ];
 
+    //Thiết lập quan hệ 1-1 với bảng accounts
     public function account()
     {
         return $this->belongsTo(Account::class);
     }
 
+    //Thiết lập quan hệ 1-1 với bảng carts
     public function cart()
     {
         return $this->hasOne(Cart::class);
+    }
+
+    //Thiết lập quan hệ 1-n với bảng orders
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
     }
 }
