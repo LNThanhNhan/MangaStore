@@ -1,3 +1,5 @@
+@extends('layout.master')
+@section('content')
 <form action="{{route('home.search')}}">
 <label for="">Tìm kiếm</label>
 <input type="search" name="q" id="">
@@ -22,3 +24,4 @@
         </tr>
     @endforeach
 </table>
+@endsection

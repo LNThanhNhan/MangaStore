@@ -7,7 +7,7 @@ use BenSampo\Enum\Enum;
 final class ShippingFee extends Enum
 {
     public const HN_HCM = 20000;
-    public const OTHER = 30000;
+    public const OTHER = 35000;
 
     public static function getArray(): array
     {

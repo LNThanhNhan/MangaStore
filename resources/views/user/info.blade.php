@@ -1,4 +1,5 @@
-
+@extends('layout.master')
+@section('content')
 <form action="{{route('logout')}}" method="post">
     @csrf
     <button type="submit">Đăng xuất</button>
@@ -57,3 +58,4 @@
     <br>
     <button type="submit">Cập nhật</button>
 </form>
+@endsection

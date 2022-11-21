@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\DiscountController;
 use Illuminate\Support\Facades\Route;
 
 Route::resource('products', ProductController::class)->except([
@@ -12,4 +12,4 @@ Route::get('discounts/create', [DiscountController::class, 'create'])->name('dis
 Route::post('discounts', [DiscountController::class, 'store'])->name('discounts.store');
 Route::get('discounts/{discount}/edit', [DiscountController::class, 'edit'])->name('discounts.edit');
 Route::put('discounts/{discount}', [DiscountController::class, 'update'])->name('discounts.update');
-Route::delete('discounts/{discount}', [DiscountController::class, 'destroy'])->name('discounts.destroy');
+Route::delete('discounts/{discountId}', [DiscountController::class, 'destroy'])->name('discounts.destroy');

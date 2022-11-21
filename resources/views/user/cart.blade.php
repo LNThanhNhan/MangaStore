@@ -1,16 +1,21 @@
+@extends('layout.master')
+@section('content')
+@if ($errors->any())
 <div class="alert alert-danger">
     <ul id="error">
-        @if ($errors->any())
+
         @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
         @endforeach
+
     </ul>
-    @endif
 </div>
+@endif
+@if($products->count() > 0)
 <form action="{{route('user.cart.update')}}" method="post">
     @csrf
     @method('PUT')
-    @if($products->count() > 0)
+
         <table>
             <thead>
                 <tr>
@@ -62,11 +67,13 @@
         </h3>
         <button type="submit">Cập nhật giỏ hàng</button>
 </form>
-        <a href="{{ route('user.checkout.index') }}"> Thanh toán
-        </a>
-    @else
-        <p>Không có sản phẩm nào trong giỏ hàng</p>
-    @endif
+<a href="{{ route('user.checkout.index') }}"> Thanh toán</a>
+@else
+    <p>Không có sản phẩm nào trong giỏ hàng</p>
+@endif
+@endsection
+
+@push('js')
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script>
     {{-- Khi nhấn nút xóa sản phẩm sẽ gửi ajax  --}}
@@ -119,7 +126,7 @@
     $('button[name="remove-discount"]').click(function(e){
         e.preventDefault();
         $.ajax({
-            url: "{{ route('user.cart.remove-discount') }}",
+            url: "{{ route('user.cart.remove_discount') }}",
             type: "PUT",
             data: {
                 _token: "{{ csrf_token() }}"
@@ -135,4 +142,4 @@
         });
     });
 </script>
-
+@endpush

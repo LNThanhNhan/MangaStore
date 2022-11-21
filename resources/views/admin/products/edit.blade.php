@@ -1,3 +1,5 @@
+@extends('layout.master')
+@section('content')
 @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -50,3 +52,4 @@
     <br>
     <input type="submit" value="Thay đổi" >
 </form>
+@endsection

@@ -18,7 +18,7 @@ Route::delete('/cart/delete/', [CartController::class, 'deleteCart'])->name('car
 //áp dụng mã giảm giá theo ajax
 Route::put('/cart/discount', [CartController::class, 'applyDiscount'])->name('cart.discount');
 //xóa mã giảm giá trong giỏ hàng theo ajax
-Route::put('/cart/remove-discount', [CartController::class, 'removeDiscount'])->name('cart.remove-discount');
+Route::put('/cart/remove-discount', [CartController::class, 'removeDiscount'])->name('cart.remove_discount');
 
 ///user order routes
 Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout.index');

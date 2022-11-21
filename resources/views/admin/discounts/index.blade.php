@@ -57,4 +57,4 @@
         </li>
     </ul>
 </nav>
-@endsection('content')
+@endsection

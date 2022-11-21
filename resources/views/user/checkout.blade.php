@@ -1,3 +1,14 @@
+@extends('layout.master')
+@section('content')
+@if ( $errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 <div style="display:flex">
     <div>
         <form action="" method="POST">
@@ -71,7 +82,9 @@
         <span id="total_price">{{ format_priceVND($cart->total_price + $cart->shipping_fee)}}</span>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+@endsection
+
+@push('js')
 <script>
 {{--thêm script để tính tổng tiền khi chọn tỉnh/thành phố--}}
 {{--khi thay đổi tỉnh thành phố thì sẽ tính lại tổng tiền theo value của id="total_price"--}}
@@ -94,4 +107,4 @@
         });
     });
 </script>
-
+@endpush

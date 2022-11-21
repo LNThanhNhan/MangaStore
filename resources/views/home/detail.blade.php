@@ -1,3 +1,5 @@
+@extends('layout.master')
+@section('content')
 <h1>{{$product->name}}</h1>
 <img src="{{ $product->image}}" alt="Ảnh minh họa sản phẩm" width="250" height="300">
 <p>{{ $product->description }}</p>
@@ -23,3 +25,4 @@
 <p>Thể loại</p>
 <p>{{$product->category_name}}</p>
 <a href="{{route('home.collection',$product->collection_slug)}}">{{$product->collection}}</a>
+@endsection

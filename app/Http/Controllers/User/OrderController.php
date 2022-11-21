@@ -52,8 +52,8 @@ class OrderController extends Controller
         $products = $cart->products;
         $total_price = $cart->total_price;
         $discount = $cart->discount;
-        //Xử lý phí vận chuyển
-        $province = $request->get('province');
+        //Xử lý phí vận chuyển, value lấu về là string
+        $province =(int) $request->get('province');
         if ($province === Province::HANOI || $province === Province::HOCHIMINH) {
             $shipping_fee = ShippingFee::HN_HCM;
         } else {
@@ -86,6 +86,6 @@ class OrderController extends Controller
         $cart->products()->detach();
         $cart->discount_id = null;
         $cart->save();
-        return view('user.profile.index');
+        return view('user.info');
     }
 }

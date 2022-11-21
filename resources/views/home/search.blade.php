@@ -1,3 +1,5 @@
+@extends('layout.master')
+@section('content')
 <form class="float-end" action="{{route('home.search')}}">
     <label>
         Tìm kiếm:
@@ -62,3 +64,4 @@
     <br>
     <input type="submit" value="Lọc">
 </form>
+@endsection

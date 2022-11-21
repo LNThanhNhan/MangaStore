@@ -5,7 +5,6 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ResponseTrait;
 use App\Http\Requests\Cart\AddCartRequest;
-use App\Http\Requests\Cart\DeleteProductInCartRequest;
 use App\Http\Requests\Cart\UpdateCartRequest;
 use App\Http\Requests\Discount\ApplyDiscountRequest;
 use App\Models\Cart;
