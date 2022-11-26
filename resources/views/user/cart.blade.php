@@ -74,7 +74,6 @@
 @endsection
 
 @push('js')
-<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script>
     {{-- Khi nhấn nút xóa sản phẩm sẽ gửi ajax  --}}
     $('button[name="delete"]').click(function(e){

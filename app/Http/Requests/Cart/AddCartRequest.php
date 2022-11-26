@@ -18,6 +18,14 @@ class AddCartRequest extends FormRequest
         return auth()->check() && auth()->user()->role===AccountRole::USER;
     }
 
+    //Lấy tham số productId từ route và đặt tên cho nó là product_id
+    public function prepareForValidation()
+    {
+        $this->merge([
+            'product_id' => $this->route('productId'),
+        ]);
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *

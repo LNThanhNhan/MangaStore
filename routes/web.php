@@ -21,7 +21,8 @@ Route::get('/products/{slug}',[HomeController::class,'productDetail'])->name('ho
 Route::get('/author/{author}',[HomeController::class,'searchByAuthor'])->name('home.author');
 Route::get('/filter',[HomeController::class,'searchByFilter'])->name('home.filter');
 Route::get('/collection/{collection}',[HomeController::class,'searchByCollection'])->name('home.collection');
-
+//Article route
+Route::get('/articles/{slug}',[HomeController::class,'articleDetail'])->name('home.articles.detail');
 
 //Route::get('/articles', [ArticleController::class, 'index']);
 //

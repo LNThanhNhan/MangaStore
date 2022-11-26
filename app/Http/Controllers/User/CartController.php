@@ -49,9 +49,8 @@ class CartController extends Controller
     //Nếu khách hàng chưa có giỏ hàng thì tạo giỏ hàng
     //nếu sản phẩm đã có trong giỏ hàng thì cộng thêm với số lượng sản phẩm trong giỏ hàng
     //nếu không thì thêm sản phẩm vào giỏ hàng,
-    public function addToCart(AddCartRequest $request)
+    public function addToCart(AddCartRequest $request, $productID)
     {
-        $productID = $request->get('product_id');
         $quantity = $request->get('quantity');
         $cart = $this->model
             ->where('user_id',$this->user->id)
@@ -62,7 +61,7 @@ class CartController extends Controller
         } else {
             $cart->products()->attach($productID, ['quantity' => $quantity]);
         }
-        return redirect()->back()->with('success', 'Sản phẩm thêm vào giỏ hàng thành công!');
+        return $this->successResponse('', 'Sản phẩm thêm vào giỏ hàng thành công!');
     }
 
     //Cập nhật số lượng sản phẩm trong giỏ hàng

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Home;
 use App\Enums\ProductCategory;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Home\FilterRequest;
+use App\Models\Article;
 use App\Services\home\SearchProductService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -78,6 +79,18 @@ class HomeController extends Controller
         return view('home.search',[
             'products' => $products,
             'search' => $search,
+        ]);
+    }
+
+    //Trả về trang bài viết với tham số là slug của bài viết
+    public function articleDetail($slug)
+    {
+        $article = Article::query()->where('slug',$slug)->first();
+        if($article===null) {
+            abort(404);
+        }
+        return view('home.article.detail',[
+            'article' => $article,
         ]);
     }
 }

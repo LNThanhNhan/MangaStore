@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Enums\OrderPaymentMethod;
+use App\Enums\OrderStatus;
 use App\Enums\Province;
 use App\Enums\ShippingFee;
 use App\Http\Controllers\Controller;
@@ -87,5 +88,23 @@ class OrderController extends Controller
         $cart->discount_id = null;
         $cart->save();
         return view('user.info');
+    }
+
+    //Lấy danh sách tất cả đơn hàng của user
+    public function index()
+    {
+        $orders = $this->model->where('user_id', $this->user->id)->orderBy('order_date','DESC')->get();
+        return view('user.order',[
+            'orders' => $orders,
+        ]);
+    }
+
+    //Hủy đơn hàng
+    public function cancel(Request $request,$orderID)
+    {
+        $order = $this->model->find($orderID);
+        $order->status = OrderStatus::DA_HUY;
+        $order->save();
+        return redirect()->back();
     }
 }

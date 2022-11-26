@@ -9,19 +9,20 @@
         </ul>
     </div>
 @endif
-<form method="POST" action="{{ route('login') }}">
+<form method="POST" id="login-form" action="{{ route('login') }}">
     @csrf
 
+    <input type="hidden" name="recaptcha" id="recaptcha">
     <!-- Email Address -->
     <div>
         <label for="email">Email</label>
-        <input type="text" name="email" id="" value="{{old('email')}}" required autofocus>
+        <input type="text" name="email"  value="{{old('email')}}" required autofocus>
     </div>
 
     <!-- Password -->
     <div class="mt-4">
         <label for="password">Mật khẩu</label>
-        <input type="password" name="password" id="" required autocomplete="current-password">
+        <input type="password" name="password"  required autocomplete="current-password">
     </div>
 
 
@@ -38,3 +39,18 @@
     </div>
 </form>
 @endsection
+@push('js')
+    <script src="https://www.google.com/recaptcha/api.js?render={{ env('GOOGLE_RECAPTCHA_KEY') }}"></script>
+    <script>
+        grecaptcha.ready(function() {
+            //Thêm sử kiện submit form
+            $('#login-form').on('submit', function(e) {
+                e.preventDefault();
+                grecaptcha.execute('{{ env('GOOGLE_RECAPTCHA_KEY') }}', { action: 'login' }).then(function(token) {
+                    document.getElementById('recaptcha').value = token;
+                    document.getElementById('login-form').submit();
+                })
+            });
+        });
+    </script>
+@endpush

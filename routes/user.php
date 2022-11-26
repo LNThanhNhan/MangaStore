@@ -11,7 +11,7 @@ Route::put('/', [UserController::class, 'update'])->name('profile.update');
 
 //user cart routes
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+Route::post('/cart/add/{productId}', [CartController::class, 'addToCart'])->name('cart.add');
 Route::put('/cart/update', [CartController::class, 'updateCart'])->name('cart.update');
 //delete theo ajax
 Route::delete('/cart/delete/', [CartController::class, 'deleteCart'])->name('cart.delete');
@@ -23,3 +23,5 @@ Route::put('/cart/remove-discount', [CartController::class, 'removeDiscount'])->
 ///user order routes
 Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout.index');
 Route::post('/checkout', [OrderController::class, 'store'])->name('checkout.store');
+Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
+Route::put('/orders/{orderId}', [OrderController::class, 'cancel'])->name('order.cancel');
