@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\DiscountController;
+use App\Http\Controllers\Admin\EmployeeController;
 use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,10 @@ Route::post('articles', [ArticleController::class, 'store'])->name('articles.sto
 Route::get('articles/{articleId}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
 Route::put('articles/{articleId}', [ArticleController::class, 'update'])->name('articles.update');
 Route::delete('articles/{articleId}', [ArticleController::class, 'destroy'])->name('articles.destroy');
+//Employee route
+Route::get('employees', [EmployeeController::class, 'index'])->name('employees.index');
+Route::get('employees/create', [EmployeeController::class, 'create'])->name('employees.create');
+Route::post('employees', [EmployeeController::class, 'store'])->name('employees.store');
+Route::get('employees/{employeeId}/edit', [EmployeeController::class, 'edit'])->name('employees.edit');
+Route::put('employees/{employeeId}', [EmployeeController::class, 'update'])->name('employees.update');
+Route::delete('employees/{employeeId}', [EmployeeController::class, 'destroy'])->name('employees.destroy');
