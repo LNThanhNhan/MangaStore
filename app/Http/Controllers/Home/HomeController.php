@@ -5,6 +5,7 @@ use App\Enums\ProductCategory;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Home\FilterRequest;
 use App\Models\Article;
+use App\Models\Product;
 use App\Services\home\SearchProductService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -20,8 +21,10 @@ class HomeController extends Controller
     public function index()
     {
         $products=(new SearchProductService())->getNewestProducts();
+        $articles=Article::orderBy('created_at','desc')->limit(3)->get();
         return view('home.index',[
             'products' => $products,
+            'articles' => $articles
         ]);
     }
 
@@ -29,6 +32,9 @@ class HomeController extends Controller
     public function searchProducts(Request $request)
     {
         $search = $request->query->get('q');
+        if($search === null){
+            $search = '';
+        }
         $products=(new SearchProductService())->getSearchProducts($search);
         $products ->appends(['q'=>$search]);
         return view('home.search',[
@@ -86,11 +92,48 @@ class HomeController extends Controller
     public function articleDetail($slug)
     {
         $article = Article::query()->where('slug',$slug)->first();
+        //Lấy thêm 3 bài viết mới nhất
+        $newestArticles = Article::orderBy('created_at','desc')->limit(3)->get();
         if($article===null) {
             abort(404);
         }
         return view('home.article.detail',[
             'article' => $article,
+            'newestArticles' => $newestArticles,
+        ]);
+    }
+
+    //Lấy ra danh sách tất cả sản phẩm có collection khác null
+    //và sắp xếp theo tên collection và id sản phẩm giảm dần
+    public function getAllCollection()
+    {
+        $products = Product::query()->whereNotNull('collection')
+            ->orderBy('collection','desc')
+            ->orderBy('id','desc')->paginate(16);
+        return view('home.search',[
+            'products' => $products,
+        ]);
+    }
+
+    //Lấy ra danh sách sản phẩm có số lượng truyện > 0
+    //và sắp xếp theo discount giảm dần
+    public function getHotDeal()
+    {
+        $products = Product::query()
+            ->where('quantity','>',0)
+            ->orderBy('discount_rate','desc')
+            ->paginate(16);
+        return view('home.search',[
+            'products' => $products,
+        ]);
+    }
+
+    //Lấy ra danh sách bài viết mới nhất
+    public function getArticles()
+    {
+        $articles = Article::query()->orderBy('created_at','desc')->paginate(3);
+        return view('home.article.index',[
+            'articles' => $articles,
         ]);
     }
 }

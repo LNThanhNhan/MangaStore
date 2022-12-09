@@ -90,7 +90,7 @@ class StoreEmployeeRequest extends FormRequest
             'phone' => 'Số điện thoại',
             'address' => 'Địa chỉ',
             'province' => 'Tỉnh/thành phố',
-            'salary' => 'Lương',
+            'salary' => 'Lươngp',
         ];
     }
 }

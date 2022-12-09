@@ -20,8 +20,13 @@ Route::get('/products/search',[HomeController::class,'searchProducts'])->name('h
 Route::get('/products/{slug}',[HomeController::class,'productDetail'])->name('home.detail');
 Route::get('/author/{author}',[HomeController::class,'searchByAuthor'])->name('home.author');
 Route::get('/filter',[HomeController::class,'searchByFilter'])->name('home.filter');
+//Tìm kiếm sản phẩm theo collection slug
 Route::get('/collection/{collection}',[HomeController::class,'searchByCollection'])->name('home.collection');
+//Lấy ra danh sách sản phẩm có collection
+Route::get('/collection',[HomeController::class,'getAllCollection'])->name('home.get-collection');
+Route::get('/hot-deal',[HomeController::class,'getHotDeal'])->name('home.get-hot-deal');
 //Article route
+Route::get('/articles',[HomeController::class,'getAllArticles'])->name('home.articles.index');
 Route::get('/articles/{slug}',[HomeController::class,'articleDetail'])->name('home.articles.detail');
 
 //Route::get('/articles', [ArticleController::class, 'index']);
