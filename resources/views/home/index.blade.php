@@ -70,37 +70,37 @@
                         <div class="tbtatcasp">
                             <table class="tatcasp">
                                 <tr>
-                                @foreach($products as $index=> $product)
-                                    @if($index <= 4)
-                                        <td class="tdsp">
-                                            <a href="{{route('home.detail',$product->slug)}}" style="text-decoration: none">
-                                            <div class="imagesp">
-                                                <img src="{{$product->image}}" class="imgsp">
-                                            </div>
-                                            <div class="makhuyenmai">
-                                                <div class="imagemagiam">
-                                                    <img src="{{asset('image/magiam.png')}}" class="imgmagiam">
+                                    @foreach($products as $index=> $product)
+                                        @if($index <= 4)
+                                            <td class="tdsp">
+                                                <a href="{{route('home.detail',$product->slug)}}" style="text-decoration: none">
+                                                <div class="imagesp">
+                                                    <img src="{{$product->image}}" class="imgsp">
                                                 </div>
-                                                <div class="sale">
-                                                    <span class="lbsale">-{{$product->discount_rate}}%</span>
+                                                <div class="makhuyenmai">
+                                                    <div class="imagemagiam">
+                                                        <img src="{{asset('image/magiam.png')}}" class="imgmagiam">
+                                                    </div>
+                                                    <div class="sale">
+                                                        <span class="lbsale">-{{$product->discount_rate}}%</span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="thongtinsp">
-                                                <div class="lbsp">
-                                                    <label for="lbsp">
-                                                        {{$product->name}}
-                                                    </label>
+                                                <div class="thongtinsp">
+                                                    <div class="lbsp">
+                                                        <label for="lbsp">
+                                                            {{$product->name}}
+                                                        </label>
+                                                    </div>
+                                                    <div class="giasp">
+                                                        <a href="{{route('home.detail',$product->slug)}}" class="htgiasp">
+                                                            {{$product->priceVND}}
+                                                        </a>
+                                                    </div>
                                                 </div>
-                                                <div class="giasp">
-                                                    <a href="{{route('home.detail',$product->slug)}}" class="htgiasp">
-                                                        {{$product->priceVND}}
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            </a>
-                                        </td>
-                                    @endif
-                                @endforeach
+                                                </a>
+                                            </td>
+                                        @endif
+                                    @endforeach
                                 </tr>
                                 <tr>
                                     @foreach($products as $index=> $product)

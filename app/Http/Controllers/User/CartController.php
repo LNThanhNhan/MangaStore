@@ -61,7 +61,7 @@ class CartController extends Controller
         } else {
             $cart->products()->attach($productID, ['quantity' => $quantity]);
         }
-        return $this->successResponse('', 'Sản phẩm thêm vào giỏ hàng thành công!');
+        return $this->successResponse($cart->total_product, 'Sản phẩm thêm vào giỏ hàng thành công!');
     }
 
     //Cập nhật số lượng sản phẩm trong giỏ hàng

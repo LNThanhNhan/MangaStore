@@ -50,8 +50,14 @@ class HomeController extends Controller
         if($product===null) {
             abort(404);
         }
+        //Lấy ra 3 sản phẩm có cùng tác giả
+        $sameAuthor=Product::where('author',$product->author)->where('id','<>',$product->id)->limit(3)->get();
+        //Lấy ra 5 sản phẩm có cùng thể loại
+        $sameCategory=Product::where('category',$product->category)->where('id','<>',$product->id)->limit(5)->get();
         return view('home.detail',[
             'product' => $product,
+            'sameAuthor' => $sameAuthor,
+            'sameCategory' => $sameCategory
         ]);
     }
 

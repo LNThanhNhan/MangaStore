@@ -43,7 +43,11 @@
     Thể loại
     <select name="category">
         @foreach($arrProductCategory as $key => $value)
-            <option value="{{$value}}">{{$key}}</option>
+            <option value="{{$value}}"
+                    @if($value == $product->category)
+                    selected
+                @endif
+            >{{$key}}</option>
         @endforeach
     </select>
     <br>

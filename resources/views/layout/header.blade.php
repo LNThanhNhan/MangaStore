@@ -60,10 +60,15 @@
             <td class="tdcart">
                 <div class="cart">
                     <label>
+                        <a href="{{ route('user.cart.index')}}"></a>
                         <i class="fa-solid fa-cart-shopping"></i>
                     </label>
                     <div class="spansl">
-                        <span class="soluongmua">0</span>
+                        @if(auth()->check() && auth()->user()->role === 0)
+                            <span class="soluongmua">{{ auth()->user()->user->cart->total_product }}</span>
+                        @else
+                            <span class="soluongmua">0</span>
+                        @endif
                     </div>
                 </div>
             </td>

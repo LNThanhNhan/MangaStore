@@ -129,4 +129,13 @@ class Cart extends Model
             },
         );
     }
+
+    //Làm thuộc tính lấy ra số lượng sản phẩm khác nhau trong giỏ hàng
+    protected function totalProduct(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value,$attribute)=>
+                $this->products->count(),
+        );
+    }
 }
