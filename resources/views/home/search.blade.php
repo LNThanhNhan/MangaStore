@@ -4,9 +4,11 @@
     <label>
         Tìm kiếm:
     </label>
-    <input type="search" name="q" id="" value="{{ $search }}">
+    <input type="search" name="q" id=""
+           @if(isset($search))value="{{ $search }}"
+        @endif
+    >
 </form>
-<h1>{{$search}}</h1>
 <table>
     @foreach($products as $product)
         <tr>

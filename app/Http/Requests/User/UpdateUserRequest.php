@@ -27,14 +27,14 @@ class UpdateUserRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'email' => [
-                'required',
-                'string',
-                'email',
-                'max:100',
-                Rule::unique('accounts', 'email')->ignore(auth()->user()->id, 'id'),
-                //'unique:App\Models\Account,email',
-            ],
+//            'email' => [
+//                'required',
+//                'string',
+//                'email',
+//                'max:100',
+//                Rule::unique('accounts', 'email')->ignore(auth()->user()->id, 'id'),
+//                //'unique:App\Models\Account,email',
+//            ],
             'name' => [
                 'required',
                 'string',
@@ -85,7 +85,7 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'username' => 'Tên đăng nhập',
-            'email' => 'Email',
+            //'email' => 'Email',
             'password' => 'Mật khẩu',
             'name' => 'Tên người dùng',
             'gender' => 'Giới tính',

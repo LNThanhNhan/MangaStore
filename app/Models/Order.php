@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
+use App\Enums\OrderPaymentMethod;
 use App\Enums\OrderStatus;
+use App\Enums\Province;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -62,6 +64,66 @@ class Order extends Model
     {
         return Attribute::make(
             get: fn($value, $attribute) => number_format($this->total_price).' đ',
+        );
+    }
+
+    //Làm thuộc tính định dạng tiền tệ theo VNĐ từ shipping_fee của order
+    protected function shippingFeeVND(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value, $attribute) => number_format($this->shipping_fee).' đ',
+        );
+    }
+
+    //Làm thuộc tính định dạng tiền tệ theo VNĐ từ total_discount của order
+    protected function totalDiscountVND(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value, $attribute) => number_format($this->total_discount).' đ',
+        );
+    }
+
+    //Làm thuộc tính tính tổng tiền của order khi chưa trừ giảm giá và phí vận chuyển
+    protected function totalOrderVND(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value, $attribute) => number_format($this->total_price - $this->total_discount - $this->shipping_fee).' đ',
+        );
+    }
+
+    //Làm thuộc tính định dạng lại ngày giao hàng theo định dạng dd/mm/yyyy từ delivery_date của order
+    protected function deliveryDateDMY(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value, $attribute) =>
+                date('d/m/Y', strtotime($this->delivery_date)),
+        );
+    }
+
+    //Làm thuộc tính định dạng lại ngày đặt theo định dạng dd/mm/yyyy HH:mm từ order_date của order
+    protected function orderDateDMYHM(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value, $attribute) =>
+                date('d/m/Y H:i', strtotime($this->order_date)),
+        );
+    }
+
+    //Làm thuộc tính lấy ra tên của phương thức thanh toán theo enum OrderPaymentMethod
+    protected function paymentMethodName(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value, $attribute) =>
+                OrderPaymentMethod::getPaymentMethodName($this->payment_method),
+        );
+    }
+
+    //Lấy ra tên của tỉnh thành phố từ enum Province
+    protected function provinceName(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value, $attribute) =>
+                Province::getProvinceNameById($this->province),
         );
     }
 }

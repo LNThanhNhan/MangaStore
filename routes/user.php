@@ -25,3 +25,4 @@ Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout.in
 Route::post('/checkout', [OrderController::class, 'store'])->name('checkout.store');
 Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
 Route::put('/orders/{orderId}', [OrderController::class, 'cancel'])->name('order.cancel');
+Route::get('/orders/{orderId}', [OrderController::class, 'show'])->name('order.show');

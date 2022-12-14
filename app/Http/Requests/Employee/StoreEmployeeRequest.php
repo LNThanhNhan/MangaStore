@@ -55,7 +55,7 @@ class StoreEmployeeRequest extends FormRequest
             ],
             'gender' => [
                 'required',
-                'boolean',
+                Rule::in(0,1),
             ],
             'phone' => [
                 'required',
@@ -90,7 +90,7 @@ class StoreEmployeeRequest extends FormRequest
             'phone' => 'Số điện thoại',
             'address' => 'Địa chỉ',
             'province' => 'Tỉnh/thành phố',
-            'salary' => 'Lươngp',
+            'salary' => 'Lương',
         ];
     }
 }

@@ -107,4 +107,15 @@ class OrderController extends Controller
         $order->save();
         return redirect()->back();
     }
+
+    //trả về view chi tiết đơn hàng
+    public function show($orderID)
+    {
+        $order = $this->model->find($orderID);
+        $products = $order->products;
+        return view('user.show',[
+            'order' => $order,
+            'products' => $products,
+        ]);
+    }
 }

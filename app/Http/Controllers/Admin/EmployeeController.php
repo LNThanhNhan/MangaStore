@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\EmployeeStatus;
 use App\Enums\Province;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Employee\StoreEmployeeRequest;
 use App\Http\Requests\Employee\UpdateEmployeeRequest;
 use App\Models\Account;
 use App\Models\Employee;
-use App\Models\Product;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -49,32 +49,37 @@ class EmployeeController extends Controller
         //sau đó lấy id của tài khoản đó và thêm thông tin để lưu vào bảng nhân viên
         $account = new Account();
         $account->fill($request->validated());
+        $account->password = bcrypt($request->password);
         $account->role=1;
         $employee = new Employee();
+        $account->save();
         $employee->fill($request->validated());
         $employee->account_id=$account->id;
-        $account->save();
+        $employee->status=EmployeeStatus::DANG_LAM;
         $employee->save();
         return redirect(route('admin.employees.index'));
     }
 
-    public function show(Employee $employee)
+    public function edit($employeeID)
     {
-        //
+        $employee = $this->model->findOrFail($employeeID);
+        return view('admin.employees.edit',[
+            'employee' => $employee,
+        ]);
     }
 
-    public function edit(Employee $employee)
+    public function update(UpdateEmployeeRequest $request, $employeeID)
     {
-        //
+        $employee = $this->model->findOrFail($employeeID);
+        $employee->fill($request->validated());
+        $employee->save();
+        return redirect(route('admin.employees.index'));
     }
 
-    public function update(UpdateEmployeeRequest $request, Employee $employee)
+    public function destroy($employeeID)
     {
-        //
-    }
-
-    public function destroy(Employee $employee)
-    {
-        //
+        $employee = $this->model->find($employeeID);
+        $employee->delete();
+        return redirect(route('admin.employees.index'));
     }
 }

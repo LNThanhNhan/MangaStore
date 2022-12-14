@@ -3,7 +3,9 @@
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\EmployeeController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::resource('products', ProductController::class)->except([
@@ -30,3 +32,12 @@ Route::post('employees', [EmployeeController::class, 'store'])->name('employees.
 Route::get('employees/{employeeId}/edit', [EmployeeController::class, 'edit'])->name('employees.edit');
 Route::put('employees/{employeeId}', [EmployeeController::class, 'update'])->name('employees.update');
 Route::delete('employees/{employeeId}', [EmployeeController::class, 'destroy'])->name('employees.destroy');
+//User route với user controller từ folder admin
+Route::get('users', [UserController::class, 'index'])->name('users.index');
+Route::get('users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+Route::put('users/{user}', [UserController::class, 'update'])->name('users.update');
+Route::delete('users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+//Order route
+Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
+Route::get('orders/{orderID}', [OrderController::class, 'edit'])->name('orders.edit');
+Route::put('orders/{orderID}', [OrderController::class, 'update'])->name('orders.update');

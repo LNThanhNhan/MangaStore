@@ -12,6 +12,16 @@ class Employee extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $fillable = [
+        'name',
+        'birthday',
+        'gender',
+        'phone',
+        'address',
+        'province',
+        'salary',
+        'status',
+    ];
 
     //Thiết lập quan hệ 1-1 thuộc về account
     public function account()

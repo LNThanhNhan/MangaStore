@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,6 +17,15 @@ class User extends Model
         'address',
         'province',
     ];
+    //làm thuộc tính lấy ra tên giới tính
+    //nếu giới tính là 1 thì trả về Nam
+    //nếu giới tính là 0 thì trả về Nữ
+    protected function genderName(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value,$attribute)=>$attribute['gender']===1?'Nam':'Nữ',
+        );
+    }
 
     //Thiết lập quan hệ 1-1 với bảng accounts
     public function account()

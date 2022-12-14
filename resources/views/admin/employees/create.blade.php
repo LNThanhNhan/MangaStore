@@ -1,5 +1,16 @@
 @extends('layout.master')
 @section('content')
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+<form action="{{route('admin.employees.store')}}" method="POST">
+    @csrf
     Tên đăng nhập
     <input type="text" name="username" value="{{ old('username') }}"><br>
     Email
@@ -15,9 +26,9 @@
     <input type="date" name="birthday" value="{{ old('birthday') }}"><br>
     Giới tính
     <br><label for="">Nam</label>
-    <input type="radio" name="gender" value="Nam" >
+    <input type="radio" name="gender" value=1 >
     <label for="">Nữ</label>
-    <input type="radio" name="gender" value="Nữ" ><br>
+    <input type="radio" name="gender" value=0 ><br>
     Số điện thoại
     <input type="text" name="phone" value="{{ old('phone') }}"><br>
     Địa chỉ
@@ -32,4 +43,5 @@
     Lương
     <input type="number" name="salary" value="{{ old('salary') }}">
     <button type="submit">Thêm nhân viên</button>
+</form>
 @endsection

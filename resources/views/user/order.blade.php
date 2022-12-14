@@ -1,6 +1,7 @@
 @extends('layout.master')
 @section('content')
 @foreach($orders as $order)
+    <a href="{{route('user.order.show',$order->id)}}">Xem chi tiết</a>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -28,7 +29,7 @@
                     <form action="{{route('user.order.cancel',$order->id)}}" method="POST">
                         @method('PUT')
                         @csrf
-                        <button type="submit" class="btn btn-danger">Hủy đơn hàng</button>
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn hủy đơn hàng này?')">Hủy đơn hàng</button>
                     </form>
                 </td>
                 @endif

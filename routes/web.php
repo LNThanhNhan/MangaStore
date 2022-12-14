@@ -29,10 +29,4 @@ Route::get('/hot-deal',[HomeController::class,'getHotDeal'])->name('home.get-hot
 Route::get('/articles',[HomeController::class,'getAllArticles'])->name('home.articles.index');
 Route::get('/articles/{slug}',[HomeController::class,'articleDetail'])->name('home.articles.detail');
 
-//Route::get('/articles', [ArticleController::class, 'index']);
-//
-//Route::get('/articles/create', [ArticleController::class,'create'])->name('article.create');
-//
-//Route::post('/articles/create', [ArticleController::class,'store'])->name('article.store');
-
 require __DIR__.'/auth.php';
