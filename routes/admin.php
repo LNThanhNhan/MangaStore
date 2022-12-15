@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\DiscountController;
 use App\Http\Controllers\Admin\EmployeeController;
+use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
@@ -41,3 +42,5 @@ Route::delete('users/{id}', [UserController::class, 'destroy'])->name('users.des
 Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
 Route::get('orders/{orderID}', [OrderController::class, 'edit'])->name('orders.edit');
 Route::put('orders/{orderID}', [OrderController::class, 'update'])->name('orders.update');
+//Dashboard route
+Route::get('home', [HomeController::class, 'index'])->name('home.index');

@@ -33,7 +33,7 @@
                                     <td class="tdspmoi">
                                         <div class="sachmoi">
                                             <a href="" class="hrefspmoi">
-                                                MỚI
+                                                BÁN CHẠY
                                             </a>
                                             <div class="divhr">
                                                 <hr class="hr">
@@ -43,7 +43,7 @@
                                     <td class="tdspbanchay">
                                         <div class="sachbanchay">
                                             <a href="" class="hrefspbanchay">
-                                                BÁN CHẠY
+                                                MỚI
                                             </a>
                                             <div class="divhr">
                                                 <hr class="hr">
@@ -215,7 +215,7 @@
             </table>
         </div>
     </div>
-
     @include('layout.footer')
 </div>
+@include('layout.facebook-messenger')
 @endsection

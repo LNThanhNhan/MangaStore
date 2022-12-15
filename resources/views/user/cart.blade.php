@@ -1,82 +1,168 @@
+@push('css')
+    <link rel="stylesheet" href="{{ asset('css/GioHang.css') }}">
+@endpush
 @extends('layout.master')
 @section('content')
-@if ($errors->any())
-<div class="alert alert-danger">
-    <ul id="error">
+    <div class="containerDanhSachDonHang">
+        @include('layout.header')
+        @if($products->count() > 0)
+            <div id="before-error" class="labelGioHang">
+                <label for="giohang">
+                    GIỎ HÀNG
+                </label>
+            </div>
+            @if ($errors->any())
+                <div class="alert alert-danger show-error">
+                    <ul>
 
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-    </ul>
-</div>
-@endif
-@if($products->count() > 0)
-<form action="{{route('user.cart.update')}}" method="post">
-    @csrf
-    @method('PUT')
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Sản phẩm</th>
-                    <th>Đơn giá</th>
-                    <th>Số lượng</th>
-                    <th>Tổng giá</th>
-                    <th>Xóa</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($products as $product)
+            <form action="{{route('user.cart.update')}}" method="post">
+                @csrf
+                @method('PUT')
+            <div class="tablegiohang">
+                <table class="tbgiohang">
                     <tr>
-                        <td>
-                            <img src="{{ $product->image}}" alt="Ảnh minh họa sản phẩm" width="250" height="300">
-                            <a href="{{ route('home.detail', $product->slug) }}">{{ $product->name }}</a>
+                        <td class="thsp">Sản phẩm</td>
+                        <td class="thdongia">Đơn giá</td>
+                        <td class="thsluong">Số lượng</td>
+                        <td class="thgiatien">Giá tiền</td>
+                        <td class="thnone">Xóa</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6">
+                            <div class="listsp">
+                                <ul>
+                                    @foreach ($products as $product)
+                                        <li>
+                                            <div class="tbsp">
+                                                <table class="tablesanpham">
+                                                    <tr>
+                                                        <td class="image">
+                                                            <div class="imgsp">
+                                                                <img src="{{ $product->image}}" class="imagesp">
+                                                            </div>
+                                                            <div class="name">
+                                                                <label for="name">
+                                                                    {{$product->name}}
+                                                                </label>
+                                                            </div>
+                                                        </td>
+                                                        <td class="gia">
+                                                            <label class="giasp">
+                                                                {{$product->priceVND}}
+                                                            </label>
+                                                        </td>
+                                                        <td class="sl">
+                                                            <input type="number" name="quantity[]" class="soluong" value={{$product->pivot->quantity}} min="1">
+                                                        </td>
+                                                        <td class="tong">
+                                                            <label class="giatien">
+                                                                {{format_priceVND($product->price * $product->pivot->quantity)}}
+                                                            </label>
+                                                        </td>
+                                                        <td class="delete">
+                                                            <div class="bin">
+                                                                <img id="{{$product->id}}" src="{{asset('image/thungrac.png')}}" class="thungrac">
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </td>
-                        <td>{{ $product->price_VND }}</td>
-                        <td>
-                            <input type="number" name="quantity[]" value="{{$product->pivot->quantity}}" min="1" max="{{$product->quantity}}">
+                    </tr>
+                </table>
+            </div>
+            <div class="tongtien">
+                <table class="tbtinhtien">
+                    @if($cart->discount)
+                    {{-- Code thêm vào để bỏ áp dụng mã giảm giá --}}
+                        <tr>
+                            <td class="tdtongtien">Đã áp dụng mã: {{$cart->discount->name}}</td>
+                            <td class="tdapdung">
+                                <button name="remove-discount" class="btnapdung">
+                                    Xóa mã
+                                </button>
+                            </td>
+                        </tr>
+{{--                    --}}
+                        <tr>
+                            <td class="tdtongtien">
+                                <label class="tongtiensp" for="tongtien">Tổng tiền:</label>
+                            </td>
+                            <td class="tdtien"><label class="tien" for="tien">{{$cart->cart_totalVND}}</label></td>
+                        </tr>
+                        <tr>
+                            <td class="tdgiamgia">
+                                <label class="giamgia" for="giamgia">Giảm giá</label>
+                            </td>
+                            <td class="tdgiam"><label class="giam" for="giam">-{{$cart->total_discountVND}}</label></td>
+                        </tr>
+                    @else
+                        <tr>
+                            <td class="tdinput">
+                                <input type="text" name="code"placeholder="Mã giảm giá" class="inputmagiamgia">
+                            </td>
+                            <td class="tdapdung">
+                                <button name="code" class="btnapdung">
+                                    ÁP DỤNG
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdtongtien">
+                                <label class="tongtiensp" for="tongtien">Tổng tiền:</label>
+                            </td>
+                            <td class="tdtien"><label class="tien" for="tien">{{$cart->cart_totalVND}}</label></td>
+                        </tr>
+                    @endif
+                    <tr>
+                        <td class="tdtongcong">
+                            <label class="tongcong" for="tongcong">Tổng cộng:</label>
                         </td>
-                        <td>{{ $product->price * $product->pivot->quantity }}</td>
-                        <td>
-                            <button id="{{$product->id}}" name="delete">
-                                Xóa
+                        <td class="tdcong"><label class="cong" for="cong">{{ $cart->total_priceVND }}</label></td>
+                    </tr>
+                    <tr>
+                        <td class="tdtieptucmua">
+                            <button class="btntieptucmua" type="submit">
+                                <p>
+                                    Cập nhật giỏ hàng
+                                </p>
+                            </button>
+                        </td>
+
+                        <td class="tdthanhtoan">
+                            <button class="btnthanhtoan">
+                                <a href="{{ route('user.checkout.index') }}" style="text-decoration: none; color:white">
+                                    Thanh toán
+                                    <i class="fa-solid fa-caret-right"></i>
+                                </a>
                             </button>
                         </td>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-        <label for="">Tạm tính: </label>
-        <h3>
-            {{ $cart->cart_totalVND }}
-        </h3>
-        @if($cart->discount)
-            <p>Đã áp dụng mã giảm giá: {{ $cart->discount->name }}</p>
-            <button name="remove-discount">Xóa mã giảm giá</button><br>
-            <p>Tổng số tiền giảm: {{$cart->total_discountVND }}</p> <br>
+                </table>
+            </div>
+        </form>
         @else
-            <label for="">Nhập mã giảm giá </label> <br>
-            <input type="text" name="code" id="" value="{{old('$product')}}">
-            <button type="button" name="code">Áp dụng</button>
-            <br>
+            <p>Không có sản phẩm nào trong giỏ hàng</p>
         @endif
-        <label for="">Tổng tiền: </label>
-        <h3>
-            {{ $cart->total_priceVND }}
-        </h3>
-        <button type="submit">Cập nhật giỏ hàng</button>
-</form>
-<a href="{{ route('user.checkout.index') }}"> Thanh toán</a>
-@else
-    <p>Không có sản phẩm nào trong giỏ hàng</p>
-@endif
+        @include('layout.footer')
+    </div>
 @endsection
 
 @push('js')
 <script>
     {{-- Khi nhấn nút xóa sản phẩm sẽ gửi ajax  --}}
-    $('button[name="delete"]').click(function(e){
+    $(".thungrac").click(function(e){
         e.preventDefault();
         var id = $(this).attr('id');
         $.ajax({
@@ -116,7 +202,14 @@
             },
             error: function(response){
                 //append lỗi vào thẻ li trong div id error
-                $('#error').empty().html('<li>'+response.responseJSON.message+'</li>');
+                $('.show-error').remove();
+                $('#before-error').after(`
+                    <div class="alert alert-danger show-error">
+                        <ul id="error">
+                            <li>${response.responseJSON.message}</li>
+                        </ul>
+                    </div>
+                    `);
             }
         });
     });

@@ -51,7 +51,7 @@ class RegisteredUserController extends Controller
             'gender' => $request->gender,
             'phone'=>null,
             'address' => null,
-            'city'=>null,
+            'province'=>null,
         ]);
         Auth::login($account);
         return redirect(AccountHome::USER_HOME);

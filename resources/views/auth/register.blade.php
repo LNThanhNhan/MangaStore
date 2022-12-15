@@ -1,14 +1,16 @@
+@extends('layout.master')
+@section('content')
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+            <a href="{{route('home.index')}}">
+                <img src="{{asset('image/LOGO HÌNH.png')}}" alt="" style="width: 20vh;height: 20vh">
             </a>
         </x-slot>
 
-        <form method="POST" action="{{ route('register') }}">
+        <form id="login-form" method="POST" action="{{ route('register') }}">
             @csrf
-
+            <input type="hidden" name="recaptcha" id="recaptcha">
             <!-- Name -->
             <div>
                 <x-input-label for="name" :value="__('Name')" />
@@ -29,12 +31,16 @@
 
             <!-- Gender -->
             <div class="mt-4">
-                <input type="radio" name="gender" id="" value="1" required>
-                <x-input-label for="gender" :value="__('Nam')" />
+                <x-input-label for="" :value="__('Giới tính')" />
+                <span>
+                <input type="radio" name="gender" id="" value=1 required>
+                <span>Nam</span>
+{{--                <x-input-label for="gender" :value="__('Nam')" />--}}
 
-                <input type="radio" name="gender" id="" value="0">
-                <x-input-label for="gender" :value="__('Nữ')" />
-
+                <input type="radio" name="gender" id="" value=0 style="margin-left: 5vw">
+                <span>Nữ</span>
+{{--                <x-input-label for="gender" :value="__('Nữ')" />--}}
+                </span>
                 <x-input-error :messages="$errors->get('gender')" class="mt-2" />
             </div>
             <!-- Username -->
@@ -81,3 +87,19 @@
         </form>
     </x-auth-card>
 </x-guest-layout>
+@endsection
+@push('js')
+    <script src="https://www.google.com/recaptcha/api.js?render={{ env('GOOGLE_RECAPTCHA_KEY') }}"></script>
+    <script>
+        grecaptcha.ready(function() {
+            //Thêm sử kiện submit form
+            $('#login-form').on('submit', function(e) {
+                e.preventDefault();
+                grecaptcha.execute('{{ env('GOOGLE_RECAPTCHA_KEY') }}', { action: 'register' }).then(function(token) {
+                    document.getElementById('recaptcha').value = token;
+                    document.getElementById('login-form').submit();
+                })
+            });
+        });
+    </script>
+@endpush

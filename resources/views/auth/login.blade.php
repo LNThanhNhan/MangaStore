@@ -1,41 +1,89 @@
+@push('css')
+    <link rel="stylesheet" href="{{ asset('css/DangNhap.css') }}">
+@endpush
 @extends('layout.master')
 @section('content')
-@if ( $errors->any())
-    <div class="alert alert-danger">
-        @foreach ($errors->all() as $error)
-            <p>{{ $error }}</p>
-        @endforeach
-    </div>
-@endif
-<form method="POST" id="login-form" action="{{ route('login') }}">
-    @csrf
+@include('layout.header')
 
-    <input type="hidden" name="recaptcha" id="recaptcha">
-    <!-- Email Address -->
-    <div>
-        <label for="email">Email</label>
-        <input type="text" name="email"  value="{{old('email')}}" required autofocus>
-    </div>
-
-    <!-- Password -->
-    <div class="mt-4">
-        <label for="password">Mật khẩu</label>
-        <input type="password" name="password"  required autocomplete="current-password">
-    </div>
-
-
-    <div class="flex items-center justify-end mt-4">
-        <!-- Forgot Password -->
-        @if (Route::has('password.request'))
-            <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                {{ __('Forgot your password?') }}
-            </a>
+<div class="contentDangNhap">
+    <table class="tbcontentDangNhap">
+        <tr>
+            <td class="tdlbDangNhap">
+                <div class="lbdn">
+                    <label for="lbdangnhap">
+                        ĐĂNG NHẬP
+                    </label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="divhr"><hr class="hr"></div>
+            </td>
+        </tr>
+        @if ( $errors->any())
+        <tr>
+            <td>
+                <div class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                </div>
+            </td>
+        </tr>
         @endif
-        <button>
-            {{ __('Log in') }}
-        </button>
-    </div>
-</form>
+        <tr>
+            <td class="formdn">
+                <form method="POST" id="login-form" action="{{ route('login') }}">
+                    @csrf
+                    <input type="hidden" name="recaptcha" id="recaptcha">
+                    <table class="tbformdangnhap">
+                        <tr>
+                            <td colspan="2" class="tdhoten">
+                                <div class="texthoten">
+                                    <input type="text" name="email" placeholder="Email" class="inputhoten" required autofocus>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="tdpw">
+                                <div class="password">
+                                    <input type="password" name="password" placeholder="Mật khẩu" class="inputmk" required>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="tdbtndn">
+                                <div class="btndangnhap">
+                                    <button type="submit" class="btnlogin">
+                                        ĐĂNG NHẬP
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tdquenmk">
+                                <div class="quenmk">
+                                    <a href="{{ route('password.request') }}" class="hrefquenmk">
+                                        Quên mật khẩu
+                                    </a>
+                                </div>
+                            </td>
+                            <td class="tddangky">
+                                <div class="dangky">
+                                    <a href="{{route('register')}}" class="hrefdangky">
+                                        Đăng ký
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+@include('layout.footer')
 @endsection
 @push('js')
     <script src="https://www.google.com/recaptcha/api.js?render={{ env('GOOGLE_RECAPTCHA_KEY') }}"></script>

@@ -1,3 +1,6 @@
+@push('css')
+    <link rel="stylesheet" href="{{ asset('css/ThongTinCaNhan.css') }}">
+@endpush
 @extends('layout.master')
 @section('content')
 <form action="{{route('logout')}}" method="post">

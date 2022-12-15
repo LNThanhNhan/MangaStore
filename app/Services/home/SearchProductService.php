@@ -29,7 +29,7 @@ class SearchProductService
         return $this->products
             ->where('name','like','%'.$search.'%')
             ->orWhere('collection','like','%'.$search.'%')
-            ->paginate(16);
+            ->paginate(12);
     }
 
     public function getProductBySlug($slug)
@@ -43,7 +43,7 @@ class SearchProductService
     {
         return $this->products
             ->where('author_slug',$slug)
-            ->paginate(16);
+            ->paginate(12);
     }
 
     public function getProductByFilter($array)
@@ -67,17 +67,17 @@ class SearchProductService
             if(!count($category)){
                 return $this->products
                     ->WhereBetween('price',[$min,$max])
-                    ->paginate(16);
+                    ->paginate(12);
             }
             return $this->products
                     ->whereIn('category', $category)
                     ->WhereBetween('price',[$min,$max])
-                    ->paginate(16);
+                    ->paginate(12);
     }
     function getProductByCollection($slug)
     {
         return $this->products
             ->where('collection_slug',$slug)
-            ->paginate(16);
+            ->paginate(12);
     }
 }

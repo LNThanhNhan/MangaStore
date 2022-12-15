@@ -87,7 +87,7 @@ class Order extends Model
     protected function totalOrderVND(): Attribute
     {
         return Attribute::make(
-            get: fn($value, $attribute) => number_format($this->total_price - $this->total_discount - $this->shipping_fee).' đ',
+            get: fn($value, $attribute) => number_format($this->total_price + $this->total_discount - $this->shipping_fee).' đ',
         );
     }
 

@@ -12,6 +12,7 @@ class User extends Model
     public $timestamps=false;
     protected  $fillable=[
         'name',
+        'account_id',
         'gender',
         'phone',
         'address',

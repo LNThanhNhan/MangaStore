@@ -26,7 +26,7 @@ Route::get('/collection/{collection}',[HomeController::class,'searchByCollection
 Route::get('/collection',[HomeController::class,'getAllCollection'])->name('home.get-collection');
 Route::get('/hot-deal',[HomeController::class,'getHotDeal'])->name('home.get-hot-deal');
 //Article route
-Route::get('/articles',[HomeController::class,'getAllArticles'])->name('home.articles.index');
+Route::get('/articles',[HomeController::class,'getArticles'])->name('home.articles.index');
 Route::get('/articles/{slug}',[HomeController::class,'articleDetail'])->name('home.articles.detail');
 
 require __DIR__.'/auth.php';

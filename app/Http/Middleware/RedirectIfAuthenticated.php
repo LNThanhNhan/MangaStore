@@ -29,8 +29,8 @@ class RedirectIfAuthenticated
                 // ví dụ: admin, user, ...
                 $role = Auth::user()->role;
                 switch ($role) {
-//                    case AccountHome::ADMIN_HOME:
-//                        return redirect()->route('admin.home');
+                    case AccountRole::ADMIN:
+                        return redirect(AccountHome::ADMIN_HOME);
                     case AccountRole::USER:
                         return redirect(AccountHome::USER_HOME);
                     default:

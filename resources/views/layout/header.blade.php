@@ -3,18 +3,24 @@
         <tr>
             <td class="tdlgchu">
                 <div class="logochu">
-                    <img src="{{ asset('image/LOGO CHỮ.jpg') }}" class="imglogochu" alt="Logo chữ">
+                    <a href="{{route('home.index')}}">
+                        <img src="{{ asset('image/LOGO CHỮ.jpg') }}" class="imglogochu" alt="Logo chữ">
+                    </a>
                 </div>
             </td>
             <td class="tdacc">
                 <div class="useracc">
-                    <img src="{{ asset('image/icon account.png') }}" class="imgacc" alt="icon account">
+                    <a href="{{route('home.index')}}">
+                        <img src="{{ asset('image/icon account.png') }}" class="imgacc" alt="icon account">
+                    </a>
                 </div>
             </td>
             <td class="tddndk">
                 <div class="dndk">
-                    @auth()
+                    @if(auth()->check() && auth()->user()->role === 0)
                         <a href="{{ route('user.profile.info') }}" class="link">{{auth()->user()->username}}</a>
+                    @elseif(auth()->check() && auth()->user()->role === 1)
+                        <a href="{{ route('admin.home.index') }}" class="link">{{auth()->user()->username}}</a>
                     @else
                         <a href="{{ route('register') }}" class="link" title="Dang Ky">ĐĂNG KÝ</a><span class="sep">|</span><a href="{{ route('login') }}" class="link" title="Dang Nhap">ĐĂNG NHẬP</a>
                     @endauth
@@ -28,13 +34,15 @@
         <tr>
             <td class="tdlghinh">
                 <div class="logohinh">
-                    <img src="{{ asset('image/LOGO HÌNH.png') }}" class="imglogohinh" alt="logo hình">
+                    <a href="{{route('home.index')}}">
+                        <img src="{{ asset('image/LOGO HÌNH.png') }}" class="imglogohinh" alt="logo hình">
+                    </a>
                 </div>
             </td>
             <td class="tdonline">
                 <div class="online">
                     <div class="shoptruyentranh">
-                        <a href="" class="hrefonline">
+                        <a href="{{route('home.index')}}" class="hrefonline">
                             SHOP<br> TRUYỆN<br> TRANH<br> ONLINE
                         </a>
                     </div>
@@ -60,8 +68,9 @@
             <td class="tdcart">
                 <div class="cart">
                     <label>
-                        <a href="{{ route('user.cart.index')}}"></a>
-                        <i class="fa-solid fa-cart-shopping"></i>
+                        <a href="{{ route('user.cart.index')}}">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </a>
                     </label>
                     <div class="spansl">
                         @if(auth()->check() && auth()->user()->role === 0)

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Enums\AccountHome;
+use App\Enums\AccountRole;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
@@ -33,6 +34,9 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
         //Xử lý sau khi người dùng đăne nhập
+        if(Auth::user()->role === AccountRole::ADMIN){
+            return redirect()->intended(AccountHome::ADMIN_HOME);
+        }
         return redirect()->intended(AccountHome::USER_HOME);
     }
 
@@ -47,8 +51,6 @@ class AuthenticatedSessionController extends Controller
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
-
-        //$request->session()->regenerateToken();
 
         return redirect('/');
     }

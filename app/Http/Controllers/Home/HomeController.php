@@ -115,7 +115,7 @@ class HomeController extends Controller
     {
         $products = Product::query()->whereNotNull('collection')
             ->orderBy('collection','desc')
-            ->orderBy('id','desc')->paginate(16);
+            ->orderBy('id','desc')->paginate(12);
         return view('home.search',[
             'products' => $products,
         ]);
@@ -128,7 +128,7 @@ class HomeController extends Controller
         $products = Product::query()
             ->where('quantity','>',0)
             ->orderBy('discount_rate','desc')
-            ->paginate(16);
+            ->paginate(12);
         return view('home.search',[
             'products' => $products,
         ]);
@@ -138,8 +138,10 @@ class HomeController extends Controller
     public function getArticles()
     {
         $articles = Article::query()->orderBy('created_at','desc')->paginate(3);
+        $newestArticles = Article::orderBy('created_at','desc')->limit(3)->get();
         return view('home.article.index',[
             'articles' => $articles,
+            'newestArticles' => $newestArticles,
         ]);
     }
 }

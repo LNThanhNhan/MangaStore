@@ -83,6 +83,7 @@
         </div>
         @include('layout.footer')
     </div>
+    @include('layout.facebook-messenger')
 @endsection
 {{--<h1>{{$article->title}}</h1>--}}
 {{--{!! $article->content !!}--}}

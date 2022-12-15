@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\User;
 
+use App\Enums\GoogleRecaptchaScore;
+use App\Rules\Recaptcha;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
@@ -52,7 +54,8 @@ class StoreUserRequest extends FormRequest
                 'bail',
                 'required',
                 Rule::in([0,1]),
-            ]
+            ],
+            'recaptcha' => ['required', new Recaptcha(GoogleRecaptchaScore::DANG_KY)],
         ];
     }
 
@@ -64,6 +67,7 @@ class StoreUserRequest extends FormRequest
             'password' => 'Mật khẩu',
             'name' => 'Tên người dùng',
             'gender' => 'Giới tính',
+            'recaptcha' => 'Google recaptcha',
         ];
     }
 }

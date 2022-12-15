@@ -1,3 +1,6 @@
+@push('css')
+    <link rel="stylesheet" href="{{ asset('css/ThanhToan.css') }}">
+@endpush
 @extends('layout.master')
 @section('content')
 @if ( $errors->any())

@@ -6,6 +6,7 @@
  * @return    string
  */
 
+use App\Enums\ProductCategory;
 use App\Enums\Province;
 
 if (!function_exists('create_slug')) {
@@ -81,4 +82,13 @@ if (!function_exists('getProvinceID')) {
         return Province::getProvinceIDByName($provinceName);
     }
 }
+
+//Lấy ra tên thể loại truyện từ giá trị của enum ProductCategory
+if (!function_exists('getProductCategoryName')) {
+    function getProductCategoryName($productCategoryID): string
+    {
+        return ProductCategory::getCategoryName($productCategoryID);
+    }
+}
+
 
