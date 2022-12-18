@@ -10,219 +10,218 @@
 @endpush
 
 @section('content')
-{{--<h1>{{$product->name}}</h1>--}}
-{{--<img src="{{ $product->image}}" alt="Ảnh minh họa sản phẩm" width="250" height="300">--}}
-{{--<p>{{ $product->description }}</p>--}}
-{{--<p>{{$product->price_VND}}</p>--}}
-{{--<form action="{{ route('user.cart.add',$product) }}" method="POST">--}}
-{{--    @csrf--}}
-{{--    <label> Số lượng:</label>--}}
-{{--    <input type="number" name="quantity" value="1" min="1" > <br>--}}
-{{--    <button type="submit">Thêm vào giỏ hàng</button>--}}
-{{--</form>--}}
-{{--@if ($errors->any())--}}
-{{--    <div class="alert alert-danger">--}}
-{{--        <ul>--}}
-{{--            @foreach ($errors->all() as $error)--}}
-{{--                <li>{{ $error }}</li>--}}
-{{--            @endforeach--}}
-{{--        </ul>--}}
-{{--    </div>--}}
-{{--@endif--}}
-{{--<p>Tác giả</p>--}}
-{{--<a href="{{ route('home.author',$product->author_slug)}}">{{$product->author}}</a>--}}
-{{--<p>Thể loại</p>--}}
-{{--<p>{{$product->category_name}}</p>--}}
-{{--<a href="{{route('home.collection',$product->collection_slug)}}">{{$product->collection}}</a>--}}
 <div class="containerDangKy">
     @include('layout.header')
     <div class="contentChiTietSanPham">
-        <table class="tbcontentChiTietSanPham">
-            <tr>
-                <td class="tdtieudesanpham" colspan="2">
-                    <div class="tieude">
-                        <a href="" class="hreftrangchu">
-                            TRANG CHỦ
-                        </a>
-                        /
-                        <a href="" class="hreftrinhtham">
-                            {{  $product->category_name }}
-                        </a>
-                        /
-                        <a href="" class="hreftentruyen">
+        <div class="tieude">
+            <a href="" class="hreftrangchu">
+                TRANG CHỦ
+            </a>
+            /
+            <a href="" class="hreftrinhtham">
+                {{$product->category_name}}
+            </a>
+            /
+            <a href="" class="hreftentruyen">
+                {{$product->name}}
+            </a>
+        </div>
+        <div class="noidungsanpham">
+            <div class="imagesp">
+                <img src="{{$product->image}}" class="imgsp">
+            </div>
+            <div class="motasanpham">
+                <div class="lbtentruyen">
+                    <label for="lbtentruyen">
+                        {{$product->name}}
+                    </label>
+                </div>
+                <div class="giatruyen">
+                    <a href="" class="gia">
+                        {{$product->priceVND}} <del class="giabandau">{{$product->list_priceVND}}</del>
+                    </a>
+                </div>
+                <div class="thongtin">
+                    <div class="lb">
+                        <label for="lb">
+                            Tác giả
+                        </label>
+                    </div>
+                    <div class="lbten">
+                        <label for="lbten">
+                            <a href="{{route('home.author',$product->author_slug)}}" style="text-decoration: none">
+                                {{$product->author}}
+                            </a>
+                        </label>
+                    </div>
+                    <div class="lb">
+                        <label for="lb">
+                            Kích thước
+                        </label>
+                    </div>
+                    <div class="lbten">
+                        <label for="lbten">
+                            {{$product->size}}
+                        </label>
+                    </div>
+                </div>
+                <div class="thongtin">
+                    <div class="lb">
+                        <label for="lb">
+                            Năm xuất bản
+                        </label>
+                    </div>
+                    <div class="lbten">
+                        <label for="lbten">
+                            {{$product->publish_year}}
+                        </label>
+                    </div>
+                    <div class="lb">
+                        <label for="lb">
+                            Thể loại
+                        </label>
+                    </div>
+                    <div class="lbten">
+                        <label for="lbten">
+                            <a href="{{route('home.category',$product->category)}}" style="text-decoration: none">
+                                {{$product->category_name}}
+                            </a>
+                        </label>
+                    </div>
+                </div>
+                <div class="thongtin">
+                    @if($product->collection !==null)
+                    <div class="lb">
+                        <label for="lb">
+                            Collection
+                        </label>
+                    </div>
+                    <div class="lbten">
+                        <label for="lbten">
+                            <a href="{{route('home.collection',$product->collection_slug)}}" style="text-decoration: none">
+                                {{$product->collection_slug}}
+                            </a>
+                        </label>
+                    </div>
+                    @endif
+                    <div class="lb">
+                        <label for="lb">
+
+                        </label>
+                    </div>
+                    <div class="lbten">
+                        <label for="lbten">
+
+                        </label>
+                    </div>
+                </div>
+                <div class="lbmotand">
+                    <label for="lbmotand">
+                        Mô tả
+                    </label>
+                </div>
+                <div class="lbndmota">
+                    <label for="lbndmota">
+                        {{$product->description}}
+                    </label>
+                </div>
+                @if($product->quantity > 0)
+                    <form action="{{ route('user.cart.add',$product) }}" class="soluong" method="POST">
+                        @csrf
+                        <div class="soluongspmua">
+                            <label for="lbslmua">
+                                Số lượng
+                            </label>
+                            <input type="number" class="slmua" value="1" min="1" step="1">
+                        </div>
+                        <div class="btnadd">
+                            <button class="btnthemvaogio">
+                                Thêm vào giỏ
+                            </button>
+                        </div>
+                    </form>
+                @else
+                    <div class="soluong">
+                        <div class="btnadd">
+                                <button class="btnthemvaogio">
+                                    Hết hàng
+                                </button>
+                        </div>
+                    </div>
+                @endif
+            </div>
+        </div>
+        <div class="cungtg">
+            <div class="lbcungtg">
+                <label for="lbcungtg">
+                    CÙNG TÁC GIẢ
+                </label>
+            </div>
+            <div class="sanphamcungtg">
+                @foreach($sameAuthor as $product)
+                    <div class="thongtinsanpham">
+                        <div class="imagesp">
+                            <img src="{{$product->image}}" class="imgspcungtg">
+                        </div>
+                        <div class="thongtinspcungtg">
+                            <div class="namemoney">
+                                <a href="{{route('home.detail',$product->slug)}}" class="hrefsp">
+                                    {{$product->name}}
+                                </a>
+                            </div>
+                            <div class="giasp">
+                                <a href="" class="hrefgiasp">
+                                    {{$product->priceVND}}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <div class="buttonxemthem">
+                <button class="btnmore">
+                    <a href="{{route('home.author',$product->author_slug)}}" style="text-decoration: none; color: white">
+                        XEM THÊM
+                    </a>
+                </button>
+            </div>
+        </div>
+        <div class="divhr">
+            <hr class="hr">
+        </div>
+        <div class="lbsplienquan">
+            <label for="lbsplienquan">
+                SẢN PHẨM LIÊN QUAN
+            </label>
+        </div>
+        <div class="sanphamlienquan">
+            @foreach($sameCategory as $product)
+                <div class="thongtinsplienquan">
+                    <div class="imgsanpham">
+                        <img src="{{$product->image}}" class="image">
+                    </div>
+                    <div class="tensp">
+                        <a href="{{route('home.detail',$product->slug)}}" class="hreftensp">
                             {{$product->name}}
                         </a>
                     </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="tdimagesp">
-                    <div class="imagesp">
-                        <img src="{{$product->image}}" class="imgsp">
+                    <div class="money">
+                        <a href="" class="hrefmoney">
+                            {{$product->priceVND}}
+                        </a>
                     </div>
-                </td>
-                <td class="tdchitietsp">
-                    <div class="thongtinchitietsp">
-                        <table class="tbthongtinchitietsp">
-                            <tr>
-                                <td colspan="2">
-                                    <div class="lbtentruyen">
-                                        <label for="lbtentruyen">
-                                            {{$product->name}}
-                                        </label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="tdgia" colspan="2">
-                                    <div class="giatruyen">
-                                        <p  class="gia">
-                                            {{$product->priceVND}} <del class="giabandau">{{$product->list_priceVND}}</del>
-                                        </p>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="tdtgnxbcol">
-                                    <div class="tgnxbcol">
-                                        <table class="tbtgnxbcol">
-                                            <tr>
-                                                <td class="tdlb">
-                                                    <div class="lb">
-                                                        <label for="lb">
-                                                            Tác giả
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td class="tdlbten">
-                                                    <div class="lbten">
-                                                        <label for="lbten">
-                                                            <a href="{{route('home.author',$product->author_slug)}}">{{$product->author}}</a>
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="lb">
-                                                        <label for="lb">
-                                                            Năm xuất bản
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="lbten">
-                                                        <label for="lbten">
-                                                            {{$product->publish_year}}
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            @if($product->collection !== null)
-                                            <tr>
-                                                <td>
-                                                    <div class="lb">
-                                                        <label for="lb">
-                                                            Collection
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="lbten">
-                                                        <label for="lbten">
-                                                            <a href="{{route('home.collection',$product->collection_slug)}}">{{$product->collection}}</a>
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            @endif
-                                        </table>
-                                    </div>
-                                </td>
-                                <td class="tdkttl">
-                                    <div class="kttl">
-                                        <table class="tbkttl">
-                                            <tr>
-                                                <td>
-                                                    <div class="lb">
-                                                        <label for="lb">
-                                                            Kích thước
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="lbten">
-                                                        <label for="lbten">
-                                                            {{$product->size}}
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <div class="lb">
-                                                        <label for="lb">
-                                                            Thể loại
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="lbten">
-                                                        <label for="lbten">
-                                                            {{$product->category_name}}
-                                                        </label>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <div class="lbmota">
-                                        <label for="lbmota">
-                                            Mô tả
-                                        </label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <div class="lbndmota">
-                                        <label for="lbndmota">
-                                            {{$product->description}}
-                                        </label>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <form action="{{ route('user.cart.add',$product) }}" method="POST">
-                                    @csrf
-                                    <td class="tdslmua">
-                                        <div class="soluongspmua">
-                                            <label for="lbslmua">
-                                                Số lượng
-                                            </label>
-                                            <input type="number" name="quantity" class="slmua" value="1" min="1" step="1">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="btnadd">
-                                            <button type="submit" class="btnthemvaogio">
-                                                Thêm vào giỏ
-                                            </button>
-                                        </div>
-                                    </td>
-                                </form>
-                            </tr>
-                        </table>
-                    </div>
-                </td>
-            </tr>
-        </table>
-        @include('layout.footer')
+                </div>
+            @endforeach
+        </div>
+        <div class="buttonxemthem">
+            <button class="btnmore">
+                <a href="{{route('home.category',$product->category)}}" style="text-decoration: none; color: white">
+                    XEM THÊM
+                </a>
+            </button>
+        </div>
     </div>
+    @include('layout.footer')
 </div>
 @endsection
 

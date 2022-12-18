@@ -30,16 +30,18 @@ class UserController extends Controller
     }
 
     //Hàm cập nhật thông tin user và cập nhật mật khẩu nếu có
-    public function update(UpdateUserRequest $request,User $user)
+    public function update(UpdateUserRequest $request, $userId)
     {
         if($request->get('province')===0){
             $request['province']=null;
         }
-        $user->update($request->all());
+        $user = $this->model->findOrFail($userId);
+        $user->update($request->validated());
         if($request->has('new_password')){
             $user->account->password = bcrypt($request->get('new_password'));
             $user->account->save();
         }
+        $user->save();
         return redirect(route('user.profile.info'))->with('success', 'Cập nhật thông tin thành công');
     }
 }

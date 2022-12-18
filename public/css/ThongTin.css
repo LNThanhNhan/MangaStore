@@ -2,11 +2,12 @@
     box-sizing: border-box;
     margin: 0px;
 }
-.containerThanhToan{
+.containerThongTinCaNhan{
     width: 100%;
     height: auto;
     box-sizing: border-box;
     position: relative;
+    font-size: 1vw;
 }
 .header{
     width: 100%;
@@ -240,391 +241,470 @@
 .tintuc:hover{
     font-size: 1.32vw;
 }
-.contentThanhToan{
+.contentThongTinCaNhan{
     width: 100%;
     height: auto;
 }
-.ttgiaohang{
-    width: 100%;
-    height: auto;
-    font-size: 1.25vw;
-    font-weight: bold;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-top: 2vw;
-    margin-bottom: 1vw;
-    margin-left: 2vw;
-}
-.giohang{
-    color: #73408B;
-    text-decoration: none;
-    font-size: 1.25vw;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.ttgh{
-    color: #897F7F;
-    text-decoration: none;
-}
-.thongtingiaohang{
-    width: 100%;
-    height: auto;
+.thongtincanhan{
     display: inline-flex;
-    margin-top: 2vw;
-    margin-bottom: 4vw;
-}
-.thongtinvanchuyenpttt{
-    width: 50%;
-    height: auto;
-    margin-left: 2vw;
-}
-.lb{
+    margin-top: 3vw;
+    margin-bottom: 5vw;
     width: 100%;
     height: auto;
-    font-size: 1.25vw;
-    font-weight: bold;
+}
+.taikhoan{
+    width: 35%;
+    height: auto;
+}
+
+.lbTenTK{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.25vw;
+    margin-bottom: 1vw;
+    text-align: left;
+    margin-left: 2vw;
+}
+.btnTTCN{
+    text-align: center;
+    width: 100%;
+    height: auto;
+    margin-bottom: 1vw;
+}
+.btnThongTinCaNhan{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    font-size: 1.27vw;
+    width: 91%;
+    height: 3.1vw;
+    background-color: #73607C;
+    cursor: pointer;
+    border: 1px solid #73607C;
+    border-radius: 3px;
+}
+.btnThongTinCaNhan:hover{
+    background-color: #73607C;
+    color: white;
+    border: #73607C;
+    width: 91%;
+    height: 3.1vw;
+    font-size: 1.27vw;
+}
+.btnDSDH{
+    text-align: center;
+    width: 100%;
+    height: auto;
+    margin-bottom: 1vw;
+}
+.btnDanhSachDonHang{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
     color: black;
-    margin-bottom: 2vw;
+    font-size: 1.25vw;
+    width: 90%;
+    height: 3vw;
+    background-color: white;
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 3px;
 }
-.nhaphotensdt{
-    display: inline-flex;
+.btnDanhSachDonHang:hover{
+    background-color: #73607C;
+    color: white;
+    border: #73607C;
+    width: 91%;
+    font-size: 1.27vw;
+    height: 3.1vw;
+}
+.btnThoat{
+    text-align: center;
     width: 100%;
     height: auto;
     margin-bottom: 1vw;
 }
-.inputhoten{
-    width: 50%;
+.btnExit{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    color: black;
+    font-size: 1.25vw;
+    width: 90%;
+    height: 3vw;
+    background-color: white;
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+.btnExit:hover{
+    background-color: #73607C;
+    color: white;
+    border: #73607C;
+    width: 91%;
+    font-size: 1.27vw;
+    height: 3.1vw;
+}
+.divclasshr{
+    width: 5%;
+    margin-left: 2vw;
+    margin-top: 3vw;
+}
+.divhr{
+    height: 30vw;
+    width: 1%;
+}
+.hr{
+    color: #C5C5C5;
+
+}
+.thongtintk{
+    width: 60%;
     height: auto;
+}
+.lbtttk{
+    font-size: 1.25vw;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    margin-bottom: 2vw;
 }
 .hoten{
-    width: 50%;
-    height: 3vw;
-    text-align: center;
+    display: inline-flex;
+    width: 100%;
+    height: auto;
+    font-size: 1.25vw;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 1vw;
 }
-.iphoten{
-    width: 98%;
-    height: 3vw;
+.lbhoten{
+    width: 20%;
+    height: auto;
+    color: black;
+    font-weight: 500;
+}
+.texthoten{
+    width: 80%;
+    height: auto;
+    margin-top: -0.5vw;
+}
+.inputhoten{
+    width: 80%;
+    height: 2.5vw;
     border-radius: 3px;
     border: 1px solid #C5C5C5;
     font-size: 1.25vw;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.iphoten:focus{
+.inputhoten:focus{
     text-indent: 0.5vw;
 }
-.inputsdt{
-    width: 50%;
+.email{
+    display: inline-flex;
+    width: 100%;
     height: auto;
+    font-size: 1.25vw;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 1vw;
+}
+.lbmailuser{
+    width: 20%;
+    height: auto;
+    color: black;
+    font-weight: 500;
+}
+.textmail{
+    width: 80%;
+    height: auto;
+    margin-top: -0.5vw;
+}
+.inputmail{
+    width: 80%;
+    height: 2.5vw;
+    border-radius: 3px;
+    border: 1px solid #C5C5C5;
+    font-size: 1.25vw;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.inputmail:focus{
+    text-indent: 0.5vw;
 }
 .sdt{
-    width: 50%;
-    height: 3vw;
-    text-align: center;
+    display: inline-flex;
+    width: 100%;
+    height: auto;
+    font-size: 1.25vw;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 1vw;
 }
-.ipsdt{
-    width: 98%;
-    height: 3vw;
+.lbsodienthoai{
+    width: 20%;
+    height: auto;
+    color: black;
+    font-weight: 500;
+}
+.textsdt{
+    width: 80%;
+    height: auto;
+    margin-top: -0.5vw;
+}
+.inputsdt{
+    width: 80%;
+    height: 2.5vw;
     border-radius: 3px;
     border: 1px solid #C5C5C5;
     font-size: 1.25vw;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.ipsdt:focus{
+.inputsdt:focus{
     text-indent: 0.5vw;
 }
-.nhapemail{
+.diachi{
+    display: inline-flex;
     width: 100%;
     height: auto;
+    font-size: 1.25vw;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-bottom: 1vw;
 }
-.ip{
-    width: 99%;
-    height: 3vw;
+
+.lbdiachi{
+    width: 20%;
+    height: auto;
+    color: black;
+    font-weight: 500;
+}
+.textdiachi{
+    width: 80%;
+    height: auto;
+    margin-top: -0.5vw;
+}
+#inputdiachi{
+    width: 80%;
     border-radius: 3px;
     border: 1px solid #C5C5C5;
     font-size: 1.25vw;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.ip:focus{
+#inputdiachi:focus{
     text-indent: 0.5vw;
 }
-.nhapdiachi{
+.tinhthanh{
+    display: inline-flex;
     width: 100%;
     height: auto;
+    font-size: 1.25vw;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-bottom: 1vw;
 }
-.chontinhthanh{
-    width: 100%;
+.lbtinhthanh{
+    width: 20%;
     height: auto;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+    font-weight: 500;
 }
 .optionTT{
-    font-size: 1.25vw;
-    margin-bottom: 2vw;
+    width: 80%;
+    height: auto;
 }
 #TinhThanh{
     width: 40%;
-    height: 3vw;
     border-radius: 3px;
+    border: 1px solid #C5C5C5;
     font-size: 1.25vw;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.chonphuongthucthanhtoan{
+.gender{
+    display: inline-flex;
     width: 100%;
     height: auto;
-    border-radius: 5px;
-}
-.thanhtoan{
-    width: 100%;
-    height: 5vw;
     font-size: 1.25vw;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border: 1px solid #C5C5C5;
-    border-radius: 3px;
-    display: inline-flex;
-    align-items: center;
-    cursor: pointer;
+    margin-bottom: 1vw;
+}
+.lbgioitinh{
+    width: 20%;
+    height: auto;
+    color: black;
+    font-weight: 500;
+}
+.radiogender{
+    width: 80%;
+    margin-bottom: 1vw;
+    font-size: 1.25vw;
+}
+#gtnu{
+    margin-left: 5vw;
+}
+.row{
+    width: 100%;
+    height: auto;
+}
 
+.thaydoimatkhau{
+    width: 100%;
+    height: auto;
+}
+.btnthaydoimk{
+    width: 80%;
+    height: 3vw;
+    border: 2px solid #d9d9d9;
+    background-color: #C1B9AE;
+    border-radius: 5px;
+    font-size: 1.25vw;
+    font-weight: 500;
+    color: black;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 2.2vw;
+}
+.btnthaydoimk:hover{
+    cursor: pointer;
+    width: 61%;
+    height: 3.1vw;
+    font-size: 1.27vw;
 }
 .btn{
-    width: 100%;
-}
-.radiott{
-    width: 3.5%;
-    margin-left: 1vw;
-    margin-top: 0.3vw;
-}
-
-.pt{
-    width: 8%;
-    margin-top: 0.1vw;
-}
-.pttt{
-    margin-left: 1vw;
-    text-decoration: none;
-}
-.tt{
-    margin-left: 1vw;
-    text-decoration: none;
-    color: black;
-}
-.thanhtoankhinhanhang{
-    width: 100%;
-    height: auto;
-    text-align: center;
-    font-size: 1.25vw;
-    font-weight: 500;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border: 1px solid #C1B9AE;
-    background-color: #C5C5C5;
-}
-.stknganhang{
-    width: 100%;
-    height: auto;
-    text-align: center;
-    font-size: 1.25vw;
-    font-weight: 500;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border: 1px solid #C1B9AE;
-    background-color: #C5C5C5;
-}
-.vizalopay{
-    width: 100%;
-    height: auto;
-    text-align: center;
-    font-size: 1.25vw;
-    font-weight: 500;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border: 1px solid #C1B9AE;
-    background-color: #C5C5C5;
-}
-.labelstk{
-    margin-top: 3vw;
-    margin-bottom: 3vw;
-}
-.hoanthanhdathang{
-    width: 100%;
-    height: auto;
-    display: inline-flex;
-    margin-top: 2vw;
-}
-.hoanthanh{
-    text-align: right;
-    width: 50%;
-}
-.back{
-    width: 50%;
-    margin-left: 2vw;
-}
-.btnhoanthanh{
-    width: 50%;
-    height: auto;
-    text-align: right;
-}
-.btndathang{
-    background-color: #73607C;
-    color: white;
-    font-size: 1.25vw;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    width: 70%;
-    border-radius: 3px;
-    height: 3vw;
-    border: 1px solid #73607C;
-    cursor: pointer;
-}
-.btndathang:hover{
-    font-size: 1.27vw;
-    width: 71%;
-    height: 3.1vw;
-}
-.divclasshrdoc{
-    width: 3%;
-    margin-left: 1vw;
-    margin-top: 3vw;
-    height: 50%;
-}
-
-.hrdoc{
-    color: #C5C5C5;
-}
-.chitietgiohang{
-    width: 47%;
-    margin-right: 2vw;
-}
-.thongtindonhang{
-    width: 100%;
-    border: 1px solid #C1B9AE;
-    border-radius: 6px;
-    text-align: center;
-}
-.lbgiohang{
-    width: 100%;
-    height: 3vw;
-    background-color: #73607C;
-    color: white;
     font-size: 1.25vw;
     font-weight: bold;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-align: center;
-    border: 1px solid #73607C;
-    border-radius: 6px;
-}
-.thongtinsp{
-    display: inline-flex;
     margin-bottom: 1vw;
-    width: 95%;
-    height: auto;
-    border: 1px solid #C1B9AE;
-    border-radius: 6px;
-    margin-top: 1vw;
-    cursor: pointer;
 }
-
-.imagesp{
+.changepw{
     width: 30%;
-    height: 15vw;
-    text-align: center;
-    margin-top: 2vw;
+    height: auto;
+    border-radius: 6px;
+    border: 1px solid #73607C;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;;
 }
-.truyen{
-    width: 65%;   
+.open-popup{
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%,-50%)scale(1);
+}
+.close-popup{
+    visibility: hidden;
+    top: 50%;
+    transform: translate(-50%,-50%)scale(1);
 }
 
-.spansoluong{
-    margin-top: -13.5vw;
-    margin-left: 7vw;
-}
-.sl{
-    width: 1.5vw;
-    height: 1.5vw;
-    text-align: center;
-    border-radius: 50%;
-    border: 0.2px solid black;
-    background: black;
+.createmk{
     font-size: 1.25vw;
+    font-weight: 600;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #73607C;
     color: white;
-    position: absolute;
+    text-align: center;
+    width: 100%;
+    height: 3vw;
+    line-height: 2.2vw;
 }
-.chitietsp{
-    width: 70%;
+.matkhau{
+    width: 100%;
     height: auto;
+    display: inline-flex;
     margin-top: 2vw;
-    text-align: left;
+    margin-bottom: 1vw;
+    font-size: 1.25vw;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 1vw;
 }
-.ttsp{
+.lbmatkhau{
+    width: 40%;
+    height: auto;
+    color: #73607C;
+    font-weight: 500;
+}
+.textmk{
+    width: 60%;
+    height: auto;
+    margin-top: -0.5vw;
+}
+.inputpw{
+    width: 92%;
+    height: 2.5vw;
+    border-radius: 3px;
+    border: 1px solid #73607C;
+    font-size: 1.25vw;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.inputpw:focus{
+    text-indent: 0.5vw;
+}
+.luachon{
     width: 100%;
     height: auto;
+    display: inline-flex;
     margin-bottom: 2vw;
+    margin-top: 1vw;
 }
-.name{
-    text-decoration: none;
+.btnhuy{
+    width: 50%;
+    height: auto;
+    text-align: left;
+    margin-left: 1vw;
+}
+.btncancel{
+    width: 40%;
+    height: 2.5vw;
     color: black;
     font-size: 1.25vw;
-    font-weight: bold;
+    font-weight: 400;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 1px solid black;
+    border-radius: 6px;
+    background-color: white;
 }
-.ttspprice{
-    width: 100%;
-    font-size: 1.25vw;
-    font-weight: bold;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #FA8D70;
+.btncancel:hover{
+    width: 41%;
+    height: 2.6vw;
+    font-size: 1.27vw;
+    cursor: pointer;
+    background-color: #C1B9AE;
 }
-.divhr{
-    width: 100%;
-    margin-top: 1vw;
-}
-.hr{
-    width:100%; 
-    margin: 0px auto;
-}
-.thongtingiadonhang{
-    width: 100%;
-    height: auto;
-    display: inline-flex;
-    margin-top: 1vw;
-    margin-bottom: 1vw;
-}
-.vanchuyen{
+.btnluumk{
     width: 50%;
     height: auto;
-    font-size: 1.25vw;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #897F7F;
-}
-.price{
-    width: 50%;
-    height: auto;
-    font-size: 1.25vw;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-bottom: 0.5vw;
-    color: #FA8D70;
-    font-weight: bold;
     text-align: right;
+    margin-right: 1vw;
 }
-.sumgia{
-    width: 100%;
-    height: auto;
-    display: inline-flex;
-    margin-top: 1vw;
-    margin-bottom: 1vw;
-}
-.tongcong{
-    width: 50%;
-    height: auto;
+.btncapnhatmk{
+    width: 40%;
+    height: 2.5vw;
+    color: #73607C;
     font-size: 1.25vw;
+    font-weight: 400;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: black;
-    font-weight: bold;
+    border: 1px solid #73607C;
+    border-radius: 6px;
 }
-.pricesum{
-    width: 50%;
-    height: auto;
+.btncapnhatmk:hover{
+    width: 41%;
+    height: 2.6vw;
+    font-size: 1.27vw;
+    cursor: pointer;
+    background-color: #73607C;
+    color: white;
+}
+.btncapnhattk{
+    margin-top: 2vw;
+}
+.btnupdate{
+    width: 60%;
+    height: 3vw;
+    border: 1px solid #73607C;
+    background-color: #73607C;
+    border-radius: 5px;
     font-size: 1.25vw;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-bottom: 0.5vw;
-    color: #FA8D70;
     font-weight: bold;
-    text-align: right;
+    color: white;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.btnupdate:hover{
+    cursor: pointer;
+    width: 61%;
+    height: 3.1vw;
+    font-size: 1.27vw;
 }
 .footer{
     width: 100%;

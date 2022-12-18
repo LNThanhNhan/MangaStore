@@ -72,6 +72,15 @@ class HomeController extends Controller
         ]);
     }
 
+    //Tìm kiếm theo thể loại
+    public function searchByCategory($category)
+    {
+        $products = Product::query()->where('category',$category)->paginate(12);
+        return view('home.search',[
+            'products' => $products,
+        ]);
+    }
+
     //Tìm kiếm theo thể loại và giá
     public function searchByFilter(FilterRequest $request)
     {

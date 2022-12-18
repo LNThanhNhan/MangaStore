@@ -1,145 +1,103 @@
 @push('css')
-    <link rel="stylesheet" href="{{ asset('css/SanPham.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/TimKiem.css') }}">
 @endpush
 @extends('layout.master')
 @section('content')
-<div class="contentSanPham">
+<div class="containerSanPham">
     @include('layout.header')
-    <table class="tbcontentSanPham">
-        <tr>
-            <td class="tdspdm" colspan="2">
-                <div class="tcdmtcsp">
-                    <a href="" class="hreftrangchu">
-                        Trang chủ
-                    </a>
-                    /
-                    <a href="" class="hrefdanhmuc">
-                        Danh mục
-                    </a>
-                    /
-                    <a href="" class="hreftcsp">
-                        Tất cả sản phẩm
-                    </a>
+    <div class="contentSanPham">
+        <div class="tcdmtcsp">
+            <a href="" class="hreftrangchu">
+                Trang chủ
+            </a>
+            /
+            <a href="" class="hrefdanhmuc">
+                Danh mục
+            </a>
+            /
+            <a href="" class="hreftcsp">
+                Tất cả sản phẩm
+            </a>
+        </div>
+        <div class="noidungcontentsanpham">
+            <div class="noidungdanhmucsp">
+                <div class="lbdanhmuc">
+                    <label for="lbdanhmuc">
+                        DANH MỤC
+                    </label>
                 </div>
-            </td>
-        </tr>
-        <tr>
-            <td class="tddanhmucgia">
-                <form action="{{route('home.filter')}}" method="GET">
-                <table class="tabledanhmuc">
-                    <tr>
-                        @if ( $errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-                    </tr>
-                    <tr>
-                        <td class="tdtendanhmuc">
-                            <div class="lbdanhmuc">
-                                <label for="lbdanhmuc">
-                                    DANH MỤC
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="tdhr">
-                            <div class="divhr">
-                                <hr class="hr">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="tdcacdanhmuc">
-                            <div class="listdanhmuc">
-                                <div class="danhmuc">
-                                    <ul>
-                                        @foreach($arrProductCategory as $key => $value)
-                                        <li>
-                                            <input type="checkbox" name="{{$key}}" class="checkbox" value="{{$value}}"
-                                                   @if(isset($_GET[str_replace(' ','_',$key)]))
-                                                       checked
-                                                   @endif
-                                            /><span>{{$key}}</span><br/>
-                                            <div class="divhr">
-                                                <hr class="hr">
-                                            </div>
-                                        </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="tdkhoanggia">
-                            <div class="lbkhoanggia">
-                                <label for="lbkhoanggia">
-                                    GIÁ
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="tdchonmucgia">
-                            <div class="lbchonmucgia">
-                                <label for="lbchonmucgia">
-                                    Chọn khoảng giá
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="tdnhapkhoang">
-                            <div class="nhapkhoang">
-                                <p>
-                                    <input step="1000" type="number" class="inputkhoanggia" placeholder=0 name="min_price"
-                                        @if ( isset($_GET['min_price']))
-                                            value="{{$_GET['min_price']}}"
+                <div class="divhr">
+                    <hr class="hr">
+                </div>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            <p>{{ $error }}</p>
+                        @endforeach
+                    </div>
+                @endif
+                <form action="{{route('home.filter')}}" method="get">
+                    <div class="danhsachdanhmuc">
+                        <ul>
+                            @foreach($arrProductCategory as $key => $value)
+                                <li>
+                                    <input type="checkbox" name="{{$key}}" class="checkbox" value="{{$value}}"
+                                           @if(isset($_GET[str_replace(' ','_',$key)]))
+                                               checked
                                         @endif
-                                    >
-                                    - <input step="1000" type="number"  class="inputkhoanggia" placeholder=0 name="max_price"
-                                        @if ( isset($_GET['max_price']))
-                                            value="{{$_GET['max_price']}}"
-                                        @endif
-                                    >
-                                </p>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="tdapdung">
-                            <div class="apdung">
-                                <button class="btnapdung">
-                                    Áp dụng
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
+                                    /><span>{{$key}}</span><br/>
+                                    <div class="divhr">
+                                        <hr class="hr">
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="divhr">
+                        <hr class="hr">
+                    </div>
+                    <div class="lbkhoanggia">
+                        <label for="lbkhoanggia">
+                            GIÁ
+                        </label>
+                    </div>
+
+                    <div class="lbchonmucgia">
+                        <label for="lbchonmucgia">
+                            Chọn khoảng giá
+                        </label>
+                    </div>
+                    <div class="nhapkhoang">
+                        <p>
+                            <input step="1000" type="number" class="inputkhoanggia" placeholder=0 name="min_price"
+                                   @if ( isset($_GET['min_price']))
+                                       value="{{$_GET['min_price']}}"
+                                @endif
+                            >
+                            - <input step="1000" type="number"  class="inputkhoanggia" placeholder=0 name="max_price"
+                                     @if ( isset($_GET['max_price']))
+                                         value="{{$_GET['max_price']}}"
+                                @endif
+                            >
+                        </p>
+                    </div>
+                    <div class="apdung">
+                        <button type="submit" class="btnapdung">
+                            Áp dụng
+                        </button>
+                    </div>
                 </form>
-            </td>
-            <td class="tdtatcasp">
-                <div class="tatcasanpham">
-                    <table class="tbtatcasanpham">
-                        <tr>
-                            <td class="tdtcsp" colspan="4">
-                                <div class="lbtcsp">
-                                    <label for="lbtcsp">
-                                        TẤT CẢ SẢN PHẨM
-                                    </label>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            @foreach ($products as $key => $product)
-                            <td class="tdsp">
-                                <a href="{{route('home.detail',$product->slug)}}">
+            </div>
+            <div class="tatcasp">
+                <div class="lbtcsp">
+                    <label for="lbtcsp">
+                        TẤT CẢ SẢN PHẨM
+                    </label>
+                </div>
+                <div class="thongtinsanpham">
+                    @foreach($products as $product)
+                        <div class="thongtincacsp">
+                            <a href="" class="sanphamtruyen">
                                 <div class="imagesp">
                                     <img src="{{$product->image}}" class="imgsp">
                                 </div>
@@ -153,40 +111,32 @@
                                 </div>
                                 <div class="thongtinsp">
                                     <div class="lbsp">
-                                        <label for="lbsp">
+                                        <a href="" class="name">
                                             {{$product->name}}
-                                        </label>
+                                        </a>
                                     </div>
                                     <div class="giasp">
                                         <a href="" class="htgiasp">
-                                            {{$product->priceVND}}
+                                            {{$product->price_VND}}
                                         </a>
                                     </div>
                                 </div>
-                                </a>
-                            </td>
-                                @if($key % 4 === 3 )
-                                    </tr>
-                                    <tr>
-                               @endif
-                            @endforeach
-                        </tr>
-                        <tr>
-                            <td>
-                                <nav>
-                                    <ul class="pagination pagination-rounded mb-0">
-                                        <li>
-                                            {{$products->links()}}
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </td>
-                        </tr>
-                    </table>
+                            </a>
+                        </div>
+                    @endforeach
                 </div>
-            </td>
-        </tr>
-    </table>
+                <div class="page">
+                    <nav>
+                        <ul class="pagination pagination-rounded mb-0">
+                            <li>
+                                {{$products->links()}}
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
     @include('layout.footer')
 </div>
 @include('layout.facebook-messenger')

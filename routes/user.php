@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 //user info routes
 Route::get('/', [UserController::class, 'profile'])->name('profile.info');
-Route::put('/', [UserController::class, 'update'])->name('profile.update');
+Route::put('/{userId}/edit', [UserController::class, 'update'])->name('profile.update');
 
 //user cart routes
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
@@ -20,9 +20,11 @@ Route::put('/cart/discount', [CartController::class, 'applyDiscount'])->name('ca
 //xóa mã giảm giá trong giỏ hàng theo ajax
 Route::put('/cart/remove-discount', [CartController::class, 'removeDiscount'])->name('cart.remove_discount');
 
-///user order routes
+//user order routes
+//Đặt đơn hàng
 Route::get('/checkout', [OrderController::class, 'checkout'])->name('checkout.index');
 Route::post('/checkout', [OrderController::class, 'store'])->name('checkout.store');
+//Xem danh sách đơn hàng
 Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
 Route::put('/orders/{orderId}', [OrderController::class, 'cancel'])->name('order.cancel');
 Route::get('/orders/{orderId}', [OrderController::class, 'show'])->name('order.show');

@@ -10,15 +10,18 @@
             </td>
             <td class="tdacc">
                 <div class="useracc">
-                    <a href="{{route('home.index')}}">
-                        <img src="{{ asset('image/icon account.png') }}" class="imgacc" alt="icon account">
-                    </a>
+{{--                    <a href="{{route('home.index')}}">--}}
+{{--                        <img src="{{ asset('image/icon account.png') }}" class="imgacc" alt="icon account">--}}
+{{--                    </a>--}}
                 </div>
             </td>
             <td class="tddndk">
                 <div class="dndk">
                     @if(auth()->check() && auth()->user()->role === 0)
-                        <a href="{{ route('user.profile.info') }}" class="link">{{auth()->user()->username}}</a>
+                        <a href="{{ route('user.profile.info') }}" class="link">
+                            <img src="{{ asset('image/icon account.png') }}" class="imgacc" alt="icon account">
+                            {{auth()->user()->username}}
+                        </a>
                     @elseif(auth()->check() && auth()->user()->role === 1)
                         <a href="{{ route('admin.home.index') }}" class="link">{{auth()->user()->username}}</a>
                     @else
@@ -68,7 +71,7 @@
             <td class="tdcart">
                 <div class="cart">
                     <label>
-                        <a href="{{ route('user.cart.index')}}">
+                        <a href="{{ route('user.cart.index')}}" style="color: #1a202c">
                             <i class="fa-solid fa-cart-shopping"></i>
                         </a>
                     </label>
