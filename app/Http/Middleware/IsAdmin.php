@@ -18,7 +18,7 @@ class IsAdmin
     public function handle(Request $request, Closure $next)
     {
         //check if user role is user then go to next middleware else abort with 403
-        if (auth()->user()->role === AccountRole::ADMIN ) {
+        if (auth()->user()->role === AccountRole::ADMIN || auth()->user()->role === AccountRole::EMPLOYEE) {
             return $next($request);
         }
         abort(403);

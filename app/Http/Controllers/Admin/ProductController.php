@@ -55,10 +55,10 @@ class ProductController extends Controller
         //ceil dùng để làm tròn lên
         $product->price=ceil($request->get('list_price') - ($request->get('list_price') * ($request->get('discount_rate')/100)));
         $product->save();
-        return redirect(route('admin.products.index'));
+        return redirect(route('admin.products.index'))->with('success','Thêm sản phẩm thành công');
     }
 
-     // Laravel tự động hỗ trợ việc tìm product trong route
+    // Laravel tự động hỗ trợ việc tìm product trong route
     // Vì vậy ta không cần phải tìm product trong controller
     public function edit(Product $product)
     {
@@ -76,7 +76,7 @@ class ProductController extends Controller
         $product->collection_slug=create_slug($request->get('collection'));
         $product->price=ceil($request->get('list_price') - ($request->get('list_price') * ($request->get('discount_rate')/100)));
         $product->save();
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.products.index')->with('success','Cập nhật sản phẩm thành công');
     }
 
     /**
@@ -88,7 +88,13 @@ class ProductController extends Controller
      */
     public function destroy($productId)
     {
+        //thực hiện kiểm tra xem có đơn hàng nào đang chứa sản phẩm này không
+        //nếu có thì không cho xóa và báo lỗi
+        $product = Product::find($productId);
+        if($product->orders()->count() > 0){
+            return redirect()->route('admin.products.index')->with('error','Không thể xóa sản phẩm do đã có đơn hàng mua');
+        }
         $this->model->find($productId)->delete();
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.products.index')->with('success','Xóa sản phẩm thành công');
     }
 }

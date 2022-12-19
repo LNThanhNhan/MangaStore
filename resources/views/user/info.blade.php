@@ -21,7 +21,9 @@
                 </div>
                 <div class="btnTTCN">
                     <button class="btnThongTinCaNhan">
-                        Thông tin cá nhân
+                        <a href="{{route('user.profile.info')}}" style="text-decoration: none;color: black">
+                            Thông tin cá nhân
+                        </a>
                     </button>
                 </div>
                 <div class="btnDSDH">
@@ -32,9 +34,12 @@
                     </button>
                 </div>
                 <div class="btnThoat">
-                    <button class="btnExit">
-                        Đăng xuất
-                    </button>
+                    <form action="{{route('logout')}}" method="post">
+                        @csrf
+                        <button class="btnExit">
+                            Đăng xuất
+                        </button>
+                    </form>
                 </div>
             </div>
             <div class="divclasshr">

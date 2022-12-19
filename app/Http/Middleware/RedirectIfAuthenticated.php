@@ -30,6 +30,7 @@ class RedirectIfAuthenticated
                 $role = Auth::user()->role;
                 switch ($role) {
                     case AccountRole::ADMIN:
+                    case AccountRole::EMPLOYEE:
                         return redirect(AccountHome::ADMIN_HOME);
                     case AccountRole::USER:
                         return redirect(AccountHome::USER_HOME);

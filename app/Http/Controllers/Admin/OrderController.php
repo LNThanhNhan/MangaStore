@@ -30,9 +30,10 @@ class OrderController extends Controller
         $search = $request->query->get('q');
         //tìm kiểm đơn hàng bằng email, số điện thoại hay id trong bảng order
         $orders = $this->model
-            ->where('email', 'like', '%' . $search . '%')
+            //->where('email', 'like', '%' . $search . '%')
             ->orWhere('phone', 'like', '%' . $search . '%')
-            ->orWhere('id', 'like', '%' . $search . '%')
+            ->orWhere('id',  $search )
+            ->orderBy('order_date', 'desc')
             ->paginate(10);
 
         //Append dùng để thêm vào phần tìm kiếm
@@ -63,11 +64,12 @@ class OrderController extends Controller
     public function update(Request $request,$orderID)
     {
         $order = $this->model->where('id',$orderID)->first();
-        $order->status = $request->status;
-        if($request->status === OrderStatus::DA_GIAO_HANG){
-            $order->delivered_at = now();
+        $order->status = $request->get('status');
+        if((int)$request->get('status') === OrderStatus::DA_GIAO_HANG){
+            //Cập nhật delivery_date là giờ hiện tại
+            $order->delivery_date = date('Y-m-d H:i:s');
         }
         $order->save();
-        return redirect()->route('admin.orders.index');
+        return redirect()->route('admin.orders.index')->with('success','Cập nhật trạng thái đơn hàng thành công');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Employee;
 
+use App\Enums\AccountRole;
 use App\Enums\Province;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -76,6 +77,10 @@ class StoreEmployeeRequest extends FormRequest
                 'numeric',
                 'min:3000000',
             ],
+            'role' => [
+                'required',
+                Rule::in(AccountRole::ADMIN, AccountRole::EMPLOYEE),
+            ],
         ];
     }
 
@@ -91,6 +96,7 @@ class StoreEmployeeRequest extends FormRequest
             'address' => 'Địa chỉ',
             'province' => 'Tỉnh/thành phố',
             'salary' => 'Lương',
+            'role' => 'Chức vụ',
         ];
     }
 }

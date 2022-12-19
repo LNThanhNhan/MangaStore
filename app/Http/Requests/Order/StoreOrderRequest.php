@@ -84,14 +84,14 @@ class StoreOrderRequest extends FormRequest
                 //Các hàm callback tự định nghĩa thêm để kiểm tra các điều kiện khác
                 //Kiểm tra mã giảm giá trong giỏ hàng còn lượt sử dụng hay không nếu không thì báo lỗi
                 function ($attribute, $value, $fail) use ($discount) {
-                    if ($discount->quantity <= 0) {
+                    if ($discount !== null && $discount->quantity <= 0) {
                         $fail('Mã giảm giá đã hết lượt sử dụng');
                     }
                 },
 
                 //Kiểm tra xem mã giảm giá còn hạn sử dụng hay không nếu không thì báo lỗi
                 function ($attribute, $value, $fail) use ($discount) {
-                    if ($discount->end_at < now()) {
+                    if ($discount !== null && $discount->end_at < now()) {
                         $fail('Mã giảm giá đã hết hạn sử dụng');
                     }
                 },

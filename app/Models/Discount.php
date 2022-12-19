@@ -16,7 +16,7 @@ class Discount extends Model
         'name',
         'code',
         'type',
-        'min_oder',
+        'min_order',
         'value',
         'max_discount',
         'quantity',

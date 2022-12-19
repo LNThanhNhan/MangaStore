@@ -58,6 +58,13 @@
                 <td class="divhr">
                     <hr class="hr" width="0.5" size="180">
                 </td>
+                <td >
+                    @if(session('success'))
+                        <div class="alert alert-success">
+                            {{session('success')}}
+                        </div>
+                    @endif
+                </td>
                 <td class="tdlistdonhang">
                     @foreach($orders as $order)
                     <table class="tblistdonhang">

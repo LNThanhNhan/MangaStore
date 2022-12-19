@@ -45,12 +45,19 @@ class UserController extends Controller
     }
 
     //Hàm cập nhật thông tin user và cập nhật mật khẩu nếu có
-    public function update(UpdateUserRequest $request,User $user)
+//    public function update(UpdateUserRequest $request,User $user)
+//    {
+//        if($request->get('province')===0){
+//            $request['province']=null;
+//        }
+//        $user->update($request->all());
+//        return redirect(route('user.profile.info'))->with('success', 'Cập nhật thông tin thành công');
+//    }
+
+    //Hàm xóa user
+    public function destroy(User $user)
     {
-        if($request->get('province')===0){
-            $request['province']=null;
-        }
-        $user->update($request->all());
-        return redirect(route('user.profile.info'))->with('success', 'Cập nhật thông tin thành công');
+        $user->delete();
+        return redirect(route('user.index'))->with('success', 'Xóa khách hàng thành công');
     }
 }

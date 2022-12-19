@@ -47,7 +47,7 @@ class DiscountController extends Controller
         $discount = new Discount();
         $discount->fill($request->validated());
         $discount->save();
-        return redirect(route('admin.discounts.index'));
+        return redirect(route('admin.discounts.index'))->with('success','Thêm mã giảm giá thành công');
     }
 
     public function show(Discount $discount)
@@ -66,13 +66,13 @@ class DiscountController extends Controller
     {
         $discount->fill($request->validated());
         $discount->save();
-        return redirect(route('admin.discounts.index'));
+        return redirect(route('admin.discounts.index'))->with('success','Cập nhật mã giảm giá thành công');
     }
 
     public function destroy($discountID)
     {
         $discount =$this->model->find($discountID);
         $discount->delete();
-        return redirect(route('admin.discounts.index'));
+        return redirect(route('admin.discounts.index'))->with('success','Xóa mã giảm giá thành công');
     }
 }

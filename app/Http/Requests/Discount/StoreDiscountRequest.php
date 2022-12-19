@@ -59,14 +59,14 @@ class StoreDiscountRequest extends FormRequest
                 'integer',
                 'min:0',
                 function ($attribute, $value, $fail) {
-                    if ($this->type === (string)DiscountType::PHAN_TRAM) {
+                    if ((int)$this->type === DiscountType::PHAN_TRAM) {
                         if ($value < 0 || $value > 100) {
                             $fail('Giảm theo phần trăm phải từ 0 đến 100');
                         }
                     }
                 },
                 function ($attribute, $value, $fail) {
-                    if ($this->min_order < $value && $this->type === (string)DiscountType::SO_TIEN) {
+                    if ($this->min_order < $value && (int)$this->type === DiscountType::SO_TIEN) {
                         $fail('Đơn hàng tối thiểu phải nhỏ hơn giảm giá tối đa');
                     }
                 },
@@ -75,13 +75,7 @@ class StoreDiscountRequest extends FormRequest
                 'required',
                 'integer',
                 'min:0',
-                function ($attribute, $value, $fail) {
-                    if ($this->type === (string)DiscountType::PHAN_TRAM) {
-                        if ($value < 0 || $value > 100) {
-                            $fail('Giá trị phải từ 0 đến 100');
-                        }
-                    }
-                },
+
                 function ($attribute, $value, $fail) {
                     if ($this->min_order < $value) {
                         $fail('Đơn hàng tối thiểu phải nhỏ hơn giảm giá tối đa');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Employee;
 
+use App\Enums\AccountRole;
 use App\Enums\Province;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -62,6 +63,10 @@ class UpdateEmployeeRequest extends FormRequest
                 'required',
                 Rule::in(0,1),
             ],
+            'role' => [
+                'required',
+                Rule::in(AccountRole::ADMIN, AccountRole::EMPLOYEE),
+            ],
         ];
     }
 
@@ -75,6 +80,7 @@ class UpdateEmployeeRequest extends FormRequest
             'province' => 'Tỉnh/thành phố',
             'salary' => 'Lương',
             'status' => 'Trạng thái làm việc',
+            'role' => 'Chức vụ',
         ];
     }
 }

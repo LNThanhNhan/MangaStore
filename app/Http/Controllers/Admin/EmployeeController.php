@@ -11,6 +11,7 @@ use App\Models\Account;
 use App\Models\Employee;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 
 class EmployeeController extends Controller
@@ -71,15 +72,23 @@ class EmployeeController extends Controller
     public function update(UpdateEmployeeRequest $request, $employeeID)
     {
         $employee = $this->model->findOrFail($employeeID);
+        if($employee->id===Auth::user()->employee->id){
+            return redirect(route('admin.employees.index'))->with('error','Không thể sửa thông tin của chính mình');
+        }
         $employee->fill($request->validated());
+        $employee->role=$request->get('role');
         $employee->save();
-        return redirect(route('admin.employees.index'));
+        return redirect(route('admin.employees.index'))->with('success','Cập nhật nhân viên thành công');
     }
 
     public function destroy($employeeID)
     {
         $employee = $this->model->find($employeeID);
+        if($employee->id===Auth::user()->employee->id){
+            return redirect(route('admin.employees.index'))->with('error','Không thể xóa chính mình');
+        }
         $employee->delete();
-        return redirect(route('admin.employees.index'));
+        $employee->account->delete();
+        return redirect(route('admin.employees.index'))->with('success','Xóa nhân viên thành công');
     }
 }

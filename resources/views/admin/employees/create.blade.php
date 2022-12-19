@@ -41,7 +41,14 @@
         @endforeach
     </select><br>
     Lương
-    <input type="number" name="salary" value="{{ old('salary') }}">
+    <input type="number" name="salary" value="{{ old('salary') }}"><br>
+    Chức vụ
+    <select name="role" >
+        <option value="0" selected>Chọn chức vụ</option>
+        <option value="1" >Quản lý</option>
+        <option value="2" >Chọn chức vụ</option>
+    </select><br>
     <button type="submit">Thêm nhân viên</button>
+
 </form>
 @endsection

@@ -13,6 +13,7 @@ use App\Models\Order;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class OrderController extends Controller
 {
@@ -87,7 +88,7 @@ class OrderController extends Controller
         $cart->products()->detach();
         $cart->discount_id = null;
         $cart->save();
-        return view('user.info');
+        return Redirect::route('user.profile.info')->with('success','Đặt hàng thành công');
     }
 
     //Lấy danh sách tất cả đơn hàng của user
@@ -105,7 +106,7 @@ class OrderController extends Controller
         $order = $this->model->find($orderID);
         $order->status = OrderStatus::DA_HUY;
         $order->save();
-        return redirect()->back();
+        return redirect()->back()->with('success','Hủy đơn hàng thành công');
     }
 
     //trả về view chi tiết đơn hàng

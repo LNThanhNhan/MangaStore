@@ -36,7 +36,7 @@ Route::delete('employees/{employeeId}', [EmployeeController::class, 'destroy'])-
 //User route với user controller từ folder admin
 Route::get('users', [UserController::class, 'index'])->name('users.index');
 Route::get('users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
-Route::put('users/{user}', [UserController::class, 'update'])->name('users.update');
+//Route::put('users/{user}', [UserController::class, 'update'])->name('users.update');
 Route::delete('users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 //Order route
 Route::get('orders', [OrderController::class, 'index'])->name('orders.index');

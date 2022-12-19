@@ -48,6 +48,12 @@
         <option value=0 @if(@$employee->status===0) selected @endif>Đang làm việc</option>
         <option value=1 @if(@$employee->status===1) selected @endif>Đã nghỉ</option>
     </select><br>
+    Chức vụ
+    <select name="role" >
+        <option value="0" selected>Chọn chức vụ</option>
+        <option value="1" >Quản lý</option>
+        <option value="2" >Chọn chức vụ</option>
+    </select><br>
     <button type="submit">Cập nhật nhân viên</button>
 </form>
 @endsection

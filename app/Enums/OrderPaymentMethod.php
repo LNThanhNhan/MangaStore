@@ -9,7 +9,6 @@ final class OrderPaymentMethod extends Enum
     public const COD = 1;
     public const NGAN_HANG = 2;
     public const ZALO_PAY = 3;
-    public const MOMO = 4;
 
     //array view
     public static function getArrayView(): array
@@ -18,7 +17,6 @@ final class OrderPaymentMethod extends Enum
             'Thanh toán khi nhận hàng' => self::COD,
             'Thanh toán qua ngân hàng' => self::NGAN_HANG,
             'Thanh toán qua Zalo Pay' => self::ZALO_PAY,
-            'Thanh toán qua Momo' => self::MOMO,
         ];
     }
 
@@ -29,7 +27,6 @@ final class OrderPaymentMethod extends Enum
             'COD' => self::COD,
             'Ngân hàng' => self::NGAN_HANG,
             'Zalo Pay' => self::ZALO_PAY,
-            'Momo' => self::MOMO,
         ];
     }
 

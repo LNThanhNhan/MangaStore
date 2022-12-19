@@ -132,7 +132,7 @@
                             <label for="lbslmua">
                                 Số lượng
                             </label>
-                            <input type="number" class="slmua" value="1" min="1" step="1">
+                            <input name="quantity" type="number" class="slmua" value="1" min="1" step="1">
                         </div>
                         <div class="btnadd">
                             <button class="btnthemvaogio">
@@ -253,7 +253,7 @@
                         position: 'top-center', // bottom-left or bottom-right or bottom-center or top-left or top-right or top-center or mid-center or an object representing the left, right, top, bottom values
                     });
                     //lấy thẻ span có class soluongmua và thay bằng giá trị của response.data vào
-                    $('.soluongmua').html(response.data);
+                    $('.soluongmua').text(response.data);
                 },
                 error: function(response){
                     //console.log(response);
