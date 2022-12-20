@@ -28,6 +28,7 @@ class EmployeeController extends Controller
         $search = $request->query->get('q');
         $employees =$this->model
             ->where('name','like','%'.$search.'%')
+            ->where('id','like','%'.$search.'%')
             ->paginate(10);
 
         //Append dùng để thêm vào phần tìm kiếm
@@ -51,14 +52,14 @@ class EmployeeController extends Controller
         $account = new Account();
         $account->fill($request->validated());
         $account->password = bcrypt($request->password);
-        $account->role=1;
+        $account->role = $request->get('role');
         $employee = new Employee();
         $account->save();
         $employee->fill($request->validated());
         $employee->account_id=$account->id;
         $employee->status=EmployeeStatus::DANG_LAM;
         $employee->save();
-        return redirect(route('admin.employees.index'));
+        return redirect(route('admin.employees.index'))->with('success','Thêm nhân viên mới thành công');
     }
 
     public function edit($employeeID)
@@ -76,7 +77,7 @@ class EmployeeController extends Controller
             return redirect(route('admin.employees.index'))->with('error','Không thể sửa thông tin của chính mình');
         }
         $employee->fill($request->validated());
-        $employee->role=$request->get('role');
+        $employee->account->role=$request->get('role');
         $employee->save();
         return redirect(route('admin.employees.index'))->with('success','Cập nhật nhân viên thành công');
     }

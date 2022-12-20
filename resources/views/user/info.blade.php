@@ -93,7 +93,7 @@
                         </label>
                     </div>
                     <div class="textsdt">
-                        <input type="text" placeholder="Nhập số điện thoại" class="inputsdt" value="{{old('phone',$user->phone)}}">
+                        <input type="text" name="phone" placeholder="Nhập số điện thoại" class="inputsdt" value="{{old('phone',$user->phone)}}">
                     </div>
                 </div>
                 <div class="diachi">
@@ -103,7 +103,7 @@
                         </label>
                     </div>
                     <div class="textdiachi">
-                        <textarea name="Địa chỉ" id="inputdiachi" rows="2" placeholder="Nhập địa chỉ">
+                        <textarea name="address" id="inputdiachi" rows="2" placeholder="Nhập địa chỉ">
                             {{old('address',$user->address)}}
                         </textarea>
                     </div>

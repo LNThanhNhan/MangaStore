@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Enums\OrderStatus;
 use App\Enums\Province;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UpdateUserRequest;
@@ -32,7 +33,7 @@ class UserController extends Controller
     //Hàm cập nhật thông tin user và cập nhật mật khẩu nếu có
     public function update(UpdateUserRequest $request, $userId)
     {
-        if($request->get('province')===0){
+        if((int)$request->get('province')===0){
             $request['province']=null;
         }
         $user = $this->model->findOrFail($userId);

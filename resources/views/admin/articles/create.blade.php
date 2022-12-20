@@ -1,31 +1,88 @@
-@extends('layout.master')
+@extends('layout.admin.master')
 @section('content')
-@if ( $errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Thêm bài viết </h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Thêm bài viết</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <div class="col-md-12">
+        @if ( $errors->any())
+            <div class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+            </div>
+        @endif
+        <form action="{{route('admin.articles.store')}}" method="post">
+            @csrf
+            <div class="card card-outline card-info">
+                <div class="card-header">
+                    <div class="form-group">
+                        <label for="name">Tiêu đề</label>
+                        <input type="text" class="form-control" id="title" placeholder="" name="title" value="{{old('title')}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Link ảnh</label>
+                        <input type="text" class="form-control" id="image" placeholder="" name="image" value="{{old('image')}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Mô tả</label>
+                        <textarea rows="5" cols="70" class="form-control" id="description" placeholder="" name="description">{{old('description')}}</textarea>
+                    </div>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <textarea id="editor" name="content" >{{old('content')}}</textarea>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Thêm</button>
+                <a href="{{route('admin.articles.index')}}" type="cancel" class="btn btn-danger ">Hủy bỏ</a>
+            </div>
+        </form>
     </div>
-@endif
-<form action="{{route('admin.articles.store')}}" method="post">
-    @csrf
-    Tiêu đề
-    <input type="text" name="title" >
-    <br>
-    Ảnh
-    <input type="text" name="image" >
-    <br>
-    Mô tả
-    <textarea name="description" cols="50" rows="10" >    </textarea>
-    <br>
-    Nội dung
-    <textarea id="editor" name="content" >    </textarea>
-    <br>
-    <input type="submit" value="Thêm">
-</form>
+</div>
 @endsection
+{{--@extends('layout.master')--}}
+{{--@section('content')--}}
+{{--@if ( $errors->any())--}}
+{{--    <div class="alert alert-danger">--}}
+{{--        <ul>--}}
+{{--            @foreach ($errors->all() as $error)--}}
+{{--                <li>{{ $error }}</li>--}}
+{{--            @endforeach--}}
+{{--        </ul>--}}
+{{--    </div>--}}
+{{--@endif--}}
+{{--<form action="{{route('admin.articles.store')}}" method="post">--}}
+{{--    @csrf--}}
+{{--    Tiêu đề--}}
+{{--    <input type="text" name="title" >--}}
+{{--    <br>--}}
+{{--    Ảnh--}}
+{{--    <input type="text" name="image" >--}}
+{{--    <br>--}}
+{{--    Mô tả--}}
+{{--    <textarea name="description" cols="50" rows="10" >    </textarea>--}}
+{{--    <br>--}}
+{{--    Nội dung--}}
+{{--    <textarea id="editor" name="content" >    </textarea>--}}
+{{--    <br>--}}
+{{--    <input type="submit" value="Thêm">--}}
+{{--</form>--}}
+{{--@endsection--}}
 
 @push('js')
 <script src="https://cdn.ckeditor.com/ckeditor5/35.3.2/super-build/ckeditor.js"></script>

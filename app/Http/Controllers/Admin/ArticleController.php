@@ -26,7 +26,7 @@ class ArticleController extends Controller
         $search = $request->query->get('q');
         $articles =$this->model
             ->where('title','like','%'.$search.'%')
-            ->orWhere('description','like','%'.$search.'%')
+            //->orWhere('description','like','%'.$search.'%')
             ->paginate(10);
 
         return view('admin.articles.index',[

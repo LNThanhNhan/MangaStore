@@ -1,34 +1,92 @@
-@extends('layout.master')
+@extends('layout.admin.master')
 @section('content')
-@if ( $errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Cập nhật bài viết </h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Cập nhật bài viết</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+        <div class="col-md-12">
+            @if ( $errors->any())
+                <div class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
+                </div>
+            @endif
+            <form action="{{route('admin.articles.update',$article->id)}}" method="post">
+                @csrf
+                @method('PUT')
+                <div class="card card-outline card-info">
+                    <div class="card-header">
+                        <div class="form-group">
+                            <label for="name">Tiêu đề</label>
+                            <input type="text" class="form-control" id="title" placeholder="" name="title" value="{{$article->title}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Link ảnh</label>
+                            <input type="text" class="form-control" id="image" placeholder="" name="image" value="{{$article->image}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Mô tả</label>
+                            <textarea rows="5" cols="70" class="form-control" id="description" placeholder="" name="description">{{$article->description}}</textarea>
+                        </div>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <textarea id="editor" name="content" >{{$article->content}}</textarea>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Cập nhật</button>
+                    <a href="{{route('admin.articles.index')}}" type="cancel" class="btn btn-danger ">Hủy bỏ</a>
+                </div>
+            </form>
+        </div>
     </div>
-@endif
-<form action="{{ route('admin.articles.update',$article->id) }}" method="POST">
-    @csrf
-    @method('PUT')
-    Tiêu đề
-    <input type="text" name="title" value="{{ $article->title }}">
-    <br>
-    Ảnh
-    <img src="{{ $article->image }}" width="160px" height="90px" alt="">
-    <br>
-    <input type="text" name="image" value="{{ $article->image }}">
-    <br>
-    Mô tả
-    <textarea name="description" id="" cols="30" rows="10">{{ $article->description }}</textarea>
-    <br>
-    Nội dung
-    <textarea name="content" id="editor" cols="30" rows="10">{{ $article->content }}</textarea>
-    <br>
-    <button type="submit">Cập nhật</button>
-</form>
 @endsection
+{{--@extends('layout.master')--}}
+{{--@section('content')--}}
+{{--@if ( $errors->any())--}}
+{{--    <div class="alert alert-danger">--}}
+{{--        <ul>--}}
+{{--            @foreach ($errors->all() as $error)--}}
+{{--                <li>{{ $error }}</li>--}}
+{{--            @endforeach--}}
+{{--        </ul>--}}
+{{--    </div>--}}
+{{--@endif--}}
+{{--<form action="{{ route('admin.articles.update',$article->id) }}" method="POST">--}}
+{{--    @csrf--}}
+{{--    @method('PUT')--}}
+{{--    Tiêu đề--}}
+{{--    <input type="text" name="title" value="{{ $article->title }}">--}}
+{{--    <br>--}}
+{{--    Ảnh--}}
+{{--    <img src="{{ $article->image }}" width="160px" height="90px" alt="">--}}
+{{--    <br>--}}
+{{--    <input type="text" name="image" value="{{ $article->image }}">--}}
+{{--    <br>--}}
+{{--    Mô tả--}}
+{{--    <textarea name="description" id="" cols="30" rows="10">{{ $article->description }}</textarea>--}}
+{{--    <br>--}}
+{{--    Nội dung--}}
+{{--    <textarea name="content" id="editor" cols="30" rows="10">{{ $article->content }}</textarea>--}}
+{{--    <br>--}}
+{{--    <button type="submit">Cập nhật</button>--}}
+{{--</form>--}}
+{{--@endsection--}}
 
 @push('js')
     <script src="https://cdn.ckeditor.com/ckeditor5/35.3.2/super-build/ckeditor.js"></script>

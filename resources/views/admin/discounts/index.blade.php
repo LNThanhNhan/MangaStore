@@ -18,8 +18,9 @@
             </div>
             <a href="{{route('admin.discounts.create')}}" type="submit" class="btn btn-primary">+ Thêm mã</a>
             <form class="float-end" action="">
+                Tìm kiếm
                 <input type="search" name="q" id="" value="{{ $search }}">
-                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                <button type="submit" class="btn btn-primary">Tìm</button>
             </form>
             @if(session('success'))
             <div class="alert alert-success">

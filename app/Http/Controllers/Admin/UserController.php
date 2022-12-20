@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\OrderStatus;
 use App\Enums\Province;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UpdateUserRequest;
@@ -55,9 +56,16 @@ class UserController extends Controller
 //    }
 
     //Hàm xóa user
-    public function destroy(User $user)
+    public function destroy($userId)
     {
+        $user = $this->model->findOrFail($userId);
+        //Kiểm tra xem người dùng có đơn hàng nào đang gioa hàng không
+        //nếu có thì báo lỗi
+        if($user->orders->where('status',OrderStatus::DANG_GIAO_HANG)->count()>0){
+            return redirect(route('admin.users.index'))->with('error', 'Không thể xóa tài khoản khi đang có đơn hàng đang giao');
+        }
         $user->delete();
-        return redirect(route('user.index'))->with('success', 'Xóa khách hàng thành công');
+        $user->account->delete();
+        return redirect(route('admin.users.index'))->with('success', 'Xóa tài khoản thành công');
     }
 }

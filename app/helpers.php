@@ -69,9 +69,15 @@ if (!function_exists('format_priceVND')) {
 
 // Chuyển đổi mã tỉnh trong enum Tinh thành sang tên tỉnh
 if (!function_exists('getProvinceName')) {
-    function getProvinceName($provinceID): bool
+    function getProvinceName($provinceID)
     {
-        return Province::getProvinceNameById($provinceID);
+        if($provinceID !== 0 && $provinceID !== null) {
+            return Province::getProvinceNameById($provinceID);
+        }
+        if ($provinceID === 0) {
+            return 'Chưa cập nhật';
+        }
+        return "";
     }
 }
 

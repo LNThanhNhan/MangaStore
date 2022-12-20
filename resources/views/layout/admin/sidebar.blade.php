@@ -115,7 +115,7 @@
                     </ul>
 
                 </li>
-                @if(Auth::user()->role === 1 || Auth::user()->role === 2)
+                @if(Auth::user()->role === 1)
                 <li class="nav-item menu-is-opening menu-open">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>

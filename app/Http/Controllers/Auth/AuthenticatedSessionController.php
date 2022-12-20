@@ -34,7 +34,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
         //Xử lý sau khi người dùng đăne nhập
-        if(Auth::user()->role === AccountRole::ADMIN){
+        if(Auth::user()->role === AccountRole::ADMIN || Auth::user()->role === AccountRole::EMPLOYEE){
             return redirect()->intended(AccountHome::ADMIN_HOME);
         }
         return redirect()->intended(AccountHome::USER_HOME);

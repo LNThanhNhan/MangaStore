@@ -23,7 +23,10 @@
                             {{auth()->user()->username}}
                         </a>
                     @elseif(auth()->check() && auth()->user()->role === 1)
-                        <a href="{{ route('admin.home.index') }}" class="link">{{auth()->user()->username}}</a>
+                        <a href="{{ route('admin.home.index') }}" class="link">
+                            <img src="{{ asset('image/icon account.png') }}" class="imgacc" alt="icon account">
+                            {{auth()->user()->username}}
+                        </a>
                     @else
                         <a href="{{ route('register') }}" class="link" title="Dang Ky">ĐĂNG KÝ</a><span class="sep">|</span><a href="{{ route('login') }}" class="link" title="Dang Nhap">ĐĂNG NHẬP</a>
                     @endauth
