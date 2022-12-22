@@ -80,6 +80,13 @@ class StoreOrderRequest extends FormRequest
                         }
                     }
                 },
+                //Làm hàm kiểm tra xem tổng giỏ hàng có lớn hơn 50000000 không
+                //nếu có thì báo lỗi vượt quá giới hạn thanh toán
+                function ($attribute, $value, $fail)use($cart)  {
+                    if ($cart->total_price > 50000000) {
+                        $fail('Không thể thanh toán, do tổng giỏ hàng vượt quá giới hạn thanh toán là 50,000,000 đ');
+                    }
+                },
 
                 //Các hàm callback tự định nghĩa thêm để kiểm tra các điều kiện khác
                 //Kiểm tra mã giảm giá trong giỏ hàng còn lượt sử dụng hay không nếu không thì báo lỗi

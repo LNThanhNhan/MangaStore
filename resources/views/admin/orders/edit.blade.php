@@ -35,7 +35,11 @@
                     <p>Ngày đặt hàng: {{$order->order_dateDMYHM}}</p>
                     <p>Trạng thái đơn hàng: {{$order->status_name}}</p>
                     <p>Phương thức thanh toán: {{$order->payment_method_name}}</p>
-
+                    @if($order->status === 2)
+                        <p>Ngày giao hàng: {{$order->delivery_dateDMY}}</p>
+                    @elseif($order->status===3 || $order->status===4)
+                        <span class="badge badge-danger">{{$order->status_name}}</span>
+                    @else
                     <form action="{{route('admin.orders.update',$order->id)}}" method="post"  class="form-inline" role="form">
                         <div class="form-group">
                             <label class="sr-only" for="">Trạng thái</label>
@@ -49,6 +53,7 @@
                         </div>
                         <button type="submit" class="btn btn-primary">Cập nhật</button>
                     </form>
+                    @endif
                 </div>
                 <!-- /.card-body -->
 
