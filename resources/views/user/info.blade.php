@@ -16,7 +16,7 @@
             <div class="taikhoan">
                 <div class="lbTenTK">
                     <label for="tentk">
-                        {{$user->name}}
+                        {{ Auth::user()->username }}
                     </label>
                 </div>
                 <div class="btnTTCN">

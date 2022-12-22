@@ -82,10 +82,10 @@
                                     <a href="{{route('admin.employees.edit',$employee->id)}}" class="btn btn-info btn-sm">
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
-                                    <form action="{{route('admin.employees.destroy',$employee->id)}}" method="post">
+                                    <form action="{{route('admin.employees.destroy',$employee->id)}}" method="post" onsubmit="return confirm('Tài khoản nhân viên sẽ bị xóa')">
                                         @csrf
                                         @method('DELETE')
-                                        <button id="btn1" class="btn btn-danger" onclick="return confirm('Tài khoản nhân viên sẽ bị xóa')">
+                                        <button id="btn1" class="btn btn-danger" >
                                             <i class="fas fa-trash"> </i>
                                         </button>
                                     </form>

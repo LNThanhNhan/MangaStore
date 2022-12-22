@@ -194,60 +194,59 @@
                     @endforeach
                 </div>
                 <div class="divhr"><hr class="hr"></div>
-                    <div class="thongtingiadonhang">
-                        <div class="vanchuyen">
-                            <label for="tamtinh">
-                                Tạm tính:
-                            </label>
-                        </div>
-                        <div class="price">
-                            <label for="gia">
-                                {{ $cart->cart_totalVND }}
-                            </label>
-                        </div>
+                <div class="thongtingiadonhang">
+                    <div class="vanchuyen">
+                        <label for="tamtinh">
+                            Tạm tính:
+                        </label>
                     </div>
-                    <div class="thongtingiadonhang">
-                        <div class="vanchuyen">
-                            <label for="giamgia">
-                                Giảm giá:
-                            </label>
-                        </div>
-                        <div class="price">
-                            <label for="gia">
-                                @if($cart->discount)
-                                    -{{ $cart->total_discountVND }}
-                                @endif
-                            </label>
-                        </div>
+                    <div class="price">
+                        <label for="gia">
+                            {{ $cart->cart_totalVND }}
+                        </label>
                     </div>
-                    <div class="thongtingiadonhang">
-                        <div class="vanchuyen">
-                            <label for="tamtinh">
-                                Phí vận chuyển
-                            </label>
-                        </div>
-                        <div class="price">
-                            @if($user->province && (getProvinceName($user->province) === 'Hà Nội' || getProvinceName($user->province) === 'Hồ Chí Minh'))
-                                <label for="gia" id="shipping-fee">{{format_priceVND($shipping_fee['hn_hcm'])}}</label>
-                            @elseif($user->province === null)
-                                <label for="gia" id="shipping-fee">___</label>
-                            @else
-                                <label for="gia" id="shipping-fee">{{format_priceVND($shipping_fee['tinh_thanh'])}}</label>
+                </div>
+                <div class="thongtingiadonhang">
+                    <div class="vanchuyen">
+                        <label for="giamgia">
+                            Giảm giá:
+                        </label>
+                    </div>
+                    <div class="price">
+                        <label for="gia">
+                            @if($cart->discount)
+                                -{{ $cart->total_discountVND }}
                             @endif
-                        </div>
+                        </label>
                     </div>
-                    <div class="divhr"><hr class="hr"></div>
-                    <div class="sumgia">
-                        <div class="tongcong">
-                            <label for="sum">
-                                Tổng cộng
-                            </label>
-                        </div>
-                        <div class="pricesum">
-                            <label for="gia" id="total_price">
-                                {{ format_priceVND($cart->total_price + $cart->shipping_fee)}}
-                            </label>
-                        </div>
+                </div>
+                <div class="thongtingiadonhang">
+                    <div class="vanchuyen">
+                        <label for="tamtinh">
+                            Phí vận chuyển
+                        </label>
+                    </div>
+                    <div class="price">
+                        @if($user->province && (getProvinceName($user->province) === 'Hà Nội' || getProvinceName($user->province) === 'Hồ Chí Minh'))
+                            <label for="gia" id="shipping-fee">{{format_priceVND($shipping_fee['hn_hcm'])}}</label>
+                        @elseif($user->province === null)
+                            <label for="gia" id="shipping-fee">___</label>
+                        @else
+                            <label for="gia" id="shipping-fee">{{format_priceVND($shipping_fee['tinh_thanh'])}}</label>
+                        @endif
+                    </div>
+                </div>
+                <div class="divhr"><hr class="hr"></div>
+                <div class="sumgia">
+                    <div class="tongcong">
+                        <label for="sum">
+                            Tổng cộng
+                        </label>
+                    </div>
+                    <div class="pricesum">
+                        <label for="gia" id="total_price">
+                            {{ format_priceVND($cart->total_price + $cart->shipping_fee)}}
+                        </label>
                     </div>
                 </div>
             </div>

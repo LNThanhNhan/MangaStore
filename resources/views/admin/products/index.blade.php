@@ -29,6 +29,11 @@
                         {{session('success')}}
                     </div>
                 @endif
+                @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{session('error')}}
+                    </div>
+                @endif
                 <div class="row">
 
                     <div class="col-12">
@@ -63,10 +68,10 @@
                                             <i class="fas fa-pencil-alt">
                                             </i>
                                         </a>
-                                        <form action="{{route('admin.products.destroy',$product)}}" method="post">
+                                        <form action="{{route('admin.products.destroy',$product)}}" method="post" onsubmit="return confirm('Sản phẩm sẽ bị xóa')">
                                             @csrf
-                                            @method('PUT')
-                                            <button id="btn1" class="btn btn-danger" onclick="return confirm('Sản phẩm sẽ bị xóa')">
+                                            @method('DELETE')
+                                            <button id="btn1" class="btn btn-danger" >
                                                 <i class="fas fa-trash"> </i>
                                             </button>
                                         </form>

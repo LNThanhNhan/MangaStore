@@ -153,7 +153,9 @@
             </div>
         </form>
         @else
-            <p>Không có sản phẩm nào trong giỏ hàng</p>
+            <div style="height: 30vh;width: 100%">
+                <p style="margin: auto">Không có sản phẩm nào trong giỏ hàng</p>
+            </div>
         @endif
         @include('layout.footer')
     </div>

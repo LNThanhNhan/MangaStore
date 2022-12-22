@@ -65,10 +65,10 @@
                                 <a href="{{route('admin.discounts.edit',$discount)}}" class="btn btn-info btn-sm"><i class="fas fa-pencil-alt"></i>
 
                                 </a>
-                                <form action="{{route('admin.discounts.destroy',$discount->id)}}" method="post">
+                                <form action="{{route('admin.discounts.destroy',$discount->id)}}" method="post" onsubmit="return confirm('Mã giảm giá sẽ bị xóa')">
                                     @csrf
                                     @method('delete')
-                                    <button id="btn1" class="btn btn-danger" onclick="return confirm('Mã giảm giá sẽ bị xóa')">
+                                    <button id="btn1" class="btn btn-danger" >
                                         <i class="fas fa-trash"> </i>
                                     </button>
                                 </form>

@@ -79,7 +79,7 @@
                         </a>
                     </label>
                     <div class="spansl">
-                        @if(auth()->check() && auth()->user()->role === 0)
+                        @if(auth()->check() && auth()->user()->role === 0 && auth()->user()->user->cart)
                             <span class="soluongmua">{{ auth()->user()->user->cart->total_product }}</span>
                         @else
                             <span class="soluongmua">0</span>

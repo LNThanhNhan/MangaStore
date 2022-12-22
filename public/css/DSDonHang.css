@@ -13,7 +13,7 @@
     width: 100%;
     height: auto;
     background-color: #73607C;
-    padding: 1vh;
+    padding: 1vw;
 }
 .tbheader{
     padding: 3vh;
@@ -46,7 +46,7 @@
     font-weight: 600;
     font-size:  1.25vw;
     margin-left: 1vh;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .link{
     text-decoration: none;
@@ -54,9 +54,9 @@
 }
 .khunggiohang{
     background-color: #FCC666;
-    padding: 1vh;
     width: 100%;
     height: auto;
+    padding: 1vh;
 }
 .tbkhunggiohang{
     width: 100%;
@@ -82,7 +82,7 @@
     display: block;
   	display: -webkit-box;
   	height: 0.5vw*0.5*4;
-  	font-size: 1vw;
+  	font-size: 1.25vw;
   	line-height: 1.3;
   	-webkit-line-clamp: 4;  
   	-webkit-box-orient: vertical;
@@ -92,7 +92,7 @@
 .hrefonline{
     text-decoration: none;
     color: #73607C;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
     font-size: 1vw;
     
@@ -102,15 +102,19 @@
     text-align: center;
 }
 .search{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-top: -1.5vw;
 }
 .inputsearch{
     width:60% ;
     height: 3vw;
-    border: none;
+    border: 1px solid #C1B9AE;
     border-radius: 3px;
-    font-size: 1vw;
+    font-size: 1.25vw;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.inputsearch:focus{
+    text-indent: 1vw;
 }
 .btnsearch{
     background-color: #73607C;
@@ -118,7 +122,13 @@
     border: #73607C;
     border-radius: 3px;
     height: 3vw;
-    font-size: 1vw;
+    font-size: 1.25vw;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.btnsearch:hover{
+    height: 3.1vw;
+    font-size: 1.27vw;
+    cursor: pointer;
 }
 .tdcart{
     width: 20%;
@@ -127,6 +137,10 @@
 .cart{
     font-size: 2.5vw;
     margin-top: -1vw;
+    cursor: pointer;
+}
+.cart:hover{
+    font-size: 2.7vw;
 }
 .spansl{
     margin-top: -3.5vw;
@@ -139,7 +153,7 @@
     border-radius: 50%;
     border: 0.2px solid black;
     background: white;
-    font-size: 1vw;
+    font-size: 1.25vw;
     color: black;
     position: absolute;
 }
@@ -150,9 +164,11 @@
 .tbmenu{
     width: 100%;
     font-weight: 600;
-    font-size: 1.5vw;
+    font-size: 1.3vw;
 }
 .tdtrangchu{
+    width: 20%;
+    height: 2.5vw;
     background-color: #FF828A;
     text-align: center;
 }
@@ -160,77 +176,107 @@
     text-decoration: none;
     color: white;
     cursor: pointer;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.trangchu:hover{
+    font-size: 1.32vw;
 }
 .tdsanpham{
     background-color: #B184E3;
     text-align: center;
+    width: 20%;
+    height: 2.5vw;
 }
 .sanpham{
     text-decoration: none;
     color: white;
     cursor: pointer;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.sanpham:hover{
+    font-size: 1.32vw;
 }
 .tdcollection{
     background-color: #4CCCA9;
     text-align: center;
+    width: 20%;
+    height: 2.5vw;
 }
 .collection{
     text-decoration: none;
     color: white;
     cursor: pointer;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.collection:hover{
+    font-size: 1.32vw;
 }
 .tdhotdeals{
     background-color:#FEFD7F;
     text-align: center;
+    width: 20%;
+    height: 2.5vw;
 }
 .hotdeals{
     text-decoration: none;
     color: black;
     cursor: pointer;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.hotdeals:hover{
+    font-size: 1.32vw;
 }
 .tdtintuc{
     background-color:#00C7DE;
     text-align: center;
+    width: 20%;
+    height: 2.5vw;
 }
 .tintuc{
     text-decoration: none;
     color: white;
     cursor: pointer;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.tintuc:hover{
+    font-size: 1.32vw;
 }
 .contentDanhSachDonHang{
     width: 100%;
 }
-.tbcontentdsdh{
+.danhsachdonhang{
+    display: inline-flex;
+    margin-top: 3vw;
+    margin-bottom: 5vw;
     width: 100%;
+    height: auto;
 }
-.tdTenTK{
-    width: 38%;
+.taikhoan{
+    width: 35%;
+    height: auto;
 }
-.tbTaiKhoan{
-    width: 70%;
-    margin: 0px auto;
-    margin-top: -30vw;
-}
+
 .lbTenTK{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
-    font-size: 1vw;
+    font-size: 1.25vw;
     margin-bottom: 1vw;
+    text-align: left;
+    margin-left: 2vw;
 }
 .btnTTCN{
+    text-align: center;
+    width: 100%;
+    height: auto;
     margin-bottom: 1vw;
 }
 .btnThongTinCaNhan{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 600;
     color: black;
-    font-size: 1vw;
-    width: 100%;
+    font-size: 1.25vw;
+    width: 90%;
+    height: 3vw;
     background-color: white;
     cursor: pointer;
     border: 1px solid black;
@@ -240,16 +286,24 @@
     background-color: #73607C;
     color: white;
     border: #73607C;
+    width: 91%;
+    height: 3.1vw;
+    font-size: 1.27vw;
 }
 .btnDSDH{
+    text-align: center;
+    width: 100%;
+    height: auto;
     margin-bottom: 1vw;
 }
 .btnDanhSachDonHang{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 600;
     color: black;
-    font-size: 1vw;
-    width: 100%;
+    font-size: 1.27vw;
+    width: 91%;
+    height: 3.1vw;
     background-color: white;
     cursor: pointer;
     border: 1px solid black;
@@ -259,16 +313,23 @@
     background-color: #73607C;
     color: white;
     border: #73607C;
+    width: 91%;
+    font-size: 1.27vw;
+    height: 3.1vw;
 }
 .btnThoat{
-    margin-bottom: 2vw;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    margin-bottom: 1vw;
 }
 .btnExit{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 600;
     color: black;
-    font-size: 1vw;
-    width: 100%;
+    font-size: 1.25vw;
+    width: 90%;
+    height: 3vw;
     background-color: white;
     cursor: pointer;
     border: 1px solid black;
@@ -278,136 +339,184 @@
     background-color: #73607C;
     color: white;
     border: #73607C;
+    width: 91%;
+    font-size: 1.27vw;
+    height: 3.1vw;
 }
-.tdhr{
-    width: 4%;
+.divclasshr{
+    width: 5%;
+    margin-left: 2vw;
+    margin-top: 3vw;
 }
 .divhr{
-    height: 6vw;
+    height: 30vw;
     width: 1%;
 }
 .hr{
     color: #C5C5C5;
-    margin-top: -20vw;
+
 }
-.tdlistdonhang{
-    width: 58%;
-}
-.tblistdonhang{
-    width: 90%;
-    padding: 1vh;
-    margin-left: 2vw;
-    border: 1px solid #C5C5C5;
-    margin-bottom: 3vw;
-    margin-top: 4vw;
-}
-.tdngaydathang{
+.danhsachcacdonhang{
     width: 50%;
+    height: auto;
+}
+.thongtindanhsachdonhang{
+    width: 90%;
+    height: auto;
+}
+.xacnhanngaydat{
+    width: 100%;
+    height: 4.5vw;
+    display: inline-flex;
     background-color: #73607C;
+    border-radius: 5px;
+    line-height: 2vw;
 }
 .ngaydat{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1vw;
-    font-weight: 600;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.25vw;
+    font-weight: 500;
     color:white;
-    padding:1vh;
+    margin-left: 1vw;
+    margin-top: 0.3vw;
+    width: 50%;
+    height: auto;
 }
 .madonhang{
     color: white;
     text-decoration: none;
-}
-.tdchoxacnhan{
-    width: 50%;
-    background-color: #73607C;
-    text-align: right;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .btnchoxn{
-    padding-right: 2vh;
+    text-align: right;
+    margin-right: 2vw;
+    width: 50%;
+    height: auto;
+    margin-top: 0.5vw;
 }
 .btnchoxacnhan{
+    width: 50%;
+    height: 2.5vw;
+    font-size: 1.25vw;
+    font-weight: bold;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
     background-color: #FA8D70;
-    font-size: 1vw;
-    font-weight: 600;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     border: #FA8D70;
     border-radius: 3px;
 }
-.thongtin{
-    width: 70%;
+.btnchoxacnhan:hover{
+    width: 51%;
+    height: 2.6vw;
+    font-size: 1.27vw;
+    cursor: pointer;
 }
-.thongtinsp{
+.donhang{
+    margin-bottom: 2vw;
+    border: 1px solid #C1B9AE;
+    border-radius: 5px;
+}
+.listdonhang{
     width: 100%;
     overflow-y: scroll ;
     height: 20vw;
+    margin-top: 2vw;
+    padding: 1vw;
+}
+.thongtinsanpham{
+    width: 100%;
+    height: auto;
+    display: inline-flex;
+    margin-bottom: 1vw;
 }
 li{
     list-style-type: none;
 }
-.tbthongtinsp{
-    width: 100%;
-    border: 1px solid #C5C5C5;
-}
-.tdimgsp{
-    width: 20%;
-    text-align: center;
-}
 .imagesp{
-    margin-top: 1vh;
+    width: 30%;
 }
 .imgsp{
+    width: 60%;
+}
+.motasanpham{
     width: 70%;
 }
 .tensp{
-    margin-bottom: 2vh;
+    margin-bottom: 2vw;
 }
 .hreftensp{
     color: black;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1vw;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.25vw;
     font-weight: bold;
     text-decoration: none;
 }
 .slmua{
-    margin-bottom: 2vh;
+    margin-bottom: 2vw;
 }
 .inputslmua{
     width: 7%;
-    font-size: 1vw;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.25vw;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .giasp{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1vw;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.25vw;
     color: #FA8D70;
     font-weight: bold;
 }
-.tdhuydon{
-    text-align: center;
+.tongtien{
+    width: 100%;
+    height: 3.5vw;
     background-color: #D9D9D9;
+    display: inline-flex;
+}
+.huydon{
+    width: 50%;
+    height: auto;
+    margin-top: 0.5vw;
+    margin-left: 1vw;
 }
 .btncancel{
     color: white;
     background-color: #FA8D70;
-    font-size: 1vw;
+    font-size: 1.25vw;
     font-weight: 600;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     border: #FA8D70;
     border-radius: 3px;
+    width: 40%;
+    height: 2.5vw;
 }
-.tdsummoney{
-    text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1vw;
-    font-weight: bold;
-    background-color: #D9D9D9;
+.btncancel:hover{
+    width: 41%;
+    height: 2.51vw;
+    font-size: 1.27vw;
+    cursor: pointer;
+}
+.tongtiendh{
+    width: 50%;
+    height: auto;
+    display: inline-flex;
+    text-align: right;
+    margin-top: 1vw;
 }
 .sum{
     color: black;
+    font-size: 1.25vw;
+    font-weight: 500;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.tongsotien{
+    margin-left: 1vw;
+    font-size: 1.25vw;
+    font-weight: 500;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .sotien{
     color: #D91920;
     text-decoration: none;
+
 }
 .footer{
     width: 100%;
@@ -439,7 +548,7 @@ li{
     display: block;
     display: -webkit-box;
     height: 0.5vw*0.5*4;
-    font-size: 1vw;
+    font-size: 1.25vw;
     line-height: 1.3;
     -webkit-line-clamp: 4;  
     -webkit-box-orient: vertical;
@@ -449,13 +558,13 @@ li{
 .hrefsaukiumg{
     text-decoration: none;
     color:#73607C;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1vw;
     font-weight: 600;
     display: block;
   	display: -webkit-box;
   	height: 0.5vw*0.5*4;
-  	font-size: 1vw;
+  	font-size: 1.25vw;
   	line-height: 1.3;
   	-webkit-line-clamp: 4;  
   	-webkit-box-orient: vertical;
@@ -465,13 +574,13 @@ li{
 .hrefsachtruyenonl{
     text-decoration: none;
     color:#73607C;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1vw;
     font-weight: 600;
     display: block;
   	display: -webkit-box;
   	height: 0.5vw*0.5*4;
-  	font-size: 1vw;
+  	font-size: 1.25vw;
   	line-height: 1.3;
   	-webkit-line-clamp: 4;  
   	-webkit-box-orient: vertical;
@@ -491,8 +600,8 @@ li{
 .lienhe{
     text-decoration: none;
     color:#73607C;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1vw;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.25vw;
     font-weight: 600;
 }
 .tdemail{
@@ -508,8 +617,8 @@ li{
 .contact{
     text-decoration: none;
     color:#73607C;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1vw;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.25vw;
     font-weight: 600;
 }
 .tbchinhsach{
@@ -529,8 +638,8 @@ li{
 .hrefchinhsach{
     text-decoration: none;
     color: #73607C;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1vw;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.25vw;
     font-weight: 600;
 }
 .none{
@@ -543,8 +652,8 @@ li{
 .hrefchinhsachbaomat{
     text-decoration: none;
     color: #73607C;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1vw;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.25vw;
     font-weight: 600;
 }
 .tdcsvc{
@@ -553,8 +662,8 @@ li{
 .hrefchinhsachvanchuyen{
     text-decoration: none;
     color: #73607C;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1vw;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.25vw;
     font-weight: 600;
 }
 .tdcstt{
@@ -563,8 +672,8 @@ li{
 .hrefchinhsachthanhtoan{
     text-decoration: none;
     color: #73607C;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1vw;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.25vw;
     font-weight: 600;   
 }
 .tdcsdt{
@@ -573,11 +682,7 @@ li{
 .hrefchinhsachdoitra{
     text-decoration: none;
     color: #73607C;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 1vw;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.25vw;
     font-weight: 600;
 }
-
-
-
-

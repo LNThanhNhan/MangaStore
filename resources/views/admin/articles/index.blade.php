@@ -61,8 +61,10 @@
                                         <i class="fas fa-pencil-alt">
                                         </i>
                                     </a>
-                                    <form action="{{route('admin.articles.destroy',$article->id)}}">
-                                        <button id="btn1" class="btn btn-danger" onclick="return confirm('Bài viết sẽ bị xóa')">
+                                    <form action="{{route('admin.articles.destroy',$article->id)}}" method="post" onsubmit="return confirm('Bài viết sẽ bị xóa')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button id="btn1" class="btn btn-danger" >
                                             <i class="fas fa-trash"> </i>
                                         </button>
                                     </form>
@@ -70,7 +72,6 @@
                             </tr>
                         @endforeach
                         </tbody>
-
                     </table>
                 </div>
             </div>
