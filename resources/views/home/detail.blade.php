@@ -158,20 +158,20 @@
                 </label>
             </div>
             <div class="sanphamcungtg">
-                @foreach($sameAuthor as $product)
+                @foreach($sameAuthor as $authorProduct)
                     <div class="thongtinsanpham">
                         <div class="imagesp">
-                            <img src="{{$product->image}}" class="imgspcungtg">
+                            <img src="{{$authorProduct->image}}" class="imgspcungtg">
                         </div>
                         <div class="thongtinspcungtg">
                             <div class="namemoney">
-                                <a href="{{route('home.detail',$product->slug)}}" class="hrefsp">
-                                    {{$product->name}}
+                                <a href="{{route('home.detail',$authorProduct->slug)}}" class="hrefsp">
+                                    {{$authorProduct->name}}
                                 </a>
                             </div>
                             <div class="giasp">
                                 <a href="" class="hrefgiasp">
-                                    {{$product->priceVND}}
+                                    {{$authorProduct->priceVND}}
                                 </a>
                             </div>
                         </div>
@@ -195,19 +195,19 @@
             </label>
         </div>
         <div class="sanphamlienquan">
-            @foreach($sameCategory as $product)
+            @foreach($sameCategory as $categoryProduct)
                 <div class="thongtinsplienquan">
                     <div class="imgsanpham">
-                        <img src="{{$product->image}}" class="image">
+                        <img src="{{$categoryProduct->image}}" class="image">
                     </div>
                     <div class="tensp">
-                        <a href="{{route('home.detail',$product->slug)}}" class="hreftensp">
-                            {{$product->name}}
+                        <a href="{{route('home.detail',$categoryProduct->slug)}}" class="hreftensp">
+                            {{$categoryProduct->name}}
                         </a>
                     </div>
                     <div class="money">
                         <a href="" class="hrefmoney">
-                            {{$product->priceVND}}
+                            {{$categoryProduct->priceVND}}
                         </a>
                     </div>
                 </div>
