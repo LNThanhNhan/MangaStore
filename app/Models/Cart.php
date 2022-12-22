@@ -95,7 +95,7 @@ class Cart extends Model
                     return 0;
                 if($this->discount->type === DiscountType::SO_TIEN)
                     return $this->discount->value;
-                $totalDiscount=$this->totalPrice * $this->discount->value/100;
+                $totalDiscount=$this->cart_total * $this->discount->value/100;
                 //Làm tròn số tiền giảm giá về chữ số nguyên
                 $totalDiscount=round($totalDiscount);
                 if($totalDiscount>$this->discount->max_discount)
