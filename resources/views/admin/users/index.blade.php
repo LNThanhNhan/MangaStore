@@ -57,10 +57,10 @@
                                     <a href="{{route('admin.users.edit',$user->id)}}" class="btn btn-info btn-sm">
                                         <i class="fas fa-eye"></i>
                                     </a>
-                                    <form action="{{route('admin.users.destroy',$user)}}" method="post">
+                                    <form action="{{route('admin.users.destroy',$user)}}" method="post" onsubmit="return confirm('Tài khoản khách hàng và các đơn hàng liên quan sẽ bị xóa')">
                                         @csrf
                                         @method('DELETE')
-                                        <button id="btn1" class="btn btn-danger" onclick="return configure('Tài khoản khách hàng và các đơn hàng liên quan sẽ bị xóa')">
+                                        <button id="btn1" class="btn btn-danger" >
                                             <i class="fas fa-trash"> </i>
                                         </button>
                                     </form>
