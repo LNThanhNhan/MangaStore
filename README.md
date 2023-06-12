@@ -1,66 +1,36 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Cửa hàng truyện tranh Sâu kiu
+## Mô tả đồ án
+Xây dựng trang web mà khách hàng có thể ghé thăm và mua các thể loại truyện trang đang được bày bán trên thị trường.
+## Thành viên trong nhóm
+| **STT** |        **Họ tên**       |                 **Nhiệm vụ**                | **Đóng góp** |
+|:-------|:-----------------------|:-------------------------------------------|:------------:|
+| 1       | Lương Nguyễn Thành Nhân | Trưởng nhóm, Backend, Thiết kế usecase, ERD | 60%          |
+| 2       | Trương Ý Nhi            | Frontend                                    | 20%          |
+| 3       | Lâm Võ Khánh My         | Thiết kế giao diện, hỗ trợ Frontend         | 20%          |
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Những thứ đã học được
+- Framework Laravel 9
+- Chat bằng Messenger Facebook
+- Validation
+- AJAX/API
+- reCAPTCHA V3
+## Các tính năng đã thực hiện được
+- Có 3 loại user: Khách hàng, quản lý, nhân viên
+- Đọc thêm các bài viết về các chương trình trong cửa hàng
+- Quản lý khách hàng, sản phẩm, nhân viên cửa hàng
+- Hoàn thiện quy trình mua hàng của khách hàng
+- Hoàn thiện quy trình xử lý cửa hàng dành cho nhân viên
+- Đăng ký, đăng nhập bằng email cơ bản
+- Thống kê được top 10 sản phẩm bán chạy
+## Sơ đồ ERD
+<img src="ERD.png" alt="Alt text" title="Optional title">
 
-## About Laravel
+## Khó khăn 
+- Đồ án này còn có rất nhiều thiếu sót cùng với các tính năng nên có như: 
+1. OAuth bằng các tài khoản mạng xã hội (Google, Facebook,v.v..)
+2. Có thêm phương thức thanh toán khác (trong tương lai sẽ thêm thanh toán bằng VNPay)
+3. Quản lý việc thêm hình ảnh bằng cloud (trong tương lai sẽ thay bằng bằng Imgur)
+4. Chưa thực hiện hết các use case đã đề ra
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Tài liệu tiếng việt 
+Tài liệu tiếng việc về project có thể đọc [tại đây](https://drive.google.com/file/d/1SuEmQca5XV2eoKRPsDE2wHOaWO2tqK_l/view?usp=sharing)
