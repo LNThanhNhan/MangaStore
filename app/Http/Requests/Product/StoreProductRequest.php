@@ -50,7 +50,7 @@ class StoreProductRequest extends FormRequest
             'image' =>[
                 'bail',
                 'required',
-                'active_url',
+                'image',
             ],
             'author' =>[
                 'bail',

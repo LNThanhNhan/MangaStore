@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\StoreProductRequest;
 use App\Http\Requests\Product\UpdateProductRequest;
 use App\Models\Product;
+use App\Services\FirebaseStorage\FirebaseService;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -47,8 +48,14 @@ class ProductController extends Controller
     // Lưu sản phẩm vào database
     public function store(StoreProductRequest $request)
     {
+
         $product = new Product();
         $product->fill($request->validated());
+        //image
+        $image_data=FirebaseService::uploadImage($request->file('image'));
+        $product->image=$image_data['Url'];
+        $product->image_uuid=$image_data['Id'];
+        //product
         $product->slug=create_slug($request->get('name'));
         $product->author_slug=create_slug($request->get('author'));
         $product->collection_slug=create_slug($request->get('collection'));
@@ -71,6 +78,10 @@ class ProductController extends Controller
     public function update(UpdateProductRequest $request, Product $product)
     {
         $product->fill($request->validated());
+        //image
+        $image_data=FirebaseService::updateImage($product->image_uuid,$request->file('image'));
+        $product->image=$image_data['Url'];
+        //product
         $product->slug=create_slug($request->get('name'));
         $product->author_slug=create_slug($request->get('author'));
         $product->collection_slug=create_slug($request->get('collection'));
@@ -94,6 +105,7 @@ class ProductController extends Controller
         if($product->orders()->count() > 0){
             return redirect()->route('admin.products.index')->with('error','Không thể xóa sản phẩm do đã có đơn hàng mua');
         }
+        FirebaseService::deleteImage($product->image_uuid);
         $this->model->find($productId)->delete();
         return redirect()->route('admin.products.index')->with('success','Xóa sản phẩm thành công');
     }

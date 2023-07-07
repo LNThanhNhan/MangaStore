@@ -34,7 +34,7 @@
 
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="{{route('admin.products.store')}}" method="post" >
+                        <form action="{{route('admin.products.store')}}" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
 
@@ -119,8 +119,8 @@
                                             <input type="text" class="form-control" id="collection" placeholder="" name="collection">
                                         </div>
                                         <div class="form-group">
-                                            <label for="image">Link ảnh sản phẩm</label>
-                                            <input type="text" class="form-control" id="collection" placeholder="" name="image">
+                                            <label for="image">Ảnh sản phẩm</label>
+                                            <input type="file" class="form-control" id="collection" placeholder="" name="image" accept="image/*">
                                         </div>
                                     </div>
 

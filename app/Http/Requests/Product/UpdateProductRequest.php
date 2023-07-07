@@ -44,7 +44,7 @@ class UpdateProductRequest extends FormRequest
             'image' => [
                 'bail',
                 'required',
-                'active_url',
+                'image',
             ],
             'author' => [
                 'required',
