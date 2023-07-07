@@ -34,8 +34,6 @@ Xây dựng trang web mà khách hàng có thể ghé thăm và mua các thể l
 - Đồ án này còn có rất nhiều thiếu sót cùng với các tính năng nên có như: 
 1. OAuth bằng các tài khoản mạng xã hội (Google, Facebook,v.v..)
 2. Có thêm phương thức thanh toán khác (trong tương lai sẽ thêm thanh toán bằng VNPay)
-3. Quản lý việc thêm hình ảnh bằng cloud (trong tương lai sẽ thay bằng bằng Imgur)
-4. Chưa thực hiện hết các use case đã đề ra
 
 ## Tài liệu tiếng việt 
 Tài liệu tiếng việc về project có thể đọc [tại đây](https://drive.google.com/file/d/1SuEmQca5XV2eoKRPsDE2wHOaWO2tqK_l/view?usp=sharing)
