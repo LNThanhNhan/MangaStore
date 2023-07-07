@@ -8,12 +8,17 @@ Xây dựng trang web mà khách hàng có thể ghé thăm và mua các thể l
 | 2       | Trương Ý Nhi            | Frontend                                    | 20%          |
 | 3       | Lâm Võ Khánh My         | Thiết kế giao diện, hỗ trợ Frontend         | 20%          |
 
+## Lưu ý 
+- Cần cài đặt thêm web server Go để sử dụng được chức năng Firebase Storage. [Xem tại đây](https://github.com/LNThanhNhan/FirebaseGo)
+
+
 ## Những thứ đã học được
 - Framework Laravel 9
 - Chat bằng Messenger Facebook
 - Validation
 - AJAX/API
 - reCAPTCHA V3
+- Firebase Storage
 ## Các tính năng đã thực hiện được
 - Có 3 loại user: Khách hàng, quản lý, nhân viên
 - Đọc thêm các bài viết về các chương trình trong cửa hàng
