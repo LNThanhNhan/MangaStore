@@ -1,6 +1,8 @@
 # Cửa hàng truyện tranh Sâu kiu
 ## Mô tả đồ án
 Xây dựng trang web mà khách hàng có thể ghé thăm và mua các thể loại truyện trang đang được bày bán trên thị trường.
+
+Xem demo tại [đây](https://drive.google.com/file/d/1j9Prz16Ik6qrcdqLKyakuXrdUgcAitDr/view?usp=drive_link)
 ## Thành viên trong nhóm
 | **STT** |        **Họ tên**       |                 **Nhiệm vụ**                | **Đóng góp** |
 |:-------|:-----------------------|:-------------------------------------------|:------------:|
